@@ -3,4 +3,4 @@ project(fundamentos2 C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(fundamentos2 main.c)
+add_executable(fundamentos2 boletin1/main.c)
