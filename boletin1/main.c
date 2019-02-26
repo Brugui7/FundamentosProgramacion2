@@ -48,10 +48,13 @@ struct component {
 };
 
 void createComponentOption();
+
+void deleteComponentOption();
 bool addComponent(struct component component);
 bool addItemToComponent(struct item item, struct component component);
 char componentToString(struct component component);
-int getComponentPositionById(char id);
+
+int getComponentPositionById(char *id);
 void showComponent(struct component component);
 
 struct component components[MAX_COMPONENTS];
@@ -80,6 +83,9 @@ void showMenu() {
             case 1:
                 createComponentOption();
                 break;
+            case 2:
+                deleteComponentOption();
+                break;
             case 8:
                 printf("Saliendo...");
                 break;
@@ -90,11 +96,14 @@ void showMenu() {
     }
 }
 
+/**
+ * Asks for the file where te components are stored in and tries to read all of them
+ */
 void createComponentOption() {
     char fileName[100] = "";
     FILE *file = NULL;
     do  {
-        printf("Introduzca el nombre del fichero donde se encuentran los componentes\n> ");
+        printf("Introduzca la ruta del fichero donde se encuentran los componentes\n> ");
         gets(fileName);
         printf("%s", fileName);
         fflush(stdin);
@@ -115,6 +124,33 @@ void createComponentOption() {
     fclose(file);
 }
 
+/**
+ * Asks for the file where the components id are stored in and tries to delete all of them
+ */
+void deleteComponentOption() {
+    char fileName[100] = "";
+    char code[ID_LENGTH] = "";
+
+    FILE *file = NULL;
+    do {
+        printf("Introduzca la ruta fichero donde se encuentran los identificadores\n> ");
+        gets(fileName);
+        printf("%s", fileName);
+        fflush(stdin);
+        file = fopen(fileName, "r");
+    } while (file == NULL);
+
+    while (!feof(file)) {
+        fscanf(file, "%s\n", code);
+        if (getComponentPositionById(code) != -1) {
+            printf("Eliminando el componente con identificador %s...\n", code);
+        } else {
+            printf("No se ha encontrado el componente con identificador %s...\n", code);
+        }
+    }
+
+}
+
 void createItemOption() {
     int itemNumber = 0;
 
@@ -128,7 +164,7 @@ void createItemOption() {
         struct item item;
         int type = -1;
         int inputDate = 0;
-        char componentId = "";
+        char componentId;
         int componentPosition = -1;
 
         printf("\nId: \n");
@@ -201,9 +237,9 @@ void createItemOption() {
  * @param id identifier of a component
  * @return the component position if found or -1 if not
  */
-int getComponentPositionById(char id){
+int getComponentPositionById(char *id) {
     for (int i = 0; i < MAX_COMPONENTS; i++) {
-        if (strcmp(components[i].id, &id) == 0){
+        if (strcmp(components[i].id, id) == 0) {
             return i;
         }
     }
