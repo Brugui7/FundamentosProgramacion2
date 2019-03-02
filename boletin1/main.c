@@ -26,7 +26,7 @@ const char E_ACUTE = 130;
 const char I_ACUTE = 161;
 const char O_ACUTE = 162;
 const char U_ACUTE = 163;
-
+const char OPEN_QUESTION_MARK = 168;
 
 struct item {
     bool valid; //Used to check if the struct is empty or not
@@ -49,13 +49,12 @@ struct component {
     char name[NAME_LENGTH];
     char description[DESCRIPTION_LENGTH];
     int stock;
-    int numberOfItems;
     struct item items[MAX_ITEMS];
 };
 
 void createComponentOption();
 
-void deleteComponentOption(); //TODO, indicar que los artículos asociados se borrarán
+void deleteComponentOption();
 
 void createItemOption();
 
@@ -166,8 +165,10 @@ void createComponentOption() {
  * Asks for the file where the components id are stored in and tries to delete all of them
  */
 void deleteComponentOption() {
+    int confirm, componentPosition;
     char fileName[100] = "";
     char code[ID_LENGTH] = "";
+
 
     FILE *file = NULL;
     do {
@@ -180,13 +181,26 @@ void deleteComponentOption() {
 
     while (!feof(file)) {
         fscanf(file, "%s\n", code);
-        if (getComponentPositionById(code) != -1) {
+        componentPosition = getComponentPositionById(code);
+        if (componentPosition != -1) {
+            if (components[0].items[0].valid){
+                confirm = 2;
+                do {
+                    printf("Este componente contiene art%cculos que ser%cn eliminados.\n"
+                           "%cDesea continuar?(1 = si | 2 = no)\n> ", I_ACUTE, A_ACUTE, OPEN_QUESTION_MARK);
+                    scanf("%d", &confirm);
+                    fflush(stdin);
+                } while (confirm != 0 && confirm != 1);
+                if (confirm == 0) continue;
+            }
             printf("Eliminando el componente con identificador %s...\n", code);
+            for(int i = componentPosition; i < MAX_COMPONENTS - 1; i++){
+                components[i] = components[i + 1];
+            }
         } else {
             printf("No se ha encontrado el componente con identificador %s...\n", code);
         }
     }
-
 }
 
 /**
