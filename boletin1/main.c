@@ -61,6 +61,8 @@ void createItemOption();
 
 void showStockOption();
 
+void saveDataOption();
+
 bool addComponent(struct component component);
 
 bool addItem(struct item item, int componentPosition);
@@ -104,6 +106,12 @@ void showMenu() {
                 break;
             case 3:
                 createItemOption();
+                break;
+            case 4:
+                //TODO
+            break;
+            case 5:
+                saveDataOption();
                 break;
             case 7:
                 showStockOption();
@@ -252,6 +260,24 @@ void showStockOption(){
     printf("\n/****** FIN ******/\nPulse una tecla para continuar...\n");
 }
 
+/**
+ * Saves the components array to a file
+ */
+void saveDataOption(){
+    char fileName[100] = "";
+    int success = 0;
+    FILE *file = NULL;
+    do {
+        printf("Introduzca la ruta del fichero donde desea guardar los datos\n> ");
+        gets(fileName);
+        fflush(stdin);
+        file = fopen(fileName, "wb");
+    } while (file == NULL);
+
+    success = fwrite(&components, sizeof(struct component), MAX_COMPONENTS, file);
+    printf(success == 0 ? "Error al guardar los datos\n" : "Datos guardados correctamente\n");
+    fclose(file);
+}
 
 /**
  * Search for a component in the array
