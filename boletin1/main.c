@@ -9,12 +9,17 @@
 #include <stdbool.h>
 #include <time.h>
 #include <string.h>
+#include <conio.h>
 
 #define MAX_COMPONENTS 11
 #define MAX_ITEMS 100
 #define ID_LENGTH 11
+#define GENERAL_ID_LENGTH 21
 #define NAME_LENGTH 21
 #define DESCRIPTION_LENGTH 151
+#define NOT_DEFINED 0
+#define SOFTWARE 1
+#define HARDWARE 2
 
 const char A_ACUTE = 160;
 const char E_ACUTE = 130;
@@ -25,14 +30,14 @@ const char U_ACUTE = 163;
 
 struct item {
     bool valid; //Used to check if the struct is empty or not
-    char generalId[21];
+    char generalId[GENERAL_ID_LENGTH];
     int id;
-    char model[10];
-    char brand[10];
+    char model[16];
+    char brand[16];
     struct tm insertDate;
     int stock;
     enum type {
-        notDefined = 0, software = 1, hardware = 2
+        notDefined = NOT_DEFINED, software = SOFTWARE, hardware = HARDWARE
     } type;
     float itemPrice;
     float shippingPrice;
@@ -44,18 +49,29 @@ struct component {
     char name[NAME_LENGTH];
     char description[DESCRIPTION_LENGTH];
     int stock;
+    int numberOfItems;
     struct item items[MAX_ITEMS];
 };
 
 void createComponentOption();
 
-void deleteComponentOption();
-bool addComponent(struct component component);
-bool addItemToComponent(struct item item, struct component component);
-char componentToString(struct component component);
+void deleteComponentOption(); //TODO, indicar que los artículos asociados se borrarán
 
-int getComponentPositionById(char *id);
+void createItemOption();
+
+void showStockOption();
+
+bool addComponent(struct component component);
+
+bool addItem(struct item item, int componentPosition);
+
+int getComponentPositionById(char* id);
+
 void showComponent(struct component component);
+
+void showItem(struct item item);
+
+char* createItemId(struct item item, char componentId);
 
 struct component components[MAX_COMPONENTS];
 
@@ -65,7 +81,7 @@ struct component components[MAX_COMPONENTS];
 void showMenu() {
     int option = 0;
     while (option != 8) {
-        printf("############### MENU ###############\n"
+        printf("\n############### MENU ###############\n"
                "Indique que acci%cn desea realizar\n"
                "\t1. Crear componentes\n"
                "\t2. Eliminar componentes\n"
@@ -86,10 +102,17 @@ void showMenu() {
             case 2:
                 deleteComponentOption();
                 break;
+            case 3:
+                createItemOption();
+                break;
+            case 7:
+                showStockOption();
+                break;
             case 8:
                 printf("Saliendo...");
                 break;
             default:
+                printf("tu opción %d", option);
                 printf("Por favor seleccione una opci%cn v%clida\n", O_ACUTE, A_ACUTE);
                 break;
         }
@@ -102,7 +125,7 @@ void showMenu() {
 void createComponentOption() {
     char fileName[100] = "";
     FILE *file = NULL;
-    do  {
+    do {
         printf("Introduzca la ruta del fichero donde se encuentran los componentes\n> ");
         gets(fileName);
         printf("%s", fileName);
@@ -110,11 +133,13 @@ void createComponentOption() {
         file = fopen(fileName, "r");
     } while (file == NULL);
 
-    while (!feof(file)){
+    while (!feof(file)) {
         struct component component = {NULL};
         fscanf(file, "%s\n", component.id);
-        fgets(component.name, NAME_LENGTH, file);
-        fgets(component.description, DESCRIPTION_LENGTH, file);
+        fgets(component.name, sizeof(component.name), file);
+        strtok(component.name, "\n"); //Removes the \n
+        fgets(component.description, sizeof(component.description), file);
+        strtok(component.description, "\n");
         fscanf(file, "%d\n", &component.stock);
         printf("Componente detectado...\n");
         showComponent(component);
@@ -151,93 +176,89 @@ void deleteComponentOption() {
 
 }
 
+/**
+ * Asks for the file where te components are stored in and tries to read all of them
+ * FORMAT
+ * Component ID
+ * Numeric ID
+ * date in DD/MM/YYYY
+ * model
+ * brand
+ * type
+ * price shippingPrice (both with a point as decimal separator)
+ * stock
+ */
 void createItemOption() {
-    int itemNumber = 0;
-
-    do{
-        printf("Introduzca la cantidad de art%culos que desa crear\n> ", I_ACUTE);
-        scanf("%d", &itemNumber);
+    char fileName[100] = "";
+    FILE *file = NULL;
+    do {
+        printf("Introduzca la ruta del fichero donde se encuentran los art%cculos\n> ", I_ACUTE);
+        gets(fileName);
+        printf("%s", fileName);
         fflush(stdin);
-    } while (itemNumber <= 0);
+        file = fopen(fileName, "r");
+    } while (file == NULL);
 
-    for (int i = 0; i < itemNumber; i++) {
-        struct item item;
-        int type = -1;
-        int inputDate = 0;
-        char componentId;
-        int componentPosition = -1;
-
-        printf("\nId: \n");
-        scanf("%d", item.id);
-        fflush(stdin);
-
-        printf("Marca: \n");
-        gets(item.brand);
-        fflush(stdin);
-
-        printf("Modelo: \n");
-        gets(item.model);
-        fflush(stdin);
-
-        printf("Stock: \n");
-        scanf("%d", &item.stock);
-        fflush(stdin);
-
-        do{
-            printf("Tipo (0 = indefinido, 1 = software, 2 = hardware): \n");
-            scanf("%d", &type);
-            fflush(stdin);
-        } while (type < 0 || type > 2);
-        item.type = type;
-
-        printf("Precio: \n");
-        scanf("%f", &item.itemPrice);
-        fflush(stdin);
-        printf("Precio del transporte: \n");
-        scanf("%f", &item.shippingPrice);
-        fflush(stdin);
-
-        do{
-            printf("Seleccione si desea itroducir la fecha de alta (1) o usar la fecha actual (0):\n> ");
-            scanf("%d", &inputDate);
-            fflush(stdin);
-        } while (inputDate != 0 && inputDate != 1);
-        if (inputDate == 0){
-            time_t sysTime;
-            time(&sysTime);
-            item.insertDate = *localtime(&sysTime);
+    while (!feof(file)) {
+        char* type;
+        char componentId[ID_LENGTH] = "";
+        struct item item = {NULL};
+        fscanf(file, "%s\n", componentId);
+        fscanf(file, "%d/%d/%d\n", &item.insertDate.tm_mday, &item.insertDate.tm_mon, &item.insertDate.tm_year);
+        fgets(item.model, sizeof(item.model), file);
+        strtok(item.model, "\n");
+        fgets(item.brand, sizeof(item.brand), file);
+        strtok(item.brand, "\n");
+        fscanf(file, "%s\n", type);
+        if (strcmp(type, "Hardware") == 0) {
+            item.type = HARDWARE;
+        } else if (strcmp(type, "Software") == 0) {
+            item.type = SOFTWARE;
         } else {
-            printf("Introduzca la fecha de alta (DD/MM/YYYY):");
-            scanf("%d/%d/%d", &item.insertDate.tm_mday, &item.insertDate.tm_mon, &item.insertDate.tm_year);
-            fflush(stdin);
+            item.type = NOT_DEFINED;
         }
 
-        //It will be asking for a component until the user introduces a valid one or cancels the item creation
-        while (componentPosition == -1){
-            printf("Introduzca el identificador del componente al que quiere asociar este art%cculo "
-                   "o \"cancelar\" para cancelar el alta:\n> ", I_ACUTE);
-            gets(&componentId);
-            fflush(stdin);
-            if (strcmp("cancelar", &componentId) == 0){
-                printf("Cancelando...\n");
-                return;
-            }
-
-            componentPosition = getComponentPositionById(componentId);
-            if (componentPosition == -1){
-                printf("No se han encontrado componentes con el identificador introducido\n");
-            }
+        fscanf(file, "%f %f\n", &item.itemPrice, &item.shippingPrice);
+        fscanf(file, "%d\n", &item.stock);
+        printf("Art%cculo detectado...\n", I_ACUTE);
+        showItem(item);
+        int componentPosition = getComponentPositionById(componentId);
+        if (componentPosition == -1){
+            printf("No se ha encontrado el componente para asociar este art%cculo", I_ACUTE);
+            continue;
         }
+        if (addItem(item, componentPosition)){
+            printf("Art%cculo guardado correctamente\n", I_ACUTE);
+        } else {
+             printf("Error al guardar el rt%cculo\n", I_ACUTE);
+        }
+
     }
+    fclose(file);
 
 }
+
+void showStockOption(){
+    printf("\n/****** STOCK TIENDA COMPONENTES INFORM%cTICOS ******/\n", A_ACUTE);
+    for(int i = 0; i < MAX_COMPONENTS; i++){
+        if (!components[i].valid) break;
+        showComponent(components[i]);
+        for (int j = 0; j < MAX_ITEMS; ++j) {
+            if (!components[i].items[j].valid) break;
+            showItem(components[i].items[j]);
+        }
+
+    }
+    printf("\n/****** FIN ******/\nPulse una tecla para continuar...\n");
+}
+
 
 /**
  * Search for a component in the array
  * @param id identifier of a component
  * @return the component position if found or -1 if not
  */
-int getComponentPositionById(char *id) {
+int getComponentPositionById(char* id) {
     for (int i = 0; i < MAX_COMPONENTS; i++) {
         if (strcmp(components[i].id, id) == 0) {
             return i;
@@ -252,12 +273,12 @@ int getComponentPositionById(char *id) {
  * @param componentId the general one
  * @return the item position if found, -1 if not, -2 if the component couldn't be found
  */
-int getItemPositionOnComponent(char itemId, char componentId){
-    int componentPosition = getComponentPositionById(componentId);
+int getItemPositionOnComponent(char itemId, char componentId) {
+    int componentPosition = getComponentPositionById(&componentId);
     if (componentPosition == -1) return -2;
     struct item *items = components[componentPosition].items;
     for (int i = 0; i < MAX_ITEMS; i++) {
-        if (strcmp(items[i].generalId, &itemId) == 0){
+        if (strcmp(items[i].generalId, &itemId) == 0) {
             return i;
         }
     }
@@ -270,9 +291,12 @@ int getItemPositionOnComponent(char itemId, char componentId){
  * @return boolean if added correctly
  */
 bool addComponent(struct component component) {
+    //Checks that all fields are valid
     if (strlen(component.id) == 0 || strlen(component.name) == 0 || strlen(component.description) == 0) return false;
+    //Checks that there is not a component with the same id
+    if (getComponentPositionById(component.id) != -1) return false;
     for (int i = 0; i < MAX_COMPONENTS; i++) {
-        if (!components[i].valid){
+        if (!components[i].valid) {
             component.valid = true;
             components[i] = component;
             return true;
@@ -281,8 +305,59 @@ bool addComponent(struct component component) {
     return false;
 }
 
-void showComponent(struct component component){
-    printf("|%s| |%s| |%s| |%d|\n", component.id, component.name, component.description, component.stock);
+/**
+ * Saves a component in the first free position of the array
+ * @param item struct to add
+ * @param componentPosition place where the component is
+ * @return boolean if added correctly
+ */
+bool addItem(struct item item, int componentPosition) {
+    struct component component = components[componentPosition];
+    for (int i = 0; i < MAX_COMPONENTS; i++) {
+        if (!component.items[i].valid) {
+            item.valid = true;
+            char generalId[GENERAL_ID_LENGTH];
+            strftime(generalId, sizeof(generalId), "%d_%m_%y", &item.insertDate);
+            sprintf(item.generalId, "%s_%d_%s", component.id, i, generalId);
+            components[componentPosition].items[i] = item;
+            return true;
+        }
+    }
+    return false;
+}
+
+/**
+ *
+ * @param component
+ */
+void showComponent(struct component component) {
+    printf("---------------------------------------\n"
+           "Componente %s\n"
+           "---------------------------------------\n"
+           "Nombre: %s\nDescripci%cn: %s\nStock General: %d\n\n", component.id, component.name, O_ACUTE,
+           component.description, component.stock);
+
+}
+
+/**
+ *
+ * @param item
+ */
+void showItem(struct item item) {
+    char *type;
+    switch (item.type) {
+        case HARDWARE:
+            type = "Hardware";
+            break;
+        case SOFTWARE:
+            type = "Software";
+            break;
+        default:
+            type = "Indefinido";
+            break;
+    }
+    printf("\n- Art%cculo \t%s\n- Modelo:\t%s\n- Marca:\t%s\n- Stock:\t%d\n- Precio:\t%.2f\n- Transporte:\t%.2f\n- Tipo:\t%s\n",
+           I_ACUTE, item.generalId, item.model, item.brand, item.stock, item.itemPrice, item.shippingPrice, type);
 }
 
 int main() {
