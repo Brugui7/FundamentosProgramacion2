@@ -63,6 +63,8 @@ void showStockOption();
 
 void saveDataOption();
 
+void loadDataOption();
+
 bool addComponent(struct component component);
 
 bool addItem(struct item item, int componentPosition);
@@ -113,6 +115,9 @@ void showMenu() {
             case 5:
                 saveDataOption();
                 break;
+            case 6:
+                loadDataOption();
+                //There is not a break here to make the user able to see the data that have been loaded
             case 7:
                 showStockOption();
                 break;
@@ -276,6 +281,25 @@ void saveDataOption(){
 
     success = fwrite(&components, sizeof(struct component), MAX_COMPONENTS, file);
     printf(success == 0 ? "Error al guardar los datos\n" : "Datos guardados correctamente\n");
+    fclose(file);
+}
+
+/**
+ * Loads the component array from a file
+ */
+void loadDataOption(){
+    char fileName[100] = "";
+    int success = 0;
+    FILE *file = NULL;
+    do {
+        printf("Introduzca la ruta del fichero desde donde se van a cargar los datos\n> ");
+        gets(fileName);
+        fflush(stdin);
+        file = fopen(fileName, "rb");
+    } while (file == NULL);
+
+    success = fread(&components, sizeof(struct component), MAX_COMPONENTS, file);
+    printf(success == 0 ? "Error al cargar los datos\n" : "Datos cargados correctamente\n");
     fclose(file);
 }
 
