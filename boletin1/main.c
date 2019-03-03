@@ -232,6 +232,7 @@ void createItemOption() {
         struct item item = {NULL};
         fscanf(file, "%s\n", componentId);
         fscanf(file, "%d/%d/%d\n", &item.insertDate.tm_mday, &item.insertDate.tm_mon, &item.insertDate.tm_year);
+        item.insertDate.tm_mon -= 1;
         fgets(item.model, sizeof(item.model), file);
         strtok(item.model, "\n");
         fgets(item.brand, sizeof(item.brand), file);
@@ -380,7 +381,7 @@ bool addItem(struct item item, int componentPosition) {
     for (int i = 0; i < MAX_COMPONENTS; i++) {
         if (!component.items[i].valid) {
             item.valid = true;
-            char generalId[GENERAL_ID_LENGTH];
+            char generalId[9];
             strftime(generalId, sizeof(generalId), "%d_%m_%y", &item.insertDate);
             sprintf(item.generalId, "%s_%d_%s", component.id, i, generalId);
             components[componentPosition].items[i] = item;
