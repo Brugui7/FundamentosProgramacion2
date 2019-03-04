@@ -13,7 +13,7 @@
 
 #define MAX_COMPONENTS 11
 #define MAX_ITEMS 100
-#define ID_LENGTH 11
+#define ID_LENGTH 12
 #define GENERAL_ID_LENGTH 21
 #define NAME_LENGTH 21
 #define DESCRIPTION_LENGTH 151
@@ -58,6 +58,8 @@ void deleteComponentOption();
 
 void createItemOption();
 
+void deleteItemOption();
+
 void showStockOption();
 
 void saveDataOption();
@@ -74,7 +76,13 @@ void showComponent(struct component component);
 
 void showItem(struct item item);
 
-char* createItemId(struct item item, char componentId);
+/**
+ * Search for a item in a component
+ * @param itemId
+ * @param componentPosition
+ * @return the item position if found, -1 if not
+ */
+int getItemPositionOnComponent(char *itemId, int componentPosition) ;
 
 struct component components[MAX_COMPONENTS];
 
@@ -109,7 +117,7 @@ void showMenu() {
                 createItemOption();
                 break;
             case 4:
-                //TODO
+                deleteItemOption();
             break;
             case 5:
                 saveDataOption();
@@ -167,7 +175,7 @@ void createComponentOption() {
 void deleteComponentOption() {
     int confirm, componentPosition;
     char fileName[100] = "";
-    char code[ID_LENGTH] = "";
+    char componentId[ID_LENGTH] = "";
 
 
     FILE *file = NULL;
@@ -180,10 +188,10 @@ void deleteComponentOption() {
     } while (file == NULL);
 
     while (!feof(file)) {
-        fscanf(file, "%s\n", code);
-        componentPosition = getComponentPositionById(code);
+        fscanf(file, "%s\n", componentId);
+        componentPosition = getComponentPositionById(componentId);
         if (componentPosition != -1) {
-            if (components[0].items[0].valid){
+            if (components[componentPosition].items[0].valid){
                 confirm = 2;
                 do {
                     printf("Este componente contiene art%cculos que ser%cn eliminados.\n"
@@ -193,12 +201,12 @@ void deleteComponentOption() {
                 } while (confirm != 0 && confirm != 1);
                 if (confirm == 0) continue;
             }
-            printf("Eliminando el componente con identificador %s...\n", code);
+            printf("Eliminando el componente con identificador %s...\n", componentId);
             for(int i = componentPosition; i < MAX_COMPONENTS - 1; i++){
                 components[i] = components[i + 1];
             }
         } else {
-            printf("No se ha encontrado el componente con identificador %s...\n", code);
+            printf("No se ha encontrado el componente con identificador %s...\n", componentId);
         }
     }
 }
@@ -266,6 +274,51 @@ void createItemOption() {
 
 }
 
+
+/**
+ * Asks for the file where the components and items id are stored in and tries to delete all of them
+ * Expected format: "componentId itemId"
+ */
+void deleteItemOption() {
+    int componentPosition, itemPosition;
+    char fileName[100] = "";
+    char componentId[ID_LENGTH] = "";
+    char itemId[GENERAL_ID_LENGTH] = "";
+
+
+    FILE *file = NULL;
+    do {
+        printf("Introduzca la ruta fichero donde se encuentran los identificadores\n> ");
+        gets(fileName);
+        printf("%s", fileName);
+        fflush(stdin);
+        file = fopen(fileName, "r");
+    } while (file == NULL);
+
+    while (!feof(file)) {
+
+        fscanf(file, "%s ", componentId);
+        componentPosition = getComponentPositionById(componentId);
+        printf("Componente escaneado: %s\n", componentId);
+        fscanf(file, "%s\n", itemId);
+        if (componentPosition == -1){
+            printf("No se ha encontrado el componente...\n");
+            continue;
+        }
+
+        printf("Art%cculo escaneado: %s\n", I_ACUTE, itemId);
+        itemPosition = getItemPositionOnComponent(itemId, componentPosition);
+        if (itemPosition == -1){
+            printf("\nNo se ha encontrado el art%cculo...\n", I_ACUTE);
+            continue;
+        }
+        printf("\nEliminando el art%cculo con identificador %s...\n", I_ACUTE, itemId);
+        for(int i = itemPosition; i < MAX_ITEMS - 1; i++){
+            components[componentPosition].items[i] = components[componentPosition].items[i + 1];
+        }
+    }
+}
+
 void showStockOption(){
     printf("\n/****** STOCK TIENDA COMPONENTES INFORM%cTICOS ******/\n", A_ACUTE);
     for(int i = 0; i < MAX_COMPONENTS; i++){
@@ -325,6 +378,7 @@ void loadDataOption(){
  */
 int getComponentPositionById(char* id) {
     for (int i = 0; i < MAX_COMPONENTS; i++) {
+        if (!components[i].valid) return -1;
         if (strcmp(components[i].id, id) == 0) {
             return i;
         }
@@ -335,15 +389,14 @@ int getComponentPositionById(char* id) {
 /**
  * Search for a item in a component
  * @param itemId
- * @param componentId the general one
- * @return the item position if found, -1 if not, -2 if the component couldn't be found
+ * @param componentPosition
+ * @return the item position if found, -1 if not
  */
-int getItemPositionOnComponent(char itemId, char componentId) {
-    int componentPosition = getComponentPositionById(&componentId);
-    if (componentPosition == -1) return -2;
+int getItemPositionOnComponent(char *itemId, int componentPosition) {
     struct item *items = components[componentPosition].items;
     for (int i = 0; i < MAX_ITEMS; i++) {
-        if (strcmp(items[i].generalId, &itemId) == 0) {
+        if (!items[i].valid) return -1;
+        if (strcmp(items[i].generalId, itemId) == 0) {
             return i;
         }
     }
@@ -390,6 +443,7 @@ bool addItem(struct item item, int componentPosition) {
     }
     return false;
 }
+
 
 /**
  *
