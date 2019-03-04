@@ -330,7 +330,7 @@ void showStockOption(){
         }
 
     }
-    printf("\n/****** FIN ******/\nPulse una tecla para continuar...\n");
+    printf("\n/****** FIN ******/\n");
 }
 
 /**
