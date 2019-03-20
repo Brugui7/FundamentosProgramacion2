@@ -93,6 +93,7 @@ void showMenu() {
                 break;
             case 8:
                 printf("Saliendo...");
+                free(components);
                 break;
             default:
                 printf("Por favor seleccione una opci%cn v%clida\n", O_ACUTE, A_ACUTE);
@@ -107,7 +108,6 @@ void showMenu() {
 void createComponentOption() {
     char fileName[100] = "";
     char *buffer = (char *) malloc(sizeof(char) * 255);
-
     size_t length, bufferSize = 255;
 
     FILE *file = NULL;
@@ -143,10 +143,12 @@ void createComponentOption() {
         fscanf(file, "%d\n", &component.stock);
         printf("Componente detectado...\n");
         showComponent(component);
-        printf(addComponent(component) ? "Componente guardado correctamente\n" : "Error al guardar el componente\n");
+        printf(addComponent(component) ? "Componente guardado correctamente\n"
+                                       : "Ya existe un componente con el mismo identificador\n");
 
     }
     fclose(file);
+    free(buffer);
 }
 
 /**
@@ -155,7 +157,7 @@ void createComponentOption() {
 void deleteComponentOption() {
     int confirm, componentPosition;
     char fileName[100] = "";
-    char componentId[ID_LENGTH] = "";
+    char *componentId = malloc(sizeof(char) * 255);
 
 
     FILE *file = NULL;
@@ -171,7 +173,7 @@ void deleteComponentOption() {
         fscanf(file, "%s\n", componentId);
         componentPosition = getComponentPositionById(componentId);
         if (componentPosition != -1) {
-            if (components[componentPosition].items[0].valid) {
+            if (components[componentPosition].itemsNumber > 0) {
                 confirm = 2;
                 do {
                     printf("Este componente contiene art%cculos que ser%cn eliminados.\n"
@@ -182,13 +184,15 @@ void deleteComponentOption() {
                 if (confirm == 0) continue;
             }
             printf("Eliminando el componente con identificador %s...\n", componentId);
-            for (int i = componentPosition; i < MAX_COMPONENTS - 1; i++) {
+            for (int i = componentPosition; i < componentsNumber - 1; i++) {
                 components[i] = components[i + 1];
             }
+            components = (struct component *) realloc(components, --componentsNumber * sizeof(struct component));
         } else {
             printf("No se ha encontrado el componente con identificador %s...\n", componentId);
         }
     }
+    free(componentId);
 }
 
 /**
@@ -215,7 +219,7 @@ void createItemOption() {
     } while (file == NULL);
 
     while (!feof(file)) {
-        char *buffer = (char *) malloc(sizeof(char) * 255);
+
         char *type;
         char componentId[ID_LENGTH] = "";
         struct item item = {NULL};
@@ -302,11 +306,11 @@ void deleteItemOption() {
 
 void showStockOption() {
     printf("\n/****** STOCK TIENDA COMPONENTES INFORM%cTICOS ******/\n", A_ACUTE);
-    for (int i = 0; i < MAX_COMPONENTS; i++) {
-        showComponent(components[i]);
-        for (int j = 0; j < MAX_ITEMS; ++j) {
-            if (!components[i].items[j].valid) break;
-            showItem(components[i].items[j]);
+    for (int i = 0; i < componentsNumber; i++) {
+        struct component component = components[i];
+        showComponent(component);
+        for (int j = 0; j < component.itemsNumber; ++j) {
+            showItem(component.items[j]);
         }
 
     }
@@ -357,10 +361,12 @@ bool addComponent(struct component component) {
 
     if (componentsNumber == 0) {
         components = (struct component *) malloc(sizeof(struct component));
+        componentsNumber++;
     } else {
         components = (struct component *) realloc(components, (++componentsNumber) * sizeof(struct component));
     }
-    components[componentsNumber] = component;
+    components[componentsNumber - 1] = component;
+    return true;
 }
 
 /**
