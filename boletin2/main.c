@@ -10,13 +10,13 @@
 #include <time.h>
 #include <string.h>
 #include <conio.h>
+#include "model/Item.h"
+#include "model/Component.h"
 
 #define MAX_COMPONENTS 11
 #define MAX_ITEMS 100
 #define ID_LENGTH 12
 #define GENERAL_ID_LENGTH 21
-#define NAME_LENGTH 21
-#define DESCRIPTION_LENGTH 151
 #define NOT_DEFINED 0
 #define SOFTWARE 1
 #define HARDWARE 2
@@ -28,53 +28,21 @@ const char O_ACUTE = 162;
 const char U_ACUTE = 163;
 const char OPEN_QUESTION_MARK = 168;
 
-struct item {
-    bool valid; //Used to check if the struct is empty or not
-    char generalId[GENERAL_ID_LENGTH];
-    int id;
-    char model[16];
-    char brand[16];
-    struct tm insertDate;
-    int stock;
-    enum type {
-        notDefined = NOT_DEFINED, software = SOFTWARE, hardware = HARDWARE
-    } type;
-    float itemPrice;
-    float shippingPrice;
-};
-
-struct component {
-    bool valid; //Used to check if the struct is empty or not
-    char id[ID_LENGTH];
-    char name[NAME_LENGTH];
-    char description[DESCRIPTION_LENGTH];
-    int stock;
-    struct item items[MAX_ITEMS];
-};
+bool addComponent(struct component component);
 
 void createComponentOption();
 
 void deleteComponentOption();
 
+void showStockOption();
+
+bool addItem(struct item item, int componentPosition);
+
 void createItemOption();
 
 void deleteItemOption();
 
-void showStockOption();
-
-void saveDataOption();
-
-void loadDataOption();
-
-bool addComponent(struct component component);
-
-bool addItem(struct item item, int componentPosition);
-
 int getComponentPositionById(char *id);
-
-void showComponent(struct component component);
-
-void showItem(struct item item);
 
 /**
  * Search for a item in a component
@@ -84,7 +52,8 @@ void showItem(struct item item);
  */
 int getItemPositionOnComponent(char *itemId, int componentPosition);
 
-struct component components[MAX_COMPONENTS];
+struct component *components = NULL;
+int componentsNumber = 0;
 
 /**
  * Shows all the options and calls the appropriate function depending of the choosen option
@@ -119,12 +88,6 @@ void showMenu() {
             case 4:
                 deleteItemOption();
                 break;
-            case 5:
-                saveDataOption();
-                break;
-            case 6:
-                loadDataOption();
-                //There is not a break here to make the user able to see the data that have been loaded
             case 7:
                 showStockOption();
                 break;
@@ -132,7 +95,6 @@ void showMenu() {
                 printf("Saliendo...");
                 break;
             default:
-                printf("tu opción %d", option);
                 printf("Por favor seleccione una opci%cn v%clida\n", O_ACUTE, A_ACUTE);
                 break;
         }
@@ -144,6 +106,10 @@ void showMenu() {
  */
 void createComponentOption() {
     char fileName[100] = "";
+    char *buffer = (char *) malloc(sizeof(char) * 255);
+
+    size_t length, bufferSize = 255;
+
     FILE *file = NULL;
     do {
         printf("Introduzca la ruta del fichero donde se encuentran los componentes\n> ");
@@ -154,12 +120,26 @@ void createComponentOption() {
     } while (file == NULL);
 
     while (!feof(file)) {
+
         struct component component = {NULL};
-        fscanf(file, "%s\n", component.id);
-        fgets(component.name, sizeof(component.name), file);
-        strtok(component.name, "\n"); //Removes the \n
-        fgets(component.description, sizeof(component.description), file);
-        strtok(component.description, "\n");
+        fscanf(file, "%s\n", buffer);
+        length = strlen(buffer);
+        component.id = (char *) malloc((length + 1) * sizeof(char));
+        strncpy(component.id, buffer, length + 1);
+
+        fgets(buffer, bufferSize, file);
+        strtok(buffer, "\n"); //Removes the \n
+        length = strlen(buffer);
+        component.name = (char *) malloc((length + 1) * sizeof(char));
+        strncpy(component.name, buffer, length + 1);
+
+
+        fgets(buffer, bufferSize, file);
+        strtok(buffer, "\n");
+        length = strlen(buffer);
+        component.description = (char *) malloc((length + 1) * sizeof(char));
+        strncpy(component.description, buffer, length + 1);
+
         fscanf(file, "%d\n", &component.stock);
         printf("Componente detectado...\n");
         showComponent(component);
@@ -235,6 +215,7 @@ void createItemOption() {
     } while (file == NULL);
 
     while (!feof(file)) {
+        char *buffer = (char *) malloc(sizeof(char) * 255);
         char *type;
         char componentId[ID_LENGTH] = "";
         struct item item = {NULL};
@@ -322,7 +303,6 @@ void deleteItemOption() {
 void showStockOption() {
     printf("\n/****** STOCK TIENDA COMPONENTES INFORM%cTICOS ******/\n", A_ACUTE);
     for (int i = 0; i < MAX_COMPONENTS; i++) {
-        if (!components[i].valid) break;
         showComponent(components[i]);
         for (int j = 0; j < MAX_ITEMS; ++j) {
             if (!components[i].items[j].valid) break;
@@ -334,51 +314,12 @@ void showStockOption() {
 }
 
 /**
- * Saves the components array to a file
- */
-void saveDataOption() {
-    char fileName[100] = "";
-    int success = 0;
-    FILE *file = NULL;
-    do {
-        printf("Introduzca la ruta del fichero donde desea guardar los datos\n> ");
-        gets(fileName);
-        fflush(stdin);
-        file = fopen(fileName, "wb");
-    } while (file == NULL);
-
-    success = fwrite(&components, sizeof(struct component), MAX_COMPONENTS, file);
-    printf(success == 0 ? "Error al guardar los datos\n" : "Datos guardados correctamente\n");
-    fclose(file);
-}
-
-/**
- * Loads the component array from a file
- */
-void loadDataOption() {
-    char fileName[100] = "";
-    int success = 0;
-    FILE *file = NULL;
-    do {
-        printf("Introduzca la ruta del fichero desde donde se van a cargar los datos\n> ");
-        gets(fileName);
-        fflush(stdin);
-        file = fopen(fileName, "rb");
-    } while (file == NULL);
-
-    success = fread(&components, sizeof(struct component), MAX_COMPONENTS, file);
-    printf(success == 0 ? "Error al cargar los datos\n" : "Datos cargados correctamente\n");
-    fclose(file);
-}
-
-/**
  * Search for a component in the array
  * @param id identifier of a component
  * @return the component position if found or -1 if not
  */
 int getComponentPositionById(char *id) {
-    for (int i = 0; i < MAX_COMPONENTS; i++) {
-        if (!components[i].valid) return -1;
+    for (int i = 0; i < componentsNumber; i++) {
         if (strcmp(components[i].id, id) == 0) {
             return i;
         }
@@ -413,14 +354,13 @@ bool addComponent(struct component component) {
     if (strlen(component.id) == 0 || strlen(component.name) == 0 || strlen(component.description) == 0) return false;
     //Checks that there is not a component with the same id
     if (getComponentPositionById(component.id) != -1) return false;
-    for (int i = 0; i < MAX_COMPONENTS; i++) {
-        if (!components[i].valid) {
-            component.valid = true;
-            components[i] = component;
-            return true;
-        }
+
+    if (componentsNumber == 0) {
+        components = (struct component *) malloc(sizeof(struct component));
+    } else {
+        components = (struct component *) realloc(components, (++componentsNumber) * sizeof(struct component));
     }
-    return false;
+    components[componentsNumber] = component;
 }
 
 /**
@@ -445,41 +385,11 @@ bool addItem(struct item item, int componentPosition) {
 }
 
 
-/**
- *
- * @param component
- */
-void showComponent(struct component component) {
-    printf("---------------------------------------\n"
-           "Componente %s\n"
-           "---------------------------------------\n"
-           "Nombre: %s\nDescripci%cn: %s\nStock General: %d\n\n", component.id, component.name, O_ACUTE,
-           component.description, component.stock);
 
-}
 
-/**
- *
- * @param item
- */
-void showItem(struct item item) {
-    char *type;
-    switch (item.type) {
-        case HARDWARE:
-            type = "Hardware";
-            break;
-        case SOFTWARE:
-            type = "Software";
-            break;
-        default:
-            type = "Indefinido";
-            break;
-    }
-    printf("\n- Art%cculo \t%s\n- Modelo:\t%s\n- Marca:\t%s\n- Stock:\t%d\n- Precio:\t%.2f\n- Transporte:\t%.2f\n- Tipo:\t%s\n",
-           I_ACUTE, item.generalId, item.model, item.brand, item.stock, item.itemPrice, item.shippingPrice, type);
-}
 
 int main() {
 
     showMenu();
+    free(components);
 }
