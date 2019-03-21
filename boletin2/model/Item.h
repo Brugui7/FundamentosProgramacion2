@@ -1,7 +1,9 @@
-//
-// Author: Alejandro Brugarolas
-// Since: 2019-03-15
-//
+/**
+ * @file
+ * @brief Data definition for item
+ * @author: Alejandro Brugarolas
+ * @since: 2019-03-15
+*/
 
 #ifndef FUNDAMENTOS2_ITEM_H
 #define FUNDAMENTOS2_ITEM_H

@@ -1,8 +1,9 @@
-//
-// Author: Alejandro Brugarolas
-// Since: 2019-03-15
-//
-
+/**
+ * @file
+ * @brief Independent component functions
+ * @author: Alejandro Brugarolas
+ * @since: 2019-03-15
+*/
 #include <stdio.h>
 #include "../model/Component.h"
 

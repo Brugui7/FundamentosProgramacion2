@@ -1,5 +1,6 @@
 /**
- * Application to manage the stock of a shop, it can save the state by saving th data to and recovering it from files
+ * @file
+ * @brief Application to manage the stock of a shop with dynamic memory allocation
  * @author Alejandro Brugarolas
  * @since 2018-02
  * @verison 1.0
@@ -64,10 +65,8 @@ void showMenu() {
                "\t2. Eliminar componentes\n"
                "\t3. Crear art%cculos\n"
                "\t4. Eliminar art%cculos\n"
-               "\t5. Guardar estado del programa\n"
-               "\t6. Cargar estado de fichero\n"
-               "\t7. Listar datos del stock de la tienda\n"
-               "\t8. Salir\n", O_ACUTE, I_ACUTE, I_ACUTE);
+               "\t5. Listar datos del stock de la tienda\n"
+               "\t6. Salir\n", O_ACUTE, I_ACUTE, I_ACUTE);
         printf("> ");
 
         scanf("%d", &option);
@@ -85,10 +84,10 @@ void showMenu() {
             case 4:
                 deleteItemOption();
                 break;
-            case 7:
+            case 5:
                 showStockOption();
                 break;
-            case 8:
+            case 6:
                 printf("Saliendo...");
                 free(components);
                 break;
@@ -265,6 +264,7 @@ void createItemOption() {
         } else {
             printf("Error al guardar el rt%cculo\n", I_ACUTE);
         }
+        free(componentId);
 
     }
     fclose(file);
@@ -317,6 +317,8 @@ void deleteItemOption() {
         }
         component->items = (struct item *) realloc(component->items, --component->itemsNumber * sizeof(struct item));
     }
+    free(componentId);
+    free(itemId);
 }
 
 void showStockOption() {
@@ -409,6 +411,7 @@ bool addItem(struct item item, int componentPosition) {
 
     component->items[component->itemsNumber - 1] = item;
     free(buffer);
+    free(aux);
     return true;
 
 }

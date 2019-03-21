@@ -1,6 +1,9 @@
-//
-// Created by Brugui on 15/03/2019.
-//
+/**
+ * @file
+ * @brief Data definition for component
+ * @author: Alejandro Brugarolas
+ * @since: 2019-03-15
+*/
 
 #ifndef FUNDAMENTOS2_COMPONENT_H
 #define FUNDAMENTOS2_COMPONENT_H
