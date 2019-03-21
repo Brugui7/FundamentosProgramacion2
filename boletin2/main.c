@@ -13,10 +13,6 @@
 #include "model/Item.h"
 #include "model/Component.h"
 
-#define MAX_COMPONENTS 11
-#define MAX_ITEMS 100
-#define ID_LENGTH 12
-#define GENERAL_ID_LENGTH 21
 #define NOT_DEFINED 0
 #define SOFTWARE 1
 #define HARDWARE 2
@@ -43,7 +39,8 @@ void createItemOption();
 void deleteItemOption();
 
 int getComponentPositionById(char *id);
-
+//TODO Ordenar componentes por nombre siempre
+//TODO Documentar con doxygen
 /**
  * Search for a item in a component
  * @param itemId
@@ -210,6 +207,8 @@ void deleteComponentOption() {
 void createItemOption() {
     char fileName[100] = "";
     FILE *file = NULL;
+    char *componentId, *buffer = (char *) malloc(sizeof(char) * 255);
+    size_t length, bufferSize = 255;
     do {
         printf("Introduzca la ruta del fichero donde se encuentran los art%cculos\n> ", I_ACUTE);
         gets(fileName);
@@ -220,20 +219,33 @@ void createItemOption() {
 
     while (!feof(file)) {
 
-        char *type;
-        char componentId[ID_LENGTH] = "";
         struct item item = {NULL};
-        fscanf(file, "%s\n", componentId);
+        fscanf(file, "%s\n", buffer);
+        length = strlen(buffer);
+        componentId = (char *) malloc(++length * sizeof(char));
+        strncpy(componentId, buffer, length);
+
         fscanf(file, "%d/%d/%d\n", &item.insertDate.tm_mday, &item.insertDate.tm_mon, &item.insertDate.tm_year);
         item.insertDate.tm_mon -= 1;
-        fgets(item.model, sizeof(item.model), file);
-        strtok(item.model, "\n");
-        fgets(item.brand, sizeof(item.brand), file);
-        strtok(item.brand, "\n");
-        fscanf(file, "%s\n", type);
-        if (strcmp(type, "Hardware") == 0) {
+
+        fgets(buffer, bufferSize, file);
+        strtok(buffer, "\n");
+        length = strlen(buffer);
+        item.model = (char *) malloc(++length * sizeof(char));
+        strncpy(item.model, buffer, length);
+
+
+        fgets(buffer, bufferSize, file);
+        strtok(buffer, "\n");
+        length = strlen(buffer);
+        item.brand = (char *) malloc(++length * sizeof(char));
+        strncpy(item.brand, buffer, length);
+
+
+        fscanf(file, "%s\n", buffer);
+        if (strcmp(buffer, "Hardware") == 0) {
             item.type = HARDWARE;
-        } else if (strcmp(type, "Software") == 0) {
+        } else if (strcmp(buffer, "Software") == 0) {
             item.type = SOFTWARE;
         } else {
             item.type = NOT_DEFINED;
@@ -267,8 +279,8 @@ void createItemOption() {
 void deleteItemOption() {
     int componentPosition, itemPosition;
     char fileName[100] = "";
-    char componentId[ID_LENGTH] = "";
-    char itemId[GENERAL_ID_LENGTH] = "";
+    char componentId[10] = "";
+    char itemId[100] = "";
 
 
     FILE *file = NULL;
@@ -298,7 +310,8 @@ void deleteItemOption() {
             continue;
         }
         printf("\nEliminando el art%cculo con identificador %s...\n", I_ACUTE, itemId);
-        for (int i = itemPosition; i < MAX_ITEMS - 1; i++) {
+        //TODO Este 1000 ta mal
+        for (int i = itemPosition; i < 1000 - 1; i++) {
             components[componentPosition].items[i] = components[componentPosition].items[i + 1];
         }
     }
@@ -339,7 +352,7 @@ int getComponentPositionById(char *id) {
  */
 int getItemPositionOnComponent(char *itemId, int componentPosition) {
     struct item *items = components[componentPosition].items;
-    for (int i = 0; i < MAX_ITEMS; i++) {
+    for (int i = 0; i < components[componentPosition].itemsNumber; i++) {
         if (!items[i].valid) return -1;
         if (strcmp(items[i].generalId, itemId) == 0) {
             return i;
@@ -376,18 +389,16 @@ bool addComponent(struct component component) {
  * @return boolean if added correctly
  */
 bool addItem(struct item item, int componentPosition) {
-    struct component component = components[componentPosition];
-    for (int i = 0; i < MAX_COMPONENTS; i++) {
-        if (!component.items[i].valid) {
-            item.valid = true;
-            char generalId[9];
-            strftime(generalId, sizeof(generalId), "%d_%m_%y", &item.insertDate);
-            sprintf(item.generalId, "%s_%d_%s", component.id, i, generalId);
-            components[componentPosition].items[i] = item;
-            return true;
-        }
+    struct component *component = &components[componentPosition];
+    if (component->itemsNumber == 0) {
+        component->items = (struct item *) malloc(sizeof(struct item));
+        component->itemsNumber++;
+    } else {
+        component->items = (struct item *) realloc(component->items, (++component->itemsNumber) * sizeof(struct item));
     }
-    return false;
+    component->items[component->itemsNumber - 1] = item;
+    return true;
+
 }
 
 
