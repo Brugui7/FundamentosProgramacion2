@@ -268,6 +268,7 @@ void createItemOption() {
 
     }
     fclose(file);
+    free(buffer);
 
 }
 
@@ -396,7 +397,18 @@ bool addItem(struct item item, int componentPosition) {
     } else {
         component->items = (struct item *) realloc(component->items, (++component->itemsNumber) * sizeof(struct item));
     }
+    char *aux = (char *) malloc(sizeof(char) * 9);
+    char *buffer = (char *) malloc(sizeof(char) * 255);
+    size_t length;
+    //Creates and sets the item ID
+    strftime(aux, 9, "%d_%m_%y", &item.insertDate); //This will be 9 always
+    sprintf(buffer, "%s_%d_%s", component->id, component->itemsNumber, aux);
+    length = strlen(buffer);
+    item.generalId = (char *) malloc(++length * sizeof(char));
+    strncpy(item.generalId, buffer, length);
+
     component->items[component->itemsNumber - 1] = item;
+    free(buffer);
     return true;
 
 }
