@@ -431,7 +431,7 @@ bool addComponent(struct component component) {
  */
 bool addItem(struct item item, int componentPosition) {
     struct component component = components[componentPosition];
-    for (int i = 0; i < MAX_COMPONENTS; i++) {
+    for (int i = 0; i < MAX_ITEMS; i++) {
         if (!component.items[i].valid) {
             item.valid = true;
             char generalId[9];
