@@ -280,8 +280,8 @@ void createItemOption() {
 void deleteItemOption() {
     int componentPosition, itemPosition;
     char fileName[100] = "";
-    char componentId[10] = "";
-    char itemId[100] = "";
+    char *componentId = malloc(sizeof(char) * 255);
+    char *itemId = malloc(sizeof(char) * 255);
 
 
     FILE *file = NULL;
@@ -311,10 +311,11 @@ void deleteItemOption() {
             continue;
         }
         printf("\nEliminando el art%cculo con identificador %s...\n", I_ACUTE, itemId);
-        //TODO Este 1000 ta mal
-        for (int i = itemPosition; i < 1000 - 1; i++) {
-            components[componentPosition].items[i] = components[componentPosition].items[i + 1];
+        struct component *component = &components[componentPosition];
+        for (int i = itemPosition; i < component->itemsNumber - 1; i++) {
+            component->items[i] = component->items[i + 1];
         }
+        component->items = (struct item *) realloc(component->items, --component->itemsNumber * sizeof(struct item));
     }
 }
 
@@ -354,7 +355,6 @@ int getComponentPositionById(char *id) {
 int getItemPositionOnComponent(char *itemId, int componentPosition) {
     struct item *items = components[componentPosition].items;
     for (int i = 0; i < components[componentPosition].itemsNumber; i++) {
-        if (!items[i].valid) return -1;
         if (strcmp(items[i].generalId, itemId) == 0) {
             return i;
         }
