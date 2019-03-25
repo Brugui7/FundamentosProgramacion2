@@ -26,5 +26,6 @@ struct component {
 
 void showComponent(struct component component);
 
+void sortComponentsByName(struct component *components, size_t componentsSize);
 
 #endif //FUNDAMENTOS2_COMPONENT_H

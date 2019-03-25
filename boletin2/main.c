@@ -41,7 +41,6 @@ void deleteItemOption();
 
 int getComponentPositionById(char *id);
 //TODO Ordenar componentes por nombre siempre
-//TODO Documentar con doxygen
 /**
  * Search for a item in a component
  * @param itemId
@@ -145,6 +144,7 @@ void createComponentOption() {
     }
     fclose(file);
     free(buffer);
+    sortComponentsByName(components, (size_t) (componentsNumber - 1));
 }
 
 /**
@@ -189,6 +189,7 @@ void deleteComponentOption() {
         }
     }
     free(componentId);
+    sortComponentsByName(components, (size_t) (componentsNumber - 1));
 }
 
 /**
