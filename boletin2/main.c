@@ -40,7 +40,6 @@ void createItemOption();
 void deleteItemOption();
 
 int getComponentPositionById(char *id);
-//TODO Ordenar componentes por nombre siempre
 /**
  * Search for a item in a component
  * @param itemId
