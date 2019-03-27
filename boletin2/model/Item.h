@@ -16,7 +16,6 @@
 #define HARDWARE 2
 
 struct item {
-    bool valid; //Used to check if the struct is empty or not
     char *generalId;
     int id;
     char *model;
