@@ -136,11 +136,7 @@
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structitem.html#a9f6b1d8f565c649873cd57896391b2aa"><param name="Name" value="stock"></OBJECT>
   </UL>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="structitem.html"><param name="Name" value="item"></OBJECT>
-  <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structitem.html#a0d8ce5667eeb2f472d5c15a350c078c7"><param name="Name" value="type"></OBJECT>
-  </UL>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="structitem.html#a28e3c179a86f337095088b3ca02a2b2a"><param name="Name" value="item"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structitem.html#a0d8ce5667eeb2f472d5c15a350c078c7"><param name="Name" value="item"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structitem.html#a700e509fe98128ae4b11d986239ea787"><param name="Name" value="itemPrice"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structcomponent.html#a5cfb550949a2806f8a3551fe0415c3b0"><param name="Name" value="items"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structcomponent.html#a0cfba1008e9930117f456a94cf0ac14c"><param name="Name" value="itemsNumber"></OBJECT>
@@ -271,7 +267,6 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structitem.html#a9f6b1d8f565c649873cd57896391b2aa"><param name="Name" value="stock"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structitem.html#a0d8ce5667eeb2f472d5c15a350c078c7"><param name="Name" value="type"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="main_8c.html#a03ebde3cedb4168a9512815db63bb7db"><param name="Name" value="U_ACUTE"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="structitem.html#a28e3c179a86f337095088b3ca02a2b2a"><param name="Name" value="valid"></OBJECT>
 </UL>
 </BODY>
 </HTML>
