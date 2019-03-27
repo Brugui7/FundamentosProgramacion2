@@ -36,7 +36,6 @@ $(function() {
   initMenu('',false,false,'search.php','Search');
 });
 /* @license-end */
-
     </script>
     <div id="main-nav"></div>
     <div id="nav-path" class="navpath">
@@ -505,13 +504,13 @@ $(function() {
                 <div class="ttc" id="main_8c_html_a4a4b34d97f78ea1dbd2a2be32ec88126">
                     <div class="ttname"><a href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a></div>
                     <div class="ttdeci">struct component * components</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:53</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:51</div>
                 </div>
                 <div class="ttc" id="main_8c_html_ad480f56a98e5372cd90418ab31dec49a">
                     <div class="ttname"><a href="main_8c.html#ad480f56a98e5372cd90418ab31dec49a">componentsNumber</a>
                     </div>
                     <div class="ttdeci">int componentsNumber</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:54</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:52</div>
                 </div>
                 <div class="ttc" id="main_8c_html_ac2c7a147555c308a2254803193591f77">
                     <div class="ttname"><a href="main_8c.html#ac2c7a147555c308a2254803193591f77">getComponentPositionById</a>
@@ -641,13 +640,13 @@ $(function() {
                 <div class="ttc" id="main_8c_html_a4a4b34d97f78ea1dbd2a2be32ec88126">
                     <div class="ttname"><a href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a></div>
                     <div class="ttdeci">struct component * components</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:53</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:51</div>
                 </div>
                 <div class="ttc" id="main_8c_html_ad480f56a98e5372cd90418ab31dec49a">
                     <div class="ttname"><a href="main_8c.html#ad480f56a98e5372cd90418ab31dec49a">componentsNumber</a>
                     </div>
                     <div class="ttdeci">int componentsNumber</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:54</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:52</div>
                 </div>
                 <div class="ttc" id="main_8c_html_ac2c7a147555c308a2254803193591f77">
                     <div class="ttname"><a href="main_8c.html#ac2c7a147555c308a2254803193591f77">getComponentPositionById</a>
@@ -845,7 +844,7 @@ $(function() {
                 <div class="ttc" id="main_8c_html_a4a4b34d97f78ea1dbd2a2be32ec88126">
                     <div class="ttname"><a href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a></div>
                     <div class="ttdeci">struct component * components</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:53</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:51</div>
                 </div>
             </div><!-- fragment -->
         </div>
@@ -1031,7 +1030,7 @@ $(function() {
                 <div class="ttc" id="main_8c_html_a4a4b34d97f78ea1dbd2a2be32ec88126">
                     <div class="ttname"><a href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a></div>
                     <div class="ttdeci">struct component * components</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:53</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:51</div>
                 </div>
             </div><!-- fragment -->
         </div>
@@ -1055,124 +1054,131 @@ $(function() {
         <div class="memdoc">
             <p>Asks for the file where te components are stored in and tries to read all of them </p>
             <div class="fragment">
-                <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; {</div>
-                <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; <span
+                <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; {</div>
+                <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; <span
                         class="keywordtype">char</span> fileName[100] = <span class="stringliteral">&quot;&quot;</span>;
                 </div>
-                <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; <span
+                <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; <span
                         class="keywordtype">char</span> *buffer = (<span class="keywordtype">char</span> *) malloc(<span
                         class="keyword">sizeof</span>(<span class="keywordtype">char</span>) * 255);
                 </div>
-                <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; <span
+                <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; <span
                         class="keywordtype">size_t</span> length, bufferSize = 255;
                 </div>
-                <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-                <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; FILE *file = NULL;</div>
-                <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; <span
+                <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+                <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; FILE *file = NULL;</div>
+                <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; <span
                         class="keywordflow">do</span> {
                 </div>
-                <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; printf(<span
+                <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; printf(<span
                         class="stringliteral">&quot;Introduzca la ruta del fichero donde se encuentran los componentes\n&gt; &quot;</span>);
                 </div>
-                <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; gets(fileName);</div>
-                <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; printf(<span
+                <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; gets(fileName);</div>
+                <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; printf(<span
                         class="stringliteral">&quot;%s&quot;</span>, fileName);
                 </div>
-                <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; fflush(stdin);</div>
-                <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; file = fopen(fileName,
+                <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; fflush(stdin);</div>
+                <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; file = fopen(fileName,
                     <span class="stringliteral">&quot;r&quot;</span>);
                 </div>
-                <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; } <span
+                <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; } <span
                         class="keywordflow">while</span> (file == NULL);
                 </div>
-                <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-                <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; <span
+                <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+                <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; <span
                         class="keywordflow">while</span> (!feof(file)) {
                 </div>
-                <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-                <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; <span class="keyword">struct </span><a
+                <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+                <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; <span class="keyword">struct </span><a
                         class="code" href="structcomponent.html">component</a> <a class="code"
                                                                                   href="structcomponent.html">component</a>
                     = {NULL};
                 </div>
-                <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; fscanf(file, <span
+                <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; fscanf(file, <span
                         class="stringliteral">&quot;%s\n&quot;</span>, buffer);
                 </div>
-                <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; length = strlen(buffer);
+                <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; length = strlen(buffer);
                 </div>
-                <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; <a class="code"
+                <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; <a class="code"
                                                                                                   href="structcomponent.html">component</a>.<a
                         class="code" href="structcomponent.html#aecb3b0d045ada529257a2fbf8f829599">id</a> = (<span
                         class="keywordtype">char</span> *) malloc((length + 1) * <span class="keyword">sizeof</span>(char));
                 </div>
-                <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; strncpy(<a class="code"
+                <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; strncpy(<a class="code"
                                                                                                           href="structcomponent.html">component</a>.<a
                         class="code" href="structcomponent.html#aecb3b0d045ada529257a2fbf8f829599">id</a>, buffer,
                     length + 1);
                 </div>
-                <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-                <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; fgets(buffer, bufferSize,
+                <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+                <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; fgets(buffer, bufferSize,
                     file);
                 </div>
-                <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; strtok(buffer, <span
+                <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; strtok(buffer, <span
                         class="stringliteral">&quot;\n&quot;</span>); <span class="comment">//Removes the \n</span>
                 </div>
-                <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; length = strlen(buffer);
+                <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; length = strlen(buffer);
                 </div>
-                <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; <a class="code"
+                <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; <a class="code"
                                                                                                   href="structcomponent.html">component</a>.<a
                         class="code" href="structcomponent.html#a5ac083a645d964373f022d03df4849c8">name</a> = (<span
                         class="keywordtype">char</span> *) malloc((length + 1) * <span class="keyword">sizeof</span>(char));
                 </div>
-                <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; strncpy(<a class="code"
+                <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; strncpy(<a class="code"
                                                                                                           href="structcomponent.html">component</a>.<a
                         class="code" href="structcomponent.html#a5ac083a645d964373f022d03df4849c8">name</a>, buffer,
                     length + 1);
                 </div>
-                <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
-                <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
-                <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; fgets(buffer, bufferSize,
+                <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+                <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+                <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; fgets(buffer, bufferSize,
                     file);
                 </div>
-                <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; strtok(buffer, <span
+                <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; strtok(buffer, <span
                         class="stringliteral">&quot;\n&quot;</span>);
                 </div>
-                <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; length = strlen(buffer);
+                <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; length = strlen(buffer);
                 </div>
-                <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; <a class="code"
+                <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; <a class="code"
                                                                                                   href="structcomponent.html">component</a>.<a
                         class="code" href="structcomponent.html#a8444d6e0dfe2bbab0b5e7b24308f1559">description</a> =
                     (<span class="keywordtype">char</span> *) malloc((length + 1) * <span class="keyword">sizeof</span>(char));
                 </div>
-                <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; strncpy(<a class="code"
+                <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; strncpy(<a class="code"
                                                                                                           href="structcomponent.html">component</a>.<a
                         class="code" href="structcomponent.html#a8444d6e0dfe2bbab0b5e7b24308f1559">description</a>,
                     buffer, length + 1);
                 </div>
-                <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
-                <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; fscanf(file, <span
+                <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+                <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; fscanf(file, <span
                         class="stringliteral">&quot;%d\n&quot;</span>, &amp;<a class="code" href="structcomponent.html">component</a>.<a
                         class="code" href="structcomponent.html#a9f6b1d8f565c649873cd57896391b2aa">stock</a>);
                 </div>
-                <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; printf(<span
+                <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; printf(<span
                         class="stringliteral">&quot;Componente detectado...\n&quot;</span>);
                 </div>
-                <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; <a class="code"
+                <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; <a class="code"
                                                                                                   href="_component_8c.html#a5e8f5ebaaedf4ffa8d2497040be871d2">showComponent</a>(<a
                         class="code" href="structcomponent.html">component</a>);
                 </div>
-                <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; printf(<a class="code"
+                <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; printf(<a class="code"
                                                                                                          href="main_8c.html#a209f0bfa1a6bbc552302930ed4b89d80">addComponent</a>(<a
                         class="code" href="structcomponent.html">component</a>) ? <span class="stringliteral">&quot;Componente guardado correctamente\n&quot;</span>
                 </div>
-                <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; : <span
+                <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; : <span
                         class="stringliteral">&quot;Ya existe un componente con el mismo identificador\n&quot;</span>);
                 </div>
-                <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
-                <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; }</div>
-                <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; fclose(file);</div>
-                <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; free(buffer);</div>
-                <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;}</div>
+                <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+                <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; }</div>
+                <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; fclose(file);</div>
+                <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; free(buffer);</div>
+                <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; <a class="code"
+                                                                                                  href="_component_8c.html#a0cbb92f6c698b43ffd2c05f96ac59e16">sortComponentsByName</a>(<a
+                        class="code" href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a>, (<span
+                        class="keywordtype">size_t</span>) (<a class="code"
+                                                               href="main_8c.html#ad480f56a98e5372cd90418ab31dec49a">componentsNumber</a>
+                    - 1));
+                </div>
+                <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
                 <div class="ttc" id="structcomponent_html">
                     <div class="ttname"><a href="structcomponent.html">component</a></div>
                     <div class="ttdef"><b>Definition:</b> Component.h:18</div>
@@ -1193,7 +1199,25 @@ $(function() {
                     <div class="ttname"><a href="_component_8c.html#a5e8f5ebaaedf4ffa8d2497040be871d2">showComponent</a>
                     </div>
                     <div class="ttdeci">void showComponent(struct component component)</div>
-                    <div class="ttdef"><b>Definition:</b> Component.c:14</div>
+                    <div class="ttdef"><b>Definition:</b> Component.c:16</div>
+                </div>
+                <div class="ttc" id="main_8c_html_a4a4b34d97f78ea1dbd2a2be32ec88126">
+                    <div class="ttname"><a href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a></div>
+                    <div class="ttdeci">struct component * components</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:51</div>
+                </div>
+                <div class="ttc" id="main_8c_html_ad480f56a98e5372cd90418ab31dec49a">
+                    <div class="ttname"><a href="main_8c.html#ad480f56a98e5372cd90418ab31dec49a">componentsNumber</a>
+                    </div>
+                    <div class="ttdeci">int componentsNumber</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:52</div>
+                </div>
+                <div class="ttc" id="_component_8c_html_a0cbb92f6c698b43ffd2c05f96ac59e16">
+                    <div class="ttname"><a href="_component_8c.html#a0cbb92f6c698b43ffd2c05f96ac59e16">sortComponentsByName</a>
+                    </div>
+                    <div class="ttdeci">void sortComponentsByName(struct component *components, size_t componentsSize)
+                    </div>
+                    <div class="ttdef"><b>Definition:</b> Component.c:41</div>
                 </div>
                 <div class="ttc" id="structcomponent_html_a9f6b1d8f565c649873cd57896391b2aa">
                     <div class="ttname"><a href="structcomponent.html#a9f6b1d8f565c649873cd57896391b2aa">component::stock</a>
@@ -1537,94 +1561,94 @@ $(function() {
         <div class="memdoc">
             <p>Asks for the file where the components id are stored in and tries to delete all of them </p>
             <div class="fragment">
-                <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; {</div>
-                <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; <span
+                <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; {</div>
+                <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; <span
                         class="keywordtype">int</span> confirm, componentPosition;
                 </div>
-                <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; <span
+                <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; <span
                         class="keywordtype">char</span> fileName[100] = <span class="stringliteral">&quot;&quot;</span>;
                 </div>
-                <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; <span
+                <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; <span
                         class="keywordtype">char</span> *componentId = malloc(<span class="keyword">sizeof</span>(<span
                         class="keywordtype">char</span>) * 255);
                 </div>
+                <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
                 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
-                <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
-                <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; FILE *file = NULL;</div>
-                <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; <span
+                <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; FILE *file = NULL;</div>
+                <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; <span
                         class="keywordflow">do</span> {
                 </div>
-                <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; printf(<span
+                <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; printf(<span
                         class="stringliteral">&quot;Introduzca la ruta fichero donde se encuentran los identificadores\n&gt; &quot;</span>);
                 </div>
-                <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; gets(fileName);</div>
-                <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; printf(<span
+                <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; gets(fileName);</div>
+                <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; printf(<span
                         class="stringliteral">&quot;%s&quot;</span>, fileName);
                 </div>
-                <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; fflush(stdin);</div>
-                <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; file = fopen(fileName,
+                <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; fflush(stdin);</div>
+                <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; file = fopen(fileName,
                     <span class="stringliteral">&quot;r&quot;</span>);
                 </div>
-                <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; } <span
+                <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; } <span
                         class="keywordflow">while</span> (file == NULL);
                 </div>
-                <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
-                <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; <span
+                <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
+                <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; <span
                         class="keywordflow">while</span> (!feof(file)) {
                 </div>
-                <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; fscanf(file, <span
+                <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; fscanf(file, <span
                         class="stringliteral">&quot;%s\n&quot;</span>, componentId);
                 </div>
-                <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; componentPosition = <a
+                <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; componentPosition = <a
                         class="code" href="main_8c.html#ac2c7a147555c308a2254803193591f77">getComponentPositionById</a>(componentId);
                 </div>
-                <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; <span
+                <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; <span
                         class="keywordflow">if</span> (componentPosition != -1) {
                 </div>
-                <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; <span
+                <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; <span
                         class="keywordflow">if</span> (<a class="code"
                                                           href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a>[componentPosition].itemsNumber
                     &gt; 0) {
                 </div>
-                <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; confirm = 2;</div>
-                <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; <span
+                <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; confirm = 2;</div>
+                <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; <span
                         class="keywordflow">do</span> {
                 </div>
-                <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; printf(<span
+                <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; printf(<span
                         class="stringliteral">&quot;Este componente contiene art%cculos que ser%cn eliminados.\n&quot;</span>
                 </div>
-                <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; <span
+                <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; <span
                         class="stringliteral">&quot;%cDesea continuar?(1 = si | 2 = no)\n&gt; &quot;</span>, <a
                         class="code" href="main_8c.html#a04dbb0b76a3e4df6c649400f14dea659">I_ACUTE</a>, <a class="code"
                                                                                                            href="main_8c.html#afe43848e7a5d74b142cb16981b1f9611">A_ACUTE</a>,
                     <a class="code" href="main_8c.html#abd0d8bf768b1c05ef1cd229a40ce4647">OPEN_QUESTION_MARK</a>);
                 </div>
-                <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; scanf(<span
+                <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; scanf(<span
                         class="stringliteral">&quot;%d&quot;</span>, &amp;confirm);
                 </div>
-                <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; fflush(stdin);</div>
-                <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; } <span
+                <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; fflush(stdin);</div>
+                <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; } <span
                         class="keywordflow">while</span> (confirm != 0 &amp;&amp; confirm != 1);
                 </div>
-                <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; <span
+                <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; <span
                         class="keywordflow">if</span> (confirm == 0) <span class="keywordflow">continue</span>;
                 </div>
-                <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; }</div>
-                <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; printf(<span
+                <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; }</div>
+                <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; printf(<span
                         class="stringliteral">&quot;Eliminando el componente con identificador %s...\n&quot;</span>,
                     componentId);
                 </div>
-                <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; <span
+                <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; <span
                         class="keywordflow">for</span> (<span class="keywordtype">int</span> i = componentPosition; i
                     &lt; <a class="code" href="main_8c.html#ad480f56a98e5372cd90418ab31dec49a">componentsNumber</a> - 1;
                     i++) {
                 </div>
-                <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; <a class="code"
+                <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; <a class="code"
                                                                                                   href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a>[i]
                     = <a class="code" href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a>[i + 1];
                 </div>
-                <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; }</div>
-                <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; <a class="code"
+                <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; }</div>
+                <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; <a class="code"
                                                                                                   href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a>
                     = (<span class="keyword">struct </span><a class="code" href="structcomponent.html">component</a> *)
                     realloc(<a class="code" href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a>, --<a
@@ -1632,16 +1656,23 @@ $(function() {
                     <span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code"
                                                                                                href="structcomponent.html">component</a>));
                 </div>
-                <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; } <span
+                <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; } <span
                         class="keywordflow">else</span> {
                 </div>
-                <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; printf(<span
+                <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; printf(<span
                         class="stringliteral">&quot;No se ha encontrado el componente con identificador %s...\n&quot;</span>,
                     componentId);
                 </div>
+                <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; }</div>
                 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; }</div>
-                <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; }</div>
-                <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; free(componentId);</div>
+                <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; free(componentId);</div>
+                <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; <a class="code"
+                                                                                                  href="_component_8c.html#a0cbb92f6c698b43ffd2c05f96ac59e16">sortComponentsByName</a>(<a
+                        class="code" href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a>, (<span
+                        class="keywordtype">size_t</span>) (<a class="code"
+                                                               href="main_8c.html#ad480f56a98e5372cd90418ab31dec49a">componentsNumber</a>
+                    - 1));
+                </div>
                 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;}</div>
                 <div class="ttc" id="structcomponent_html">
                     <div class="ttname"><a href="structcomponent.html">component</a></div>
@@ -1650,13 +1681,20 @@ $(function() {
                 <div class="ttc" id="main_8c_html_a4a4b34d97f78ea1dbd2a2be32ec88126">
                     <div class="ttname"><a href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a></div>
                     <div class="ttdeci">struct component * components</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:53</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:51</div>
                 </div>
                 <div class="ttc" id="main_8c_html_ad480f56a98e5372cd90418ab31dec49a">
                     <div class="ttname"><a href="main_8c.html#ad480f56a98e5372cd90418ab31dec49a">componentsNumber</a>
                     </div>
                     <div class="ttdeci">int componentsNumber</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:54</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:52</div>
+                </div>
+                <div class="ttc" id="_component_8c_html_a0cbb92f6c698b43ffd2c05f96ac59e16">
+                    <div class="ttname"><a href="_component_8c.html#a0cbb92f6c698b43ffd2c05f96ac59e16">sortComponentsByName</a>
+                    </div>
+                    <div class="ttdeci">void sortComponentsByName(struct component *components, size_t componentsSize)
+                    </div>
+                    <div class="ttdef"><b>Definition:</b> Component.c:41</div>
                 </div>
                 <div class="ttc" id="main_8c_html_ac2c7a147555c308a2254803193591f77">
                     <div class="ttname"><a href="main_8c.html#ac2c7a147555c308a2254803193591f77">getComponentPositionById</a>
@@ -1848,7 +1886,7 @@ $(function() {
                 <div class="ttc" id="main_8c_html_a4a4b34d97f78ea1dbd2a2be32ec88126">
                     <div class="ttname"><a href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a></div>
                     <div class="ttdeci">struct component * components</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:53</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:51</div>
                 </div>
                 <div class="ttc" id="main_8c_html_ae9a21e69485362f197a33fc86daaef7a">
                     <div class="ttname"><a href="main_8c.html#ae9a21e69485362f197a33fc86daaef7a">getItemPositionOnComponent</a>
@@ -1927,13 +1965,13 @@ $(function() {
                 <div class="ttc" id="main_8c_html_a4a4b34d97f78ea1dbd2a2be32ec88126">
                     <div class="ttname"><a href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a></div>
                     <div class="ttdeci">struct component * components</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:53</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:51</div>
                 </div>
                 <div class="ttc" id="main_8c_html_ad480f56a98e5372cd90418ab31dec49a">
                     <div class="ttname"><a href="main_8c.html#ad480f56a98e5372cd90418ab31dec49a">componentsNumber</a>
                     </div>
                     <div class="ttdeci">int componentsNumber</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:54</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:52</div>
                 </div>
             </div><!-- fragment -->
         </div>
@@ -2038,7 +2076,7 @@ $(function() {
                 <div class="ttc" id="main_8c_html_a4a4b34d97f78ea1dbd2a2be32ec88126">
                     <div class="ttname"><a href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a></div>
                     <div class="ttdeci">struct component * components</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:53</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:51</div>
                 </div>
             </div><!-- fragment -->
         </div>
@@ -2073,12 +2111,12 @@ $(function() {
                 <div class="ttc" id="main_8c_html_aba5bd9067aa6f261123165a337c7957d">
                     <div class="ttname"><a href="main_8c.html#aba5bd9067aa6f261123165a337c7957d">showMenu</a></div>
                     <div class="ttdeci">void showMenu()</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:59</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:57</div>
                 </div>
                 <div class="ttc" id="main_8c_html_a4a4b34d97f78ea1dbd2a2be32ec88126">
                     <div class="ttname"><a href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a></div>
                     <div class="ttdeci">struct component * components</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:53</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:51</div>
                 </div>
             </div><!-- fragment -->
         </div>
@@ -2102,126 +2140,126 @@ $(function() {
         <div class="memdoc">
             <p>Shows all the options and calls the appropriate function depending of the choosen option </p>
             <div class="fragment">
-                <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; {</div>
-                <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; <span
+                <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; {</div>
+                <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; <span
                         class="keywordtype">int</span> option = 0;
                 </div>
-                <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; <span
-                        class="keywordflow">while</span> (option != 8) {
+                <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; <span
+                        class="keywordflow">while</span> (option != 6) {
                 </div>
-                <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; printf(<span
+                <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; printf(<span
                         class="stringliteral">&quot;\n############### MENU ###############\n&quot;</span></div>
-                <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; <span
+                <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; <span
                         class="stringliteral">&quot;Indique que acci%cn desea realizar\n&quot;</span></div>
-                <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; <span
+                <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; <span
                         class="stringliteral">&quot;\t1. Crear componentes\n&quot;</span></div>
-                <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; <span
+                <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; <span
                         class="stringliteral">&quot;\t2. Eliminar componentes\n&quot;</span></div>
-                <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; <span
+                <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; <span
                         class="stringliteral">&quot;\t3. Crear art%cculos\n&quot;</span></div>
-                <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; <span
+                <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; <span
                         class="stringliteral">&quot;\t4. Eliminar art%cculos\n&quot;</span></div>
-                <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; <span
+                <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; <span
                         class="stringliteral">&quot;\t5. Listar datos del stock de la tienda\n&quot;</span></div>
-                <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; <span
+                <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; <span
                         class="stringliteral">&quot;\t6. Salir\n&quot;</span>, <a class="code"
                                                                                   href="main_8c.html#a46cd89b54f482f3bde48182d68d66656">O_ACUTE</a>,
                     <a class="code" href="main_8c.html#a04dbb0b76a3e4df6c649400f14dea659">I_ACUTE</a>, <a class="code"
                                                                                                           href="main_8c.html#a04dbb0b76a3e4df6c649400f14dea659">I_ACUTE</a>);
                 </div>
-                <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; printf(<span
+                <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; printf(<span
                         class="stringliteral">&quot;&gt; &quot;</span>);
                 </div>
-                <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-                <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; scanf(<span
+                <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+                <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; scanf(<span
                         class="stringliteral">&quot;%d&quot;</span>, &amp;option);
                 </div>
-                <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; fflush(stdin);</div>
-                <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; <span
+                <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; fflush(stdin);</div>
+                <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; <span
                         class="keywordflow">switch</span> (option) {
                 </div>
-                <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; <span
+                <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; <span
                         class="keywordflow">case</span> 1:
                 </div>
-                <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; <a class="code"
+                <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; <a class="code"
                                                                                                   href="main_8c.html#a4e08a1f8ed0752153dc0aa923c5b9175">createComponentOption</a>();
                 </div>
-                <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; <span
+                <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; <span
                         class="keywordflow">break</span>;
                 </div>
-                <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; <span
+                <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; <span
                         class="keywordflow">case</span> 2:
                 </div>
-                <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; <a class="code"
+                <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; <a class="code"
                                                                                                   href="main_8c.html#a33de2c77acbfa09c4c3c53921db0b633">deleteComponentOption</a>();
                 </div>
-                <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; <span
+                <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; <span
                         class="keywordflow">break</span>;
                 </div>
-                <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; <span
+                <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; <span
                         class="keywordflow">case</span> 3:
                 </div>
-                <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; <a class="code"
+                <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; <a class="code"
                                                                                                   href="main_8c.html#a9e14f5ef26448b87ed1d557b75700cf7">createItemOption</a>();
                 </div>
-                <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; <span
+                <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; <span
                         class="keywordflow">break</span>;
                 </div>
-                <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; <span
+                <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; <span
                         class="keywordflow">case</span> 4:
                 </div>
-                <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; <a class="code"
+                <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; <a class="code"
                                                                                                   href="main_8c.html#ab8d9758a4e22a43b983883ca37fe865c">deleteItemOption</a>();
                 </div>
-                <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; <span
+                <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; <span
                         class="keywordflow">break</span>;
                 </div>
-                <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; <span
+                <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; <span
                         class="keywordflow">case</span> 5:
                 </div>
-                <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; <a class="code"
+                <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; <a class="code"
                                                                                                   href="main_8c.html#a54106eed275e3d0fda66bd4fdc4957a5">showStockOption</a>();
                 </div>
-                <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; <span
+                <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; <span
                         class="keywordflow">break</span>;
                 </div>
-                <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; <span
+                <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; <span
                         class="keywordflow">case</span> 6:
                 </div>
-                <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; printf(<span
+                <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; printf(<span
                         class="stringliteral">&quot;Saliendo...&quot;</span>);
                 </div>
-                <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; free(<a class="code"
+                <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; free(<a class="code"
                                                                                                        href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a>);
                 </div>
-                <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; <span
+                <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; <span
                         class="keywordflow">break</span>;
                 </div>
-                <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; <span
+                <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; <span
                         class="keywordflow">default</span>:
                 </div>
-                <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; printf(<span
+                <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; printf(<span
                         class="stringliteral">&quot;Por favor seleccione una opci%cn v%clida\n&quot;</span>, <a
                         class="code" href="main_8c.html#a46cd89b54f482f3bde48182d68d66656">O_ACUTE</a>, <a class="code"
                                                                                                            href="main_8c.html#afe43848e7a5d74b142cb16981b1f9611">A_ACUTE</a>);
                 </div>
-                <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; <span
+                <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; <span
                         class="keywordflow">break</span>;
                 </div>
-                <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; }</div>
-                <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; }</div>
-                <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
+                <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; }</div>
+                <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; }</div>
+                <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
                 <div class="ttc" id="main_8c_html_a4e08a1f8ed0752153dc0aa923c5b9175">
                     <div class="ttname"><a
                             href="main_8c.html#a4e08a1f8ed0752153dc0aa923c5b9175">createComponentOption</a></div>
                     <div class="ttdeci">void createComponentOption()</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:104</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:102</div>
                 </div>
                 <div class="ttc" id="main_8c_html_a33de2c77acbfa09c4c3c53921db0b633">
                     <div class="ttname"><a
                             href="main_8c.html#a33de2c77acbfa09c4c3c53921db0b633">deleteComponentOption</a></div>
                     <div class="ttdeci">void deleteComponentOption()</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:153</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:152</div>
                 </div>
                 <div class="ttc" id="main_8c_html_ab8d9758a4e22a43b983883ca37fe865c">
                     <div class="ttname"><a href="main_8c.html#ab8d9758a4e22a43b983883ca37fe865c">deleteItemOption</a>
@@ -2232,7 +2270,7 @@ $(function() {
                 <div class="ttc" id="main_8c_html_a4a4b34d97f78ea1dbd2a2be32ec88126">
                     <div class="ttname"><a href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a></div>
                     <div class="ttdeci">struct component * components</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:53</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:51</div>
                 </div>
                 <div class="ttc" id="main_8c_html_a46cd89b54f482f3bde48182d68d66656">
                     <div class="ttname"><a href="main_8c.html#a46cd89b54f482f3bde48182d68d66656">O_ACUTE</a></div>
@@ -2343,18 +2381,18 @@ $(function() {
                     <div class="ttname"><a href="_component_8c.html#a5e8f5ebaaedf4ffa8d2497040be871d2">showComponent</a>
                     </div>
                     <div class="ttdeci">void showComponent(struct component component)</div>
-                    <div class="ttdef"><b>Definition:</b> Component.c:14</div>
+                    <div class="ttdef"><b>Definition:</b> Component.c:16</div>
                 </div>
                 <div class="ttc" id="main_8c_html_a4a4b34d97f78ea1dbd2a2be32ec88126">
                     <div class="ttname"><a href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a></div>
                     <div class="ttdeci">struct component * components</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:53</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:51</div>
                 </div>
                 <div class="ttc" id="main_8c_html_ad480f56a98e5372cd90418ab31dec49a">
                     <div class="ttname"><a href="main_8c.html#ad480f56a98e5372cd90418ab31dec49a">componentsNumber</a>
                     </div>
                     <div class="ttdeci">int componentsNumber</div>
-                    <div class="ttdef"><b>Definition:</b> main.c:54</div>
+                    <div class="ttdef"><b>Definition:</b> main.c:52</div>
                 </div>
                 <div class="ttc" id="main_8c_html_afe43848e7a5d74b142cb16981b1f9611">
                     <div class="ttname"><a href="main_8c.html#afe43848e7a5d74b142cb16981b1f9611">A_ACUTE</a></div>

@@ -8,9 +8,30 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="main_8c.html#a209f0bfa1a6bbc552302930ed4b89d80"><param name="Name" value="addComponent"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="main_8c.html#a9913a45e920a6d838e8c22860d0bb3bb"><param name="Name" value="addItem"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structitem.html#acd203108421fd9ef13b4d789e698b68a"><param name="Name" value="brand"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_component_8c.html#a0394cb5b8c9b4d976c5ae8a4399bbbb9"><param name="Name" value="compareNames"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_component_8c.html#a0394cb5b8c9b4d976c5ae8a4399bbbb9"><param name="Name" value="Component.c"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_component_8h.html#a0394cb5b8c9b4d976c5ae8a4399bbbb9"><param name="Name" value="compareNames"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structcomponent.html"><param name="Name" value="component"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="_component_8c.html#a5e8f5ebaaedf4ffa8d2497040be871d2"><param name="Name" value="Component.c"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="_component_8h.html#a5e8f5ebaaedf4ffa8d2497040be871d2"><param name="Name" value="Component.h"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_component_8c.html"><param name="Name" value="Component.c"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_component_8c.html#a0394cb5b8c9b4d976c5ae8a4399bbbb9"><param name="Name" value="compareNames"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_component_8c.html"><param name="Name" value="Component.c"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_component_8c.html#a5e8f5ebaaedf4ffa8d2497040be871d2"><param name="Name" value="showComponent"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_component_8c.html#a0cbb92f6c698b43ffd2c05f96ac59e16"><param name="Name" value="Component.c"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_component_8h.html"><param name="Name" value="Component.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_component_8h.html#a0394cb5b8c9b4d976c5ae8a4399bbbb9"><param name="Name" value="compareNames"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_component_8h.html"><param name="Name" value="Component.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_component_8h.html#a5e8f5ebaaedf4ffa8d2497040be871d2"><param name="Name" value="showComponent"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_component_8h.html#a0cbb92f6c698b43ffd2c05f96ac59e16"><param name="Name" value="Component.h"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structcomponent.html"><param name="Name" value="component"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structcomponent.html#a8444d6e0dfe2bbab0b5e7b24308f1559"><param name="Name" value="description"></OBJECT>
@@ -238,6 +259,11 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="_item_8h.html#ad19fce15d3295ab86d386a21e31cddd9"><param name="Name" value="Item.h"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="main_8c.html#ad19fce15d3295ab86d386a21e31cddd9"><param name="Name" value="SOFTWARE"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_component_8c.html#a0cbb92f6c698b43ffd2c05f96ac59e16"><param name="Name" value="sortComponentsByName"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="_component_8c.html#a0cbb92f6c698b43ffd2c05f96ac59e16"><param name="Name" value="Component.c"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_component_8h.html#a0cbb92f6c698b43ffd2c05f96ac59e16"><param name="Name" value="sortComponentsByName"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structcomponent.html#a9f6b1d8f565c649873cd57896391b2aa"><param name="Name" value="stock"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structcomponent.html#a9f6b1d8f565c649873cd57896391b2aa"><param name="Name" value="component"></OBJECT>

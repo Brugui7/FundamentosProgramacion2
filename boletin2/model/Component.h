@@ -26,6 +26,8 @@ struct component {
 
 void showComponent(struct component component);
 
+int compareNames(const void *paramComponent1, const void *paramComponent2);
+
 void sortComponentsByName(struct component *components, size_t componentsSize);
 
 #endif //FUNDAMENTOS2_COMPONENT_H

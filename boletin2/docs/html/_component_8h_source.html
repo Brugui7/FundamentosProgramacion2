@@ -36,7 +36,6 @@ $(function() {
   initMenu('',false,false,'search.php','Search');
 });
 /* @license-end */
-
     </script>
     <div id="main-nav"></div>
     <div id="nav-path" class="navpath">
@@ -116,8 +115,27 @@ $(function() {
                                                                                                            href="structcomponent.html">component</a>);
         </div>
         <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-        <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-        <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif //FUNDAMENTOS2_COMPONENT_H</span>
+        <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span
+                class="keywordtype">int</span> <a class="code"
+                                                  href="_component_8h.html#a0394cb5b8c9b4d976c5ae8a4399bbbb9">compareNames</a>(<span
+                class="keyword">const</span> <span class="keywordtype">void</span> *paramComponent1, <span
+                class="keyword">const</span> <span class="keywordtype">void</span> *paramComponent2);
+        </div>
+        <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+        <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span
+                class="keywordtype">void</span> <a class="code"
+                                                   href="_component_8h.html#a0cbb92f6c698b43ffd2c05f96ac59e16">sortComponentsByName</a>(<span
+                class="keyword">struct</span> <a class="code" href="structcomponent.html">component</a> *<a class="code"
+                                                                                                            href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a>,
+            <span class="keywordtype">size_t</span> componentsSize);
+        </div>
+        <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+        <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif //FUNDAMENTOS2_COMPONENT_H</span>
+        </div>
+        <div class="ttc" id="_component_8h_html_a0394cb5b8c9b4d976c5ae8a4399bbbb9">
+            <div class="ttname"><a href="_component_8h.html#a0394cb5b8c9b4d976c5ae8a4399bbbb9">compareNames</a></div>
+            <div class="ttdeci">int compareNames(const void *paramComponent1, const void *paramComponent2)</div>
+            <div class="ttdef"><b>Definition:</b> Component.c:31</div>
         </div>
         <div class="ttc" id="structcomponent_html">
             <div class="ttname"><a href="structcomponent.html">component</a></div>
@@ -154,10 +172,21 @@ $(function() {
             <div class="ttdeci">int itemsNumber</div>
             <div class="ttdef"><b>Definition:</b> Component.h:24</div>
         </div>
+        <div class="ttc" id="_component_8h_html_a0cbb92f6c698b43ffd2c05f96ac59e16">
+            <div class="ttname"><a href="_component_8h.html#a0cbb92f6c698b43ffd2c05f96ac59e16">sortComponentsByName</a>
+            </div>
+            <div class="ttdeci">void sortComponentsByName(struct component *components, size_t componentsSize)</div>
+            <div class="ttdef"><b>Definition:</b> Component.c:41</div>
+        </div>
+        <div class="ttc" id="main_8c_html_a4a4b34d97f78ea1dbd2a2be32ec88126">
+            <div class="ttname"><a href="main_8c.html#a4a4b34d97f78ea1dbd2a2be32ec88126">components</a></div>
+            <div class="ttdeci">struct component * components</div>
+            <div class="ttdef"><b>Definition:</b> main.c:51</div>
+        </div>
         <div class="ttc" id="_component_8h_html_a5e8f5ebaaedf4ffa8d2497040be871d2">
             <div class="ttname"><a href="_component_8h.html#a5e8f5ebaaedf4ffa8d2497040be871d2">showComponent</a></div>
             <div class="ttdeci">void showComponent(struct component component)</div>
-            <div class="ttdef"><b>Definition:</b> Component.c:14</div>
+            <div class="ttdef"><b>Definition:</b> Component.c:16</div>
         </div>
         <div class="ttc" id="structcomponent_html_a9f6b1d8f565c649873cd57896391b2aa">
             <div class="ttname"><a href="structcomponent.html#a9f6b1d8f565c649873cd57896391b2aa">component::stock</a>

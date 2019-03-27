@@ -60,7 +60,9 @@
             <UL>
             <LI><OBJECT type="text/sitemap"><param name="Name" value="Component.c"><param name="Local" value="_component_8c.html"><param name="ImageNumber" value="1"></OBJECT>
               <UL>
+              <LI><OBJECT type="text/sitemap"><param name="Name" value="compareNames"><param name="Local" value="_component_8c.html#a0394cb5b8c9b4d976c5ae8a4399bbbb9"><param name="ImageNumber" value="11"></OBJECT>
               <LI><OBJECT type="text/sitemap"><param name="Name" value="showComponent"><param name="Local" value="_component_8c.html#a5e8f5ebaaedf4ffa8d2497040be871d2"><param name="ImageNumber" value="11"></OBJECT>
+              <LI><OBJECT type="text/sitemap"><param name="Name" value="sortComponentsByName"><param name="Local" value="_component_8c.html#a0cbb92f6c698b43ffd2c05f96ac59e16"><param name="ImageNumber" value="11"></OBJECT>
               </UL>
             <LI><OBJECT type="text/sitemap"><param name="Name" value="Item.c"><param name="Local" value="_item_8c.html"><param name="ImageNumber" value="1"></OBJECT>
               <UL>
@@ -80,7 +82,9 @@
                 <LI><OBJECT type="text/sitemap"><param name="Name" value="name"><param name="Local" value="structcomponent.html#a5ac083a645d964373f022d03df4849c8"><param name="ImageNumber" value="11"></OBJECT>
                 <LI><OBJECT type="text/sitemap"><param name="Name" value="stock"><param name="Local" value="structcomponent.html#a9f6b1d8f565c649873cd57896391b2aa"><param name="ImageNumber" value="11"></OBJECT>
                 </UL>
+              <LI><OBJECT type="text/sitemap"><param name="Name" value="compareNames"><param name="Local" value="_component_8h.html#a0394cb5b8c9b4d976c5ae8a4399bbbb9"><param name="ImageNumber" value="11"></OBJECT>
               <LI><OBJECT type="text/sitemap"><param name="Name" value="showComponent"><param name="Local" value="_component_8h.html#a5e8f5ebaaedf4ffa8d2497040be871d2"><param name="ImageNumber" value="11"></OBJECT>
+              <LI><OBJECT type="text/sitemap"><param name="Name" value="sortComponentsByName"><param name="Local" value="_component_8h.html#a0cbb92f6c698b43ffd2c05f96ac59e16"><param name="ImageNumber" value="11"></OBJECT>
               </UL>
             <LI><OBJECT type="text/sitemap"><param name="Name" value="Item.h"><param name="Local" value="_item_8h.html"><param name="ImageNumber" value="1"></OBJECT>
               <UL>

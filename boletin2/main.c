@@ -56,7 +56,7 @@ int componentsNumber = 0;
  */
 void showMenu() {
     int option = 0;
-    while (option != 8) {
+    while (option != 6) {
         printf("\n############### MENU ###############\n"
                "Indique que acci%cn desea realizar\n"
                "\t1. Crear componentes\n"
