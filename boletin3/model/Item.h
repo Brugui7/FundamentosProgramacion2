@@ -27,6 +27,8 @@ struct item {
     } type;
     float itemPrice;
     float shippingPrice;
+    struct item *next;
+    struct item *previous;
 };
 
 void showItem(struct item item);

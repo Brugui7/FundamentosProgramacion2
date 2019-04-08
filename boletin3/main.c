@@ -144,7 +144,7 @@ void createComponentOption() {
     }
     fclose(file);
     free(buffer);
-    sortComponentsByName(components, (size_t) (componentsNumber - 1));
+//    sortComponentsByName(components, (size_t) (componentsNumber - 1));
 }
 
 /**
@@ -189,7 +189,7 @@ void deleteComponentOption() {
         }
     }
     free(componentId);
-    sortComponentsByName(components, (size_t) (componentsNumber - 1));
+    //sortComponentsByName(components, (size_t) (componentsNumber - 1));
 }
 
 /**
@@ -324,13 +324,15 @@ void deleteItemOption() {
 
 void showStockOption() {
     printf("\n/****** STOCK TIENDA COMPONENTES INFORM%cTICOS ******/\n", A_ACUTE);
-    for (int i = 0; i < componentsNumber; i++) {
-        struct component component = components[i];
-        showComponent(component);
-        for (int j = 0; j < component.itemsNumber; ++j) {
-            showItem(component.items[j]);
+    struct component *component = components->next;
+    while (component->next != NULL) {
+        showComponent(*component);
+        struct item *item = component->items;
+        while (item->next != NULL) {
+            showItem(*item);
+            item = item->next;
         }
-
+        component = component->next;
     }
     printf("\n/****** FIN ******/\n");
 }
@@ -350,6 +352,21 @@ int getComponentPositionById(char *id) {
 }
 
 /**
+ * Search for a component in the list
+ * @param id identifier of a component
+ * @return a pointer to the component if found, null if not
+ */
+struct component *getComponentById(char *id) {
+    if (components == NULL) return NULL;
+    struct component *component = components->next;
+    while (component->next != NULL) {
+        if (strcmp(component->next->id, id) == 0) return component;
+        component = component->next;
+    }
+    return NULL;
+}
+
+/**
  * Search for a item in a component
  * @param itemId
  * @param componentPosition
@@ -366,15 +383,16 @@ int getItemPositionOnComponent(char *itemId, int componentPosition) {
 }
 
 /**
- * Saves a component in the first free position of the array
+ * Adds a component to the list and keeps the list ordered by the components names
  * @param component struct to add
  * @return boolean if added correctly
  */
 bool addComponent(struct component *component) {
-    //Checks that all fields are valid
+    //Checks that all fields are valid¿
     if (strlen(component->id) == 0 || strlen(component->name) == 0 || strlen(component->description) == 0) return false;
     //Checks that there is not a component with the same id
-    //if (getComponentPositionById(component->id) != -1) return false;
+    if (getComponentById(component->id) != NULL) return false;
+    component->items = NULL;
 
     if (components == NULL) {
         components = (struct component *) malloc(sizeof(struct component));
@@ -382,17 +400,39 @@ bool addComponent(struct component *component) {
         component->previous = NULL;
         components->previous = components->next = component;
     } else {
-        component->previous = components->previous; //The previous component of the new one, is the actual last one
-        component->next = NULL;
-        components->previous->next = component; //the next component of the actual last one, will be the new one
-        components->previous = component; //Sets the new last component
+        bool added = false;
+        struct component *tempComponent = components->next;
+        do {
+            if (strcmp(tempComponent->name, component->name) > 0) {
+
+
+                if (tempComponent->previous == NULL) {
+                    //In this case, tempComponent is the first component
+                    components->next = component;
+                } else {
+                    tempComponent->previous->next = component;
+                }
+                component->previous = tempComponent->previous;
+                tempComponent->previous = component;
+                component->next = tempComponent;
+                added = true;
+                break;
+            }
+            tempComponent = tempComponent->next;
+        } while (tempComponent->next != NULL);
+        if (!added) {
+            component->previous = components->previous; //The previous component of the new one, is the actual last one
+            component->next = NULL;
+            components->previous->next = component; //the next component of the actual last one, will be the new one
+            components->previous = component; //Sets the new last component
+        }
 
     }
     return true;
 }
 
 /**
- * Saves a component in the first free position of the array
+ * Saves an item at the end of the list
  * @param item struct to add
  * @param componentPosition place where the component is
  * @return boolean if added correctly

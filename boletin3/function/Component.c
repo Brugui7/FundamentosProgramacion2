@@ -34,13 +34,6 @@ int compareNames(const void *paramComponent1, const void *paramComponent2) {
     return strcmp(component1->name, component2->name);
 }
 
-/**
- * Sorts an array of components by their names in ascending order
- * @param components
- */
-void sortComponentsByName(struct component *components, size_t componentsSize) {
-    qsort(components, componentsSize, sizeof(struct component), compareNames);
-}
 
 
 /**
