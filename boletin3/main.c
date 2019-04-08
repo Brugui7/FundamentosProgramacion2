@@ -328,9 +328,11 @@ void showStockOption() {
     while (component->next != NULL) {
         showComponent(*component);
         struct item *item = component->items;
-        while (item->next != NULL) {
-            showItem(*item);
-            item = item->next;
+        if (item != NULL) {
+            while (item->next != NULL) {
+                showItem(*item);
+                item = item->next;
+            }
         }
         component = component->next;
     }
