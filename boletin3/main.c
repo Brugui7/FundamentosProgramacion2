@@ -41,6 +41,8 @@ void deleteItemOption();
 
 int getComponentPositionById(char *id);
 
+struct component *getComponentById(char *id);
+
 /**
  * Search for a item in a component
  * @param itemId
@@ -151,7 +153,7 @@ void createComponentOption() {
  * Asks for the file where the components id are stored in and tries to delete all of them
  */
 void deleteComponentOption() {
-    int confirm, componentPosition;
+    int confirm;
     char fileName[100] = "";
     char *componentId = malloc(sizeof(char) * 255);
 
@@ -167,9 +169,9 @@ void deleteComponentOption() {
 
     while (!feof(file)) {
         fscanf(file, "%s\n", componentId);
-        componentPosition = getComponentPositionById(componentId);
-        if (componentPosition != -1) {
-            if (components[componentPosition].itemsNumber > 0) {
+        struct component *component = getComponentById(componentId);
+        if (component != NULL) {
+            if (component->items != NULL) {
                 confirm = 2;
                 do {
                     printf("Este componente contiene art%cculos que ser%cn eliminados.\n"
@@ -180,16 +182,30 @@ void deleteComponentOption() {
                 if (confirm == 0) continue;
             }
             printf("Eliminando el componente con identificador %s...\n", componentId);
-            for (int i = componentPosition; i < componentsNumber - 1; i++) {
-                components[i] = components[i + 1];
+
+
+            if (component->next == NULL && component->previous == NULL) {
+                //There is only one component
+                components = NULL;
+            } else if (component->next == NULL) {
+                //This is the last component
+                components->previous = component->previous;
+                component->previous->next = NULL;
+            } else if (component->previous == NULL) {
+                //This is the first component
+                components->next = component->next;
+                component->next->previous = NULL;
+            } else {
+                component->next->previous = component->previous;
+                component->previous->next = component->next;
             }
-            components = (struct component *) realloc(components, --componentsNumber * sizeof(struct component));
+            free(component);
         } else {
             printf("No se ha encontrado el componente con identificador %s...\n", componentId);
         }
     }
     free(componentId);
-    //sortComponentsByName(components, (size_t) (componentsNumber - 1));
+
 }
 
 /**
@@ -325,7 +341,7 @@ void deleteItemOption() {
 void showStockOption() {
     printf("\n/****** STOCK TIENDA COMPONENTES INFORM%cTICOS ******/\n", A_ACUTE);
     struct component *component = components->next;
-    while (component->next != NULL) {
+    while (component != NULL) {
         showComponent(*component);
         struct item *item = component->items;
         if (item != NULL) {
@@ -361,8 +377,8 @@ int getComponentPositionById(char *id) {
 struct component *getComponentById(char *id) {
     if (components == NULL) return NULL;
     struct component *component = components->next;
-    while (component->next != NULL) {
-        if (strcmp(component->next->id, id) == 0) return component;
+    while (component != NULL) {
+        if (strcmp(component->id, id) == 0) return component;
         component = component->next;
     }
     return NULL;
