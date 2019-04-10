@@ -33,7 +33,7 @@ void deleteComponentOption();
 
 void showStockOption();
 
-bool addItem(struct item item, int componentPosition);
+bool addItem(struct item *item, struct component *component);
 
 void createItemOption();
 
@@ -235,49 +235,49 @@ void createItemOption() {
 
     while (!feof(file)) {
 
-        struct item item = {NULL};
+        struct item *item = (struct item *) malloc(sizeof(struct item));
         fscanf(file, "%s\n", buffer);
         length = strlen(buffer);
         componentId = (char *) malloc(++length * sizeof(char));
         strncpy(componentId, buffer, length);
 
-        fscanf(file, "%d/%d/%d\n", &item.insertDate.tm_mday, &item.insertDate.tm_mon, &item.insertDate.tm_year);
-        item.insertDate.tm_mon -= 1;
+        fscanf(file, "%d/%d/%d\n", &item->insertDate.tm_mday, &item->insertDate.tm_mon, &item->insertDate.tm_year);
+        item->insertDate.tm_mon -= 1;
 
         fgets(buffer, bufferSize, file);
         strtok(buffer, "\n");
         length = strlen(buffer);
-        item.model = (char *) malloc(++length * sizeof(char));
-        strncpy(item.model, buffer, length);
+        item->model = (char *) malloc(++length * sizeof(char));
+        strncpy(item->model, buffer, length);
 
 
         fgets(buffer, bufferSize, file);
         strtok(buffer, "\n");
         length = strlen(buffer);
-        item.brand = (char *) malloc(++length * sizeof(char));
-        strncpy(item.brand, buffer, length);
+        item->brand = (char *) malloc(++length * sizeof(char));
+        strncpy(item->brand, buffer, length);
 
 
         fscanf(file, "%s\n", buffer);
         if (strcmp(buffer, "Hardware") == 0) {
-            item.type = HARDWARE;
+            item->type = HARDWARE;
         } else if (strcmp(buffer, "Software") == 0) {
-            item.type = SOFTWARE;
+            item->type = SOFTWARE;
         } else {
-            item.type = NOT_DEFINED;
+            item->type = NOT_DEFINED;
         }
 
-        fscanf(file, "%f %f\n", &item.itemPrice, &item.shippingPrice);
-        fscanf(file, "%d\n", &item.stock);
+        fscanf(file, "%f %f\n", &item->itemPrice, &item->shippingPrice);
+        fscanf(file, "%d\n", &item->stock);
         printf("Art%cculo detectado...\n", I_ACUTE);
-        showItem(item);
-        int componentPosition = getComponentPositionById(componentId);
-        if (componentPosition == -1) {
+        struct component *component = getComponentById(componentId);
+        if (component == NULL) {
             printf("No se ha encontrado el componente para asociar este art%cculo", I_ACUTE);
             continue;
         }
-        if (addItem(item, componentPosition)) {
+        if (addItem(item, component)) {
             printf("Art%cculo guardado correctamente\n", I_ACUTE);
+            showItem(*item);
         } else {
             printf("Error al guardar el rt%cculo\n", I_ACUTE);
         }
@@ -313,7 +313,8 @@ void deleteItemOption() {
     while (!feof(file)) {
 
         fscanf(file, "%s ", componentId);
-        componentPosition = getComponentPositionById(componentId);
+        componentPosition = -1; //TODO
+        //componentPosition = getComponentPositionById(componentId);
         printf("Componente escaneado: %s\n", componentId);
         fscanf(file, "%s\n", itemId);
         if (componentPosition == -1) {
@@ -353,20 +354,6 @@ void showStockOption() {
         component = component->next;
     }
     printf("\n/****** FIN ******/\n");
-}
-
-/**
- * Search for a component in the array
- * @param id identifier of a component
- * @return the component position if found or -1 if not
- */
-int getComponentPositionById(char *id) {
-    for (int i = 0; i < componentsNumber; i++) {
-        if (strcmp(components[i].id, id) == 0) {
-            return i;
-        }
-    }
-    return -1;
 }
 
 /**
@@ -411,6 +398,7 @@ bool addComponent(struct component *component) {
     //Checks that there is not a component with the same id
     if (getComponentById(component->id) != NULL) return false;
     component->items = NULL;
+    component->itemsNumber = 0;
 
     if (components == NULL) {
         components = (struct component *) malloc(sizeof(struct component));
@@ -451,29 +439,31 @@ bool addComponent(struct component *component) {
 
 /**
  * Saves an item at the end of the list
- * @param item struct to add
- * @param componentPosition place where the component is
+ * @param item to add
+ * @param pointer to component to add the item to
  * @return boolean if added correctly
  */
-bool addItem(struct item item, int componentPosition) {
-    struct component *component = &components[componentPosition];
-    if (component->itemsNumber == 0) {
+bool addItem(struct item *item, struct component *component) {
+    item->next = NULL;
+
+    if (component->items == NULL) {
         component->items = (struct item *) malloc(sizeof(struct item));
-        component->itemsNumber++;
+        item->previous = NULL;
+        component->items->previous = component->items->next = item;
     } else {
-        component->items = (struct item *) realloc(component->items, (++component->itemsNumber) * sizeof(struct item));
+        item->previous = component->items->previous; //The previous item of the new one, is the actual last one
+        component->items->previous->next = item; //the next component of the actual last one, will be the new one
+        component->items->previous = item; //Sets the new last component
     }
     char *aux = (char *) malloc(sizeof(char) * 9);
     char *buffer = (char *) malloc(sizeof(char) * 255);
     size_t length;
     //Creates and sets the item ID
-    strftime(aux, 9, "%d_%m_%y", &item.insertDate); //This will be 9 always
-    sprintf(buffer, "%s_%d_%s", component->id, component->itemsNumber, aux);
+    strftime(aux, 9, "%d_%m_%y", &item->insertDate); //This will be 9 always
+    sprintf(buffer, "%s_%d_%s", component->id, ++component->itemsNumber, aux);
     length = strlen(buffer);
-    item.generalId = (char *) malloc(++length * sizeof(char));
-    strncpy(item.generalId, buffer, length);
-
-    component->items[component->itemsNumber - 1] = item;
+    item->generalId = (char *) malloc(++length * sizeof(char));
+    strncpy(item->generalId, buffer, length);
     free(buffer);
     free(aux);
     return true;

@@ -26,5 +26,6 @@ void showItem(struct item item) {
             break;
     }
     printf("\n- Art%cculo \t%s\n- Modelo:\t%s\n- Marca:\t%s\n- Stock:\t%d\n- Precio:\t%.2f\n- Transporte:\t%.2f\n- Tipo:\t%s\n",
-           161, item.generalId, item.model, item.brand, item.stock, item.itemPrice, item.shippingPrice, type);
+           161, item.generalId, item.model, item.brand, item.stock, item.itemPrice,
+           item.shippingPrice, type);
 }
