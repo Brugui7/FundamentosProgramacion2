@@ -31,6 +31,7 @@ void createComponentOption();
 
 void deleteComponentOption();
 
+
 void showStockOption();
 
 bool addItem(struct item *item, struct component *component);
@@ -339,14 +340,23 @@ void deleteItemOption() {
     free(itemId);
 }
 
+/**
+ * Shows the stock or an error if there aren't components
+ */
 void showStockOption() {
+
+    if (components == NULL) {
+        printf("Error: La tienda no tiene componentes...");
+        return;
+    }
     printf("\n/****** STOCK TIENDA COMPONENTES INFORM%cTICOS ******/\n", A_ACUTE);
     struct component *component = components->next;
     while (component != NULL) {
         showComponent(*component);
         struct item *item = component->items;
         if (item != NULL) {
-            while (item->next != NULL) {
+            item = item->next;
+            while (item != NULL) {
                 showItem(*item);
                 item = item->next;
             }
