@@ -45,12 +45,20 @@ int getComponentPositionById(char *id);
 struct component *getComponentById(char *id);
 
 /**
+ * Deletes an Item
+ * @param component
+ * @param item
+ * @return bool if deleted
+ */
+bool deleteItem(struct component *component, struct item *item);
+
+/**
  * Search for a item in a component
  * @param itemId
- * @param componentPosition
- * @return the item position if found, -1 if not
+ * @param component
+ * @return the item if found, NULL if not
  */
-int getItemPositionOnComponent(char *itemId, int componentPosition);
+struct item *getItemOnComponent(char *itemId, struct component *component);
 
 struct component *components = NULL;
 int componentsNumber = 0;
@@ -184,6 +192,16 @@ void deleteComponentOption() {
             }
             printf("Eliminando el componente con identificador %s...\n", componentId);
 
+            //Deletes all the component's items
+            struct item *item = component->items;
+            if (item != NULL) {
+                item = item->next;
+                while (item != NULL) {
+                    deleteItem(component, item);
+                    item = item->next;
+                }
+            }
+
 
             if (component->next == NULL && component->previous == NULL) {
                 //There is only one component
@@ -296,7 +314,6 @@ void createItemOption() {
  * Expected format: "componentId itemId"
  */
 void deleteItemOption() {
-    int componentPosition, itemPosition;
     char fileName[100] = "";
     char *componentId = malloc(sizeof(char) * 255);
     char *itemId = malloc(sizeof(char) * 255);
@@ -314,27 +331,23 @@ void deleteItemOption() {
     while (!feof(file)) {
 
         fscanf(file, "%s ", componentId);
-        componentPosition = -1; //TODO
-        //componentPosition = getComponentPositionById(componentId);
+        struct component *component = getComponentById(componentId);
         printf("Componente escaneado: %s\n", componentId);
         fscanf(file, "%s\n", itemId);
-        if (componentPosition == -1) {
+        if (component == NULL) {
             printf("No se ha encontrado el componente...\n");
             continue;
         }
 
         printf("Art%cculo escaneado: %s\n", I_ACUTE, itemId);
-        itemPosition = getItemPositionOnComponent(itemId, componentPosition);
-        if (itemPosition == -1) {
+        struct item *item = getItemOnComponent(itemId, component);
+        if (item == NULL) {
             printf("\nNo se ha encontrado el art%cculo...\n", I_ACUTE);
             continue;
         }
         printf("\nEliminando el art%cculo con identificador %s...\n", I_ACUTE, itemId);
-        struct component *component = &components[componentPosition];
-        for (int i = itemPosition; i < component->itemsNumber - 1; i++) {
-            component->items[i] = component->items[i + 1];
-        }
-        component->items = (struct item *) realloc(component->items, --component->itemsNumber * sizeof(struct item));
+
+        deleteItem(component, item);
     }
     free(componentId);
     free(itemId);
@@ -367,6 +380,30 @@ void showStockOption() {
 }
 
 /**
+ * Deletes an Item
+ * @param component
+ * @param item
+ * @return bool if deleted
+ */
+bool deleteItem(struct component *component, struct item *item) {
+
+    if (item->next == NULL && item->previous == NULL) {
+        component->items = NULL;
+    } else if (item->next == NULL) {
+        component->items->previous = item->previous;
+        component->items->previous->next = NULL;
+    } else if (item->previous == NULL) {
+        component->items->next = item->next;
+        item->next->previous = NULL;
+
+    } else {
+        item->next->previous = item->previous;
+        item->previous->next = item->next;
+    }
+    free(item);
+}
+
+/**
  * Search for a component in the list
  * @param id identifier of a component
  * @return a pointer to the component if found, null if not
@@ -382,19 +419,20 @@ struct component *getComponentById(char *id) {
 }
 
 /**
- * Search for a item in a component
+ * Search for an item in a component
  * @param itemId
- * @param componentPosition
- * @return the item position if found, -1 if not
+ * @param component
+ * @return the item if found, NULL if not
  */
-int getItemPositionOnComponent(char *itemId, int componentPosition) {
-    struct item *items = components[componentPosition].items;
-    for (int i = 0; i < components[componentPosition].itemsNumber; i++) {
-        if (strcmp(items[i].generalId, itemId) == 0) {
-            return i;
-        }
+struct item *getItemOnComponent(char *itemId, struct component *component) {
+    if (component->items == NULL) return NULL;
+    struct item *item = component->items->next;
+    while (item != NULL) {
+        if (strcmp(item->generalId, itemId) == 0) return item;
+        item = item->next;
     }
-    return -1;
+
+    return NULL;
 }
 
 /**
