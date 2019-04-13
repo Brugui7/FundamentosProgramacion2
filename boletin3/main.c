@@ -30,7 +30,6 @@ void createComponentOption();
 
 void deleteComponentOption();
 
-
 void showStockOption();
 
 bool addItem(struct item *item, struct component *component);
@@ -38,8 +37,6 @@ bool addItem(struct item *item, struct component *component);
 void createItemOption();
 
 void deleteItemOption();
-
-int getComponentPositionById(char *id);
 
 struct component *getComponentById(char *id);
 
@@ -153,7 +150,6 @@ void createComponentOption() {
     }
     fclose(file);
     free(buffer);
-//    sortComponentsByName(components, (size_t) (componentsNumber - 1));
 }
 
 /**

@@ -15,7 +15,7 @@
 
 #include <stdbool.h>
 
-typedef struct component {
+struct component {
     char *id;
     char *name;
     char *description;
