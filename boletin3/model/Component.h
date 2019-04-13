@@ -2,7 +2,7 @@
  * @file
  * @brief Data definition for component
  * @author: Alejandro Brugarolas
- * @since: 2019-03-15
+ * @since: 2019-03
 */
 
 #ifndef FUNDAMENTOS2_COMPONENT_H

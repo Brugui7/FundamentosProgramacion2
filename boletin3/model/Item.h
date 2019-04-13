@@ -2,7 +2,7 @@
  * @file
  * @brief Data definition for item
  * @author: Alejandro Brugarolas
- * @since: 2019-03-15
+ * @since: 2019-03
 */
 
 #ifndef FUNDAMENTOS2_ITEM_H

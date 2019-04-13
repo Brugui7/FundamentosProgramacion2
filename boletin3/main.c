@@ -2,8 +2,7 @@
  * @file
  * @brief Application to manage the stock of a shop with dynamic memory allocation
  * @author Alejandro Brugarolas
- * @since 2018-02
- * @verison 1.0
+ * @since 2018-03
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -50,7 +49,7 @@ struct component *getComponentById(char *id);
  * @param item
  * @return bool if deleted
  */
-bool deleteItem(struct component *component, struct item *item);
+void deleteItem(struct component *component, struct item *item);
 
 /**
  * Search for a item in a component
@@ -61,7 +60,6 @@ bool deleteItem(struct component *component, struct item *item);
 struct item *getItemOnComponent(char *itemId, struct component *component);
 
 struct component *components = NULL;
-int componentsNumber = 0;
 
 /**
  * Shows all the options and calls the appropriate function depending of the choosen option
@@ -385,7 +383,7 @@ void showStockOption() {
  * @param item
  * @return bool if deleted
  */
-bool deleteItem(struct component *component, struct item *item) {
+void deleteItem(struct component *component, struct item *item) {
 
     if (item->next == NULL && item->previous == NULL) {
         component->items = NULL;
@@ -400,6 +398,7 @@ bool deleteItem(struct component *component, struct item *item) {
         item->next->previous = item->previous;
         item->previous->next = item->next;
     }
+    component->itemsNumber--;
     free(item);
 }
 
