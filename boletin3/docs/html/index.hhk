@@ -50,7 +50,6 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="main_8c.html#a29f8a91ca11b1319bd97bfd0737ecf74"><param name="Name" value="E_ACUTE"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structitem.html#a7b6e4754dcb0d25a6c3ac924a219af87"><param name="Name" value="generalId"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="main_8c.html#a56bac26ce00c7b5a682816a58f583a6c"><param name="Name" value="getComponentById"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="main_8c.html#ac2c7a147555c308a2254803193591f77"><param name="Name" value="getComponentPositionById"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="main_8c.html#a78edd6525c0a360c6f48f25119b9a3c1"><param name="Name" value="getItemOnComponent"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structitem.html#a7aead736a07eaf25623ad7bfa1f0ee2da41b91ec2ec246009a6c05166c265c06a"><param name="Name" value="hardware"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="_item_8h.html#ae63cc10269ee1bb0c967a74ac5a0d0d5"><param name="Name" value="HARDWARE"></OBJECT>
@@ -179,10 +178,6 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="main_8c.html"><param name="Name" value="main.c"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="main_8c.html#a56bac26ce00c7b5a682816a58f583a6c"><param name="Name" value="getComponentById"></OBJECT>
-  </UL>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="main_8c.html"><param name="Name" value="main.c"></OBJECT>
-  <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="main_8c.html#ac2c7a147555c308a2254803193591f77"><param name="Name" value="getComponentPositionById"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="main_8c.html"><param name="Name" value="main.c"></OBJECT>
   <UL>
