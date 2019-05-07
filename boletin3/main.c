@@ -94,7 +94,6 @@ void showMenu() {
                 break;
             case 6:
                 printf("Saliendo...");
-                free(components);
                 break;
             default:
                 printf("Por favor seleccione una opci%cn v%clida\n", O_ACUTE, A_ACUTE);
@@ -212,6 +211,10 @@ void deleteComponentOption() {
                 component->next->previous = component->previous;
                 component->previous->next = component->next;
             }
+            free(component->id);
+            free(component->name);
+            free(component->description);
+            free(component->items);
             free(component);
         } else {
             printf("No se ha encontrado el componente con identificador %s...\n", componentId);
@@ -395,6 +398,9 @@ void deleteItem(struct component *component, struct item *item) {
         item->previous->next = item->next;
     }
     component->itemsNumber--;
+    free(item->generalId);
+    free(item->model);
+    free(item->brand);
     free(item);
 }
 
