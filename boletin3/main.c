@@ -401,5 +401,22 @@ struct item *getItemOnComponent(char *itemId, struct component *component) {
 int main() {
     componentList componentList = createCompoentList();
     showMenu(componentList);
-    //free(components);
+
+    //Destroy all components and items
+    if (componentList != NULL) {
+        struct component *component = componentList->next;
+        while (component != NULL) {
+            struct item *item = component->items;
+            if (item != NULL) {
+                item = item->next;
+                while (item != NULL) {
+                    deleteItem(component->items, item);
+                    item = item->next;
+                }
+            }
+            deleteComponent(componentList, component);
+            component = component->next;
+        }
+    }
+    free(componentList);
 }
