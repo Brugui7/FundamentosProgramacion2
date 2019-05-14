@@ -61,7 +61,10 @@ $(function() {
     <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
         <code>#include &lt;stdlib.h&gt;</code><br/>
         <code>#include &lt;string.h&gt;</code><br/>
-        <code>#include &quot;<a class="el" href="_component_8h_source.html">../model/Component.h</a>&quot;</code><br/>
+        <code>#include &lt;stdbool.h&gt;</code><br/>
+        <code>#include &quot;<a class="el" href="structs_8h_source.html">../model/structs.h</a>&quot;</code><br/>
+        <code>#include &quot;<a class="el" href="_component_8h_source.html">Component.h</a>&quot;</code><br/>
+        <code>#include &quot;<a class="el" href="_item_8h_source.html">Item.h</a>&quot;</code><br/>
     </div>
     <table class="memberdecls">
         <tr class="heading">
@@ -79,6 +82,84 @@ $(function() {
         <tr class="separator:a5e8f5ebaaedf4ffa8d2497040be871d2">
             <td class="memSeparator" colspan="2">&#160;</td>
         </tr>
+        <tr class="memitem:ade5ecf554ad48f44a24b93e6fd2752ad">
+            <td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structcomponent.html">component</a>
+                *&#160;
+            </td>
+            <td class="memItemRight" valign="bottom"><a class="el"
+                                                        href="_component_8c.html#ade5ecf554ad48f44a24b93e6fd2752ad">createCompoentList</a>
+                ()
+            </td>
+        </tr>
+        <tr class="separator:ade5ecf554ad48f44a24b93e6fd2752ad">
+            <td class="memSeparator" colspan="2">&#160;</td>
+        </tr>
+        <tr class="memitem:ae0e27c5b1c826bb0b911ac1c7ccb2e78">
+            <td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structcomponent.html">component</a>
+                *&#160;
+            </td>
+            <td class="memItemRight" valign="bottom"><a class="el"
+                                                        href="_component_8c.html#ae0e27c5b1c826bb0b911ac1c7ccb2e78">getComponentById</a>
+                (struct <a class="el" href="structcomponent.html">component</a> *<a class="el"
+                                                                                    href="structs_8h.html#afe513cfc9e2b7450e19e95eaa5e6febb">componentList</a>,
+                char *id)
+            </td>
+        </tr>
+        <tr class="separator:ae0e27c5b1c826bb0b911ac1c7ccb2e78">
+            <td class="memSeparator" colspan="2">&#160;</td>
+        </tr>
+        <tr class="memitem:af610fe2c920e0de5af69bba9a04bba2f">
+            <td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structcomponent.html">component</a>
+                *&#160;
+            </td>
+            <td class="memItemRight" valign="bottom"><a class="el"
+                                                        href="_component_8c.html#af610fe2c920e0de5af69bba9a04bba2f">addComponent</a>
+                (struct <a class="el" href="structcomponent.html">component</a> *<a class="el"
+                                                                                    href="structs_8h.html#afe513cfc9e2b7450e19e95eaa5e6febb">componentList</a>,
+                struct <a class="el" href="structcomponent.html">component</a> *<a class="el"
+                                                                                   href="structcomponent.html">component</a>)
+            </td>
+        </tr>
+        <tr class="separator:af610fe2c920e0de5af69bba9a04bba2f">
+            <td class="memSeparator" colspan="2">&#160;</td>
+        </tr>
+        <tr class="memitem:a1905a7c06563958dfe30267752a8b182">
+            <td class="memItemLeft" align="right" valign="top">void&#160;</td>
+            <td class="memItemRight" valign="bottom"><a class="el"
+                                                        href="_component_8c.html#a1905a7c06563958dfe30267752a8b182">deleteComponent</a>
+                (struct <a class="el" href="structcomponent.html">component</a> *<a class="el"
+                                                                                    href="structs_8h.html#afe513cfc9e2b7450e19e95eaa5e6febb">componentList</a>,
+                struct <a class="el" href="structcomponent.html">component</a> *<a class="el"
+                                                                                   href="structcomponent.html">component</a>)
+            </td>
+        </tr>
+        <tr class="separator:a1905a7c06563958dfe30267752a8b182">
+            <td class="memSeparator" colspan="2">&#160;</td>
+        </tr>
+        <tr class="memitem:a28cae9284dbf0810c243cc88ad9bc78a">
+            <td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structcomponent.html">component</a>
+                *&#160;
+            </td>
+            <td class="memItemRight" valign="bottom"><a class="el"
+                                                        href="_component_8c.html#a28cae9284dbf0810c243cc88ad9bc78a">createComponentOption</a>
+                (struct <a class="el" href="structcomponent.html">component</a> *<a class="el"
+                                                                                    href="structs_8h.html#afe513cfc9e2b7450e19e95eaa5e6febb">componentList</a>)
+            </td>
+        </tr>
+        <tr class="separator:a28cae9284dbf0810c243cc88ad9bc78a">
+            <td class="memSeparator" colspan="2">&#160;</td>
+        </tr>
+        <tr class="memitem:ada96fe9d6f94879e3b688c9772c5a5fd">
+            <td class="memItemLeft" align="right" valign="top">void&#160;</td>
+            <td class="memItemRight" valign="bottom"><a class="el"
+                                                        href="_component_8c.html#ada96fe9d6f94879e3b688c9772c5a5fd">deleteComponentOption</a>
+                (struct <a class="el" href="structcomponent.html">component</a> *<a class="el"
+                                                                                    href="structs_8h.html#afe513cfc9e2b7450e19e95eaa5e6febb">componentList</a>)
+            </td>
+        </tr>
+        <tr class="separator:ada96fe9d6f94879e3b688c9772c5a5fd">
+            <td class="memSeparator" colspan="2">&#160;</td>
+        </tr>
     </table>
     <a name="details" id="details"></a>
     <h2 class="groupheader">Detailed Description</h2>
@@ -93,6 +174,1022 @@ $(function() {
         </dl>
     </div>
     <h2 class="groupheader">Function Documentation</h2>
+    <a id="af610fe2c920e0de5af69bba9a04bba2f"></a>
+    <h2 class="memtitle"><span class="permalink"><a href="#af610fe2c920e0de5af69bba9a04bba2f">&#9670;&nbsp;</a></span>addComponent()
+    </h2>
+
+    <div class="memitem">
+        <div class="memproto">
+            <table class="memname">
+                <tr>
+                    <td class="memname">struct <a class="el" href="structcomponent.html">component</a>* addComponent
+                    </td>
+                    <td>(</td>
+                    <td class="paramtype">struct <a class="el" href="structcomponent.html">component</a> *&#160;</td>
+                    <td class="paramname"><em>componentList</em>,</td>
+        </tr>
+                <tr>
+                    <td class="paramkey"></td>
+                    <td></td>
+                    <td class="paramtype">struct <a class="el" href="structcomponent.html">component</a> *&#160;</td>
+                    <td class="paramname"><em>component</em>&#160;</td>
+        </tr>
+                <tr>
+                    <td></td>
+                    <td>)</td>
+                    <td></td>
+                    <td></td>
+        </tr>
+            </table>
+        </div>
+        <div class="memdoc">
+            <p>Adds a component to the list and keeps the list ordered by the components names </p>
+            <dl class="params">
+                <dt>Parameters</dt>
+                <dd>
+                    <table class="params">
+                        <tr>
+                            <td class="paramname">componentList</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="paramname">component</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </dd>
+            </dl>
+            <dl class="section return">
+                <dt>Returns</dt>
+                <dd>componentList updated with the new component</dd>
+            </dl>
+            <div class="fragment">
+                <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; {</div>
+                <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+                <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#adc7b91c573f74d6154ceadd5dada7d21">items</a> = NULL;
+                </div>
+                <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a0cfba1008e9930117f456a94cf0ac14c">itemsNumber</a> = 0;
+                </div>
+                <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+                <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; <span
+                        class="keywordflow">if</span> (<a class="code" href="structcomponent.html">componentList</a> ==
+                    NULL) {
+                </div>
+                <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">componentList</a>
+                    = (<span class="keyword">struct </span><a class="code" href="structcomponent.html">component</a> *)
+                    malloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code"
+                                                                                                      href="structcomponent.html">component</a>));
+                </div>
+                <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a> = NULL;
+                </div>
+                <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a> = NULL;
+                </div>
+                <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">componentList</a>-&gt;<a
+                        class="code" href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a> = <a
+                        class="code" href="structcomponent.html">componentList</a>-&gt;<a class="code"
+                                                                                          href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a>
+                    = <a class="code" href="structcomponent.html">component</a>;
+                </div>
+                <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; } <span
+                        class="keywordflow">else</span> {
+                </div>
+                <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; <span
+                        class="keywordtype">bool</span> added = <span class="keyword">false</span>;
+                </div>
+                <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; <span class="keyword">struct </span><a
+                        class="code" href="structcomponent.html">component</a> *tempComponent = <a class="code"
+                                                                                                   href="structcomponent.html">componentList</a>-&gt;<a
+                        class="code" href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a>;
+                </div>
+                <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; <span
+                        class="keywordflow">do</span> {
+                </div>
+                <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; <span
+                        class="keywordflow">if</span> (strcmp(tempComponent-&gt;<a class="code"
+                                                                                   href="structcomponent.html#a5ac083a645d964373f022d03df4849c8">name</a>,
+                    <a class="code" href="structcomponent.html">component</a>-&gt;<a class="code"
+                                                                                     href="structcomponent.html#a5ac083a645d964373f022d03df4849c8">name</a>)
+                    &gt; 0) {
+                </div>
+                <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+                <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+                <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; <span
+                        class="keywordflow">if</span> (tempComponent-&gt;<a class="code"
+                                                                            href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a>
+                    == NULL) {
+                </div>
+                <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; <span class="comment">//In this case, tempComponent is the first component</span>
+                </div>
+                <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">componentList</a>-&gt;<a
+                        class="code" href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a> = <a
+                        class="code" href="structcomponent.html">component</a>;
+                </div>
+                <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; } <span
+                        class="keywordflow">else</span> {
+                </div>
+                <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; tempComponent-&gt;<a
+                        class="code" href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a>-&gt;<a
+                        class="code" href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a> = <a
+                        class="code" href="structcomponent.html">component</a>;
+                </div>
+                <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; }</div>
+                <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a> =
+                    tempComponent-&gt;<a class="code" href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a>;
+                </div>
+                <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; tempComponent-&gt;<a
+                        class="code" href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a> = <a
+                        class="code" href="structcomponent.html">component</a>;
+                </div>
+                <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a> =
+                    tempComponent;
+                </div>
+                <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; added = <span
+                        class="keyword">true</span>;
+                </div>
+                <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; <span
+                        class="keywordflow">break</span>;
+                </div>
+                <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; }</div>
+                <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; tempComponent =
+                    tempComponent-&gt;<a class="code"
+                                         href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a>;
+                </div>
+                <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; } <span
+                        class="keywordflow">while</span> (tempComponent-&gt;<a class="code"
+                                                                               href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a>
+                    != NULL);
+                </div>
+                <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; <span
+                        class="keywordflow">if</span> (!added) {
+                </div>
+                <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a> = <a
+                        class="code" href="structcomponent.html">componentList</a>-&gt;<a class="code"
+                                                                                          href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a>;
+                    <span class="comment">//The previous component of the new one, is the actual last one</span></div>
+                <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a> = NULL;
+                </div>
+                <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">componentList</a>-&gt;<a
+                        class="code" href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a>-&gt;<a
+                        class="code" href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a> = <a
+                        class="code" href="structcomponent.html">component</a>; <span class="comment">//the next component of the actual last one, will be the new one</span>
+                </div>
+                <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">componentList</a>-&gt;<a
+                        class="code" href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a> = <a
+                        class="code" href="structcomponent.html">component</a>; <span class="comment">//Sets the new last component</span>
+                </div>
+                <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; }</div>
+                <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+                <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; }</div>
+                <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; <span
+                        class="keywordflow">return</span> <a class="code"
+                                                             href="structs_8h.html#afe513cfc9e2b7450e19e95eaa5e6febb">componentList</a>;
+                </div>
+                <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+                <div class="ttc" id="structcomponent_html">
+                    <div class="ttname"><a href="structcomponent.html">component</a></div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:37</div>
+                </div>
+                <div class="ttc" id="structcomponent_html_adc7b91c573f74d6154ceadd5dada7d21">
+                    <div class="ttname"><a href="structcomponent.html#adc7b91c573f74d6154ceadd5dada7d21">component::items</a>
+                    </div>
+                    <div class="ttdeci">itemList items</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:42</div>
+                </div>
+                <div class="ttc" id="structcomponent_html_a5ac083a645d964373f022d03df4849c8">
+                    <div class="ttname"><a
+                            href="structcomponent.html#a5ac083a645d964373f022d03df4849c8">component::name</a></div>
+                    <div class="ttdeci">char * name</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:39</div>
+                </div>
+                <div class="ttc" id="structcomponent_html_a0cfba1008e9930117f456a94cf0ac14c">
+                    <div class="ttname"><a href="structcomponent.html#a0cfba1008e9930117f456a94cf0ac14c">component::itemsNumber</a>
+                    </div>
+                    <div class="ttdeci">int itemsNumber</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:43</div>
+                </div>
+                <div class="ttc" id="structcomponent_html_a9b3dee7117b6f9a9dc48bacf22a7e9cf">
+                    <div class="ttname"><a href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">component::previous</a>
+                    </div>
+                    <div class="ttdeci">struct component * previous</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:45</div>
+                </div>
+                <div class="ttc" id="structs_8h_html_afe513cfc9e2b7450e19e95eaa5e6febb">
+                    <div class="ttname"><a href="structs_8h.html#afe513cfc9e2b7450e19e95eaa5e6febb">componentList</a>
+                    </div>
+                    <div class="ttdeci">struct component * componentList</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:48</div>
+                </div>
+                <div class="ttc" id="structcomponent_html_a2248972e14af33b471c4c4b995a623c0">
+                    <div class="ttname"><a
+                            href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">component::next</a></div>
+                    <div class="ttdeci">struct component * next</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:44</div>
+                </div>
+            </div><!-- fragment -->
+        </div>
+    </div>
+    <a id="ade5ecf554ad48f44a24b93e6fd2752ad"></a>
+    <h2 class="memtitle"><span class="permalink"><a href="#ade5ecf554ad48f44a24b93e6fd2752ad">&#9670;&nbsp;</a></span>createCompoentList()
+    </h2>
+
+    <div class="memitem">
+        <div class="memproto">
+            <table class="memname">
+                <tr>
+                    <td class="memname">struct <a class="el" href="structcomponent.html">component</a>*
+                        createCompoentList
+                    </td>
+                    <td>(</td>
+                    <td class="paramname"></td>
+                    <td>)</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="memdoc">
+            <p>Creates an empty list of components </p>
+            <dl class="section return">
+                <dt>Returns</dt>
+                <dd>NULL</dd>
+            </dl>
+            <div class="fragment">
+                <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; {</div>
+                <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; <span
+                        class="keywordflow">return</span> NULL;
+                </div>
+                <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+            </div><!-- fragment -->
+        </div>
+    </div>
+    <a id="a28cae9284dbf0810c243cc88ad9bc78a"></a>
+    <h2 class="memtitle"><span class="permalink"><a href="#a28cae9284dbf0810c243cc88ad9bc78a">&#9670;&nbsp;</a></span>createComponentOption()
+    </h2>
+
+    <div class="memitem">
+        <div class="memproto">
+            <table class="memname">
+                <tr>
+                    <td class="memname">struct <a class="el" href="structcomponent.html">component</a>*
+                        createComponentOption
+                    </td>
+                    <td>(</td>
+                    <td class="paramtype">struct <a class="el" href="structcomponent.html">component</a> *&#160;</td>
+                    <td class="paramname"><em>componentList</em></td>
+                    <td>)</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="memdoc">
+            <p>Asks for the file where te components are stored in and tries to read all of them </p>
+            <dl class="params">
+                <dt>Parameters</dt>
+                <dd>
+                    <table class="params">
+                        <tr>
+                            <td class="paramname">componentList</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </dd>
+            </dl>
+            <dl class="section return">
+                <dt>Returns</dt>
+                <dd>componentList updated</dd>
+            </dl>
+            <div class="fragment">
+                <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; {</div>
+                <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; <span
+                        class="keywordtype">char</span> fileName[100] = <span class="stringliteral">&quot;&quot;</span>;
+                </div>
+                <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; <span
+                        class="keywordtype">char</span> *buffer = (<span class="keywordtype">char</span> *) malloc(<span
+                        class="keyword">sizeof</span>(<span class="keywordtype">char</span>) * 255);
+                </div>
+                <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; <span
+                        class="keywordtype">size_t</span> length, bufferSize = 255;
+                </div>
+                <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; <span
+                        class="keywordtype">bool</span> error;
+                </div>
+                <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+                <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; FILE *file = NULL;</div>
+                <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; <span
+                        class="keywordflow">do</span> {
+                </div>
+                <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; printf(<span
+                        class="stringliteral">&quot;Introduzca la ruta del fichero donde se encuentran los componentes\n&gt; &quot;</span>);
+                </div>
+                <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; gets(fileName);</div>
+                <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; printf(<span
+                        class="stringliteral">&quot;%s&quot;</span>, fileName);
+                </div>
+                <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; fflush(stdin);</div>
+                <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; file = fopen(fileName,
+                    <span class="stringliteral">&quot;r&quot;</span>);
+                </div>
+                <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; } <span
+                        class="keywordflow">while</span> (file == NULL);
+                </div>
+                <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+                <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; <span
+                        class="keywordflow">while</span> (!feof(file)) {
+                </div>
+                <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+                <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; <span class="keyword">struct </span><a
+                        class="code" href="structcomponent.html">component</a> *<a class="code"
+                                                                                   href="structcomponent.html">component</a>
+                    = (<span class="keyword">struct </span><a class="code" href="structcomponent.html">component</a> *)
+                    malloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code"
+                                                                                                      href="structcomponent.html">component</a>));
+                </div>
+                <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; fscanf(file, <span
+                        class="stringliteral">&quot;%s\n&quot;</span>, buffer);
+                </div>
+                <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; length = strlen(buffer);
+                </div>
+                <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#aecb3b0d045ada529257a2fbf8f829599">id</a> = (<span
+                        class="keywordtype">char</span> *) malloc((length + 11) * <span class="keyword">sizeof</span>(char));
+                </div>
+                <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; strncpy(<a class="code"
+                                                                                                          href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#aecb3b0d045ada529257a2fbf8f829599">id</a>, buffer,
+                    length + 1);
+                </div>
+                <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+                <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; fgets(buffer, bufferSize,
+                    file);
+                </div>
+                <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; strtok(buffer, <span
+                        class="stringliteral">&quot;\n&quot;</span>); <span class="comment">//Removes the \n</span>
+                </div>
+                <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; length = strlen(buffer);
+                </div>
+                <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a5ac083a645d964373f022d03df4849c8">name</a> = (<span
+                        class="keywordtype">char</span> *) malloc((length + 1) * <span class="keyword">sizeof</span>(char));
+                </div>
+                <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; strncpy(<a class="code"
+                                                                                                          href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a5ac083a645d964373f022d03df4849c8">name</a>, buffer,
+                    length + 1);
+                </div>
+                <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
+                <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+                <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; fgets(buffer, bufferSize,
+                    file);
+                </div>
+                <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; strtok(buffer, <span
+                        class="stringliteral">&quot;\n&quot;</span>);
+                </div>
+                <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; length = strlen(buffer);
+                </div>
+                <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a8444d6e0dfe2bbab0b5e7b24308f1559">description</a> =
+                    (<span class="keywordtype">char</span> *) malloc((length + 1) * <span class="keyword">sizeof</span>(char));
+                </div>
+                <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; strncpy(<a class="code"
+                                                                                                          href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a8444d6e0dfe2bbab0b5e7b24308f1559">description</a>,
+                    buffer, length + 1);
+                </div>
+                <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
+                <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; fscanf(file, <span
+                        class="stringliteral">&quot;%d\n&quot;</span>, &amp;<a class="code" href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a9f6b1d8f565c649873cd57896391b2aa">stock</a>);
+                </div>
+                <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; printf(<span
+                        class="stringliteral">&quot;Componente detectado...\n&quot;</span>);
+                </div>
+                <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; <a class="code"
+                                                                                                  href="_component_8c.html#a5e8f5ebaaedf4ffa8d2497040be871d2">showComponent</a>(*<a
+                        class="code" href="structcomponent.html">component</a>);
+                </div>
+                <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+                <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; error = <span
+                        class="keyword">false</span>;
+                </div>
+                <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; <span class="comment">//Checks that all fields are valid</span>
+                </div>
+                <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; <span
+                        class="keywordflow">if</span> (strlen(<a class="code" href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#aecb3b0d045ada529257a2fbf8f829599">id</a>) == 0 ||
+                    strlen(<a class="code" href="structcomponent.html">component</a>-&gt;<a class="code"
+                                                                                            href="structcomponent.html#a5ac083a645d964373f022d03df4849c8">name</a>)
+                    == 0 || strlen(<a class="code" href="structcomponent.html">component</a>-&gt;<a class="code"
+                                                                                                    href="structcomponent.html#a8444d6e0dfe2bbab0b5e7b24308f1559">description</a>)
+                    == 0) {
+                </div>
+                <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; error = <span
+                        class="keyword">true</span>;
+                </div>
+                <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; printf(<span
+                        class="stringliteral">&quot;Error: Uno o más campos son inválidos\n&quot;</span>);
+                </div>
+                <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; }</div>
+                <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; <span class="comment">//Checks that there is not a component with the same id</span>
+                </div>
+                <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; <span
+                        class="keywordflow">if</span> (<a class="code"
+                                                          href="_component_8c.html#ae0e27c5b1c826bb0b911ac1c7ccb2e78">getComponentById</a>(<a
+                        class="code" href="structcomponent.html">componentList</a>, <a class="code"
+                                                                                       href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#aecb3b0d045ada529257a2fbf8f829599">id</a>) != NULL) {
+                </div>
+                <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; error = <span
+                        class="keyword">true</span>;
+                </div>
+                <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; printf(<span
+                        class="stringliteral">&quot;Error: Ya existe un componente con el mismo identificador\n&quot;</span>);
+                </div>
+                <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; }</div>
+                <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
+                <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; <span
+                        class="keywordflow">if</span> (!error) {
+                </div>
+                <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; printf(<span
+                        class="stringliteral">&quot;Componente guardado correctamente\n&quot;</span>);
+                </div>
+                <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">componentList</a>
+                    = <a class="code" href="_component_8c.html#af610fe2c920e0de5af69bba9a04bba2f">addComponent</a>(<a
+                            class="code" href="structcomponent.html">componentList</a>, <a class="code"
+                                                                                           href="structcomponent.html">component</a>);
+                </div>
+                <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; }</div>
+                <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
+                <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
+                <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; }</div>
+                <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; fclose(file);</div>
+                <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; free(buffer);</div>
+                <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; <span
+                        class="keywordflow">return</span> <a class="code"
+                                                             href="structs_8h.html#afe513cfc9e2b7450e19e95eaa5e6febb">componentList</a>;
+                </div>
+                <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;}</div>
+                <div class="ttc" id="structcomponent_html">
+                    <div class="ttname"><a href="structcomponent.html">component</a></div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:37</div>
+                </div>
+                <div class="ttc" id="_component_8c_html_ae0e27c5b1c826bb0b911ac1c7ccb2e78">
+                    <div class="ttname"><a
+                            href="_component_8c.html#ae0e27c5b1c826bb0b911ac1c7ccb2e78">getComponentById</a></div>
+                    <div class="ttdeci">struct component * getComponentById(struct component *componentList, char *id)
+                    </div>
+                    <div class="ttdef"><b>Definition:</b> Component.c:41</div>
+                </div>
+                <div class="ttc" id="structcomponent_html_aecb3b0d045ada529257a2fbf8f829599">
+                    <div class="ttname"><a
+                            href="structcomponent.html#aecb3b0d045ada529257a2fbf8f829599">component::id</a></div>
+                    <div class="ttdeci">char * id</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:38</div>
+                </div>
+                <div class="ttc" id="structcomponent_html_a5ac083a645d964373f022d03df4849c8">
+                    <div class="ttname"><a
+                            href="structcomponent.html#a5ac083a645d964373f022d03df4849c8">component::name</a></div>
+                    <div class="ttdeci">char * name</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:39</div>
+                </div>
+                <div class="ttc" id="_component_8c_html_af610fe2c920e0de5af69bba9a04bba2f">
+                    <div class="ttname"><a href="_component_8c.html#af610fe2c920e0de5af69bba9a04bba2f">addComponent</a>
+                    </div>
+                    <div class="ttdeci">struct component * addComponent(struct component *componentList, struct
+                        component *component)
+                    </div>
+                    <div class="ttdef"><b>Definition:</b> Component.c:57</div>
+                </div>
+                <div class="ttc" id="_component_8c_html_a5e8f5ebaaedf4ffa8d2497040be871d2">
+                    <div class="ttname"><a href="_component_8c.html#a5e8f5ebaaedf4ffa8d2497040be871d2">showComponent</a>
+                    </div>
+                    <div class="ttdeci">void showComponent(struct component component)</div>
+                    <div class="ttdef"><b>Definition:</b> Component.c:19</div>
+                </div>
+                <div class="ttc" id="structs_8h_html_afe513cfc9e2b7450e19e95eaa5e6febb">
+                    <div class="ttname"><a href="structs_8h.html#afe513cfc9e2b7450e19e95eaa5e6febb">componentList</a>
+                    </div>
+                    <div class="ttdeci">struct component * componentList</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:48</div>
+                </div>
+                <div class="ttc" id="structcomponent_html_a9f6b1d8f565c649873cd57896391b2aa">
+                    <div class="ttname"><a href="structcomponent.html#a9f6b1d8f565c649873cd57896391b2aa">component::stock</a>
+                    </div>
+                    <div class="ttdeci">int stock</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:41</div>
+                </div>
+                <div class="ttc" id="structcomponent_html_a8444d6e0dfe2bbab0b5e7b24308f1559">
+                    <div class="ttname"><a href="structcomponent.html#a8444d6e0dfe2bbab0b5e7b24308f1559">component::description</a>
+                    </div>
+                    <div class="ttdeci">char * description</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:40</div>
+                </div>
+            </div><!-- fragment -->
+        </div>
+    </div>
+    <a id="a1905a7c06563958dfe30267752a8b182"></a>
+    <h2 class="memtitle"><span class="permalink"><a href="#a1905a7c06563958dfe30267752a8b182">&#9670;&nbsp;</a></span>deleteComponent()
+    </h2>
+
+    <div class="memitem">
+        <div class="memproto">
+            <table class="memname">
+                <tr>
+                    <td class="memname">void deleteComponent</td>
+                    <td>(</td>
+                    <td class="paramtype">struct <a class="el" href="structcomponent.html">component</a> *&#160;</td>
+                    <td class="paramname"><em>componentList</em>,</td>
+                </tr>
+                <tr>
+                    <td class="paramkey"></td>
+                    <td></td>
+                    <td class="paramtype">struct <a class="el" href="structcomponent.html">component</a> *&#160;</td>
+                    <td class="paramname"><em>component</em>&#160;</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>)</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="memdoc">
+            <p>Deletes a component from the list </p>
+            <dl class="params">
+                <dt>Parameters</dt>
+                <dd>
+                    <table class="params">
+                        <tr>
+                            <td class="paramname">componentList</td>
+                            <td>The list</td>
+                        </tr>
+                        <tr>
+                            <td class="paramname">component</td>
+                            <td>The component</td>
+                        </tr>
+                    </table>
+                </dd>
+            </dl>
+            <div class="fragment">
+                <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; {</div>
+                <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; <span
+                        class="keywordflow">if</span> (<a class="code" href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a> == NULL
+                    &amp;&amp; <a class="code" href="structcomponent.html">component</a>-&gt;<a class="code"
+                                                                                                href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a>
+                    == NULL) {
+                </div>
+                <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; <span class="comment">//There is only one component</span>
+                </div>
+                <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">componentList</a>
+                    = NULL;
+                </div>
+                <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; } <span
+                        class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code"
+                                                                                                href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a> == NULL) {
+                </div>
+                <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; <span class="comment">//This is the last component</span>
+                </div>
+                <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">componentList</a>-&gt;<a
+                        class="code" href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a> = <a
+                        class="code" href="structcomponent.html">component</a>-&gt;<a class="code"
+                                                                                      href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a>;
+                </div>
+                <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a>-&gt;<a
+                        class="code" href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a> = NULL;
+                </div>
+                <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; } <span
+                        class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code"
+                                                                                                href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a> == NULL)
+                    {
+                </div>
+                <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; <span class="comment">//This is the first component</span>
+                </div>
+                <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">componentList</a>-&gt;<a
+                        class="code" href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a> = <a
+                        class="code" href="structcomponent.html">component</a>-&gt;<a class="code"
+                                                                                      href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a>;
+                </div>
+                <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a>-&gt;<a
+                        class="code" href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a> = NULL;
+                </div>
+                <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; } <span
+                        class="keywordflow">else</span> {
+                </div>
+                <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a>-&gt;<a
+                        class="code" href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a> = <a
+                        class="code" href="structcomponent.html">component</a>-&gt;<a class="code"
+                                                                                      href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a>;
+                </div>
+                <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">previous</a>-&gt;<a
+                        class="code" href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a> = <a
+                        class="code" href="structcomponent.html">component</a>-&gt;<a class="code"
+                                                                                      href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a>;
+                </div>
+                <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; }</div>
+                <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; free(<a class="code"
+                                                                                                       href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#aecb3b0d045ada529257a2fbf8f829599">id</a>);
+                </div>
+                <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; free(<a class="code"
+                                                                                                       href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a5ac083a645d964373f022d03df4849c8">name</a>);
+                </div>
+                <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; free(<a class="code"
+                                                                                                       href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#a8444d6e0dfe2bbab0b5e7b24308f1559">description</a>);
+                </div>
+                <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; free(<a class="code"
+                                                                                                       href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#adc7b91c573f74d6154ceadd5dada7d21">items</a>);
+                </div>
+                <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; free(<a class="code"
+                                                                                                       href="structcomponent.html">component</a>);
+                </div>
+                <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
+                <div class="ttc" id="structcomponent_html">
+                    <div class="ttname"><a href="structcomponent.html">component</a></div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:37</div>
+                </div>
+                <div class="ttc" id="structcomponent_html_aecb3b0d045ada529257a2fbf8f829599">
+                    <div class="ttname"><a
+                            href="structcomponent.html#aecb3b0d045ada529257a2fbf8f829599">component::id</a></div>
+                    <div class="ttdeci">char * id</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:38</div>
+                </div>
+                <div class="ttc" id="structcomponent_html_adc7b91c573f74d6154ceadd5dada7d21">
+                    <div class="ttname"><a href="structcomponent.html#adc7b91c573f74d6154ceadd5dada7d21">component::items</a>
+                    </div>
+                    <div class="ttdeci">itemList items</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:42</div>
+                </div>
+                <div class="ttc" id="structcomponent_html_a5ac083a645d964373f022d03df4849c8">
+                    <div class="ttname"><a
+                            href="structcomponent.html#a5ac083a645d964373f022d03df4849c8">component::name</a></div>
+                    <div class="ttdeci">char * name</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:39</div>
+                </div>
+                <div class="ttc" id="structcomponent_html_a9b3dee7117b6f9a9dc48bacf22a7e9cf">
+                    <div class="ttname"><a href="structcomponent.html#a9b3dee7117b6f9a9dc48bacf22a7e9cf">component::previous</a>
+                    </div>
+                    <div class="ttdeci">struct component * previous</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:45</div>
+                </div>
+                <div class="ttc" id="structcomponent_html_a8444d6e0dfe2bbab0b5e7b24308f1559">
+                    <div class="ttname"><a href="structcomponent.html#a8444d6e0dfe2bbab0b5e7b24308f1559">component::description</a>
+                    </div>
+                    <div class="ttdeci">char * description</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:40</div>
+                </div>
+                <div class="ttc" id="structcomponent_html_a2248972e14af33b471c4c4b995a623c0">
+                    <div class="ttname"><a
+                            href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">component::next</a></div>
+                    <div class="ttdeci">struct component * next</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:44</div>
+                </div>
+            </div><!-- fragment -->
+        </div>
+    </div>
+    <a id="ada96fe9d6f94879e3b688c9772c5a5fd"></a>
+    <h2 class="memtitle"><span class="permalink"><a href="#ada96fe9d6f94879e3b688c9772c5a5fd">&#9670;&nbsp;</a></span>deleteComponentOption()
+    </h2>
+
+    <div class="memitem">
+        <div class="memproto">
+            <table class="memname">
+                <tr>
+                    <td class="memname">void deleteComponentOption</td>
+                    <td>(</td>
+                    <td class="paramtype">struct <a class="el" href="structcomponent.html">component</a> *&#160;</td>
+                    <td class="paramname"><em>componentList</em></td>
+                    <td>)</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="memdoc">
+            <p>Asks for the file where the components id are stored in and tries to delete all of them </p>
+            <dl class="params">
+                <dt>Parameters</dt>
+                <dd>
+                    <table class="params">
+                        <tr>
+                            <td class="paramname">componentList</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </dd>
+            </dl>
+            <div class="fragment">
+                <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; {</div>
+                <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; <span
+                        class="keywordtype">int</span> confirm;
+                </div>
+                <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; <span
+                        class="keywordtype">char</span> fileName[100] = <span class="stringliteral">&quot;&quot;</span>;
+                </div>
+                <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; <span
+                        class="keywordtype">char</span> *componentId = malloc(<span class="keyword">sizeof</span>(<span
+                        class="keywordtype">char</span>) * 255);
+                </div>
+                <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
+                <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
+                <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; FILE *file = NULL;</div>
+                <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; <span
+                        class="keywordflow">do</span> {
+                </div>
+                <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; printf(<span
+                        class="stringliteral">&quot;Introduzca la ruta fichero donde se encuentran los identificadores\n&gt; &quot;</span>);
+                </div>
+                <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; gets(fileName);</div>
+                <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; printf(<span
+                        class="stringliteral">&quot;%s&quot;</span>, fileName);
+                </div>
+                <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; fflush(stdin);</div>
+                <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; file = fopen(fileName,
+                    <span class="stringliteral">&quot;r&quot;</span>);
+                </div>
+                <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; } <span
+                        class="keywordflow">while</span> (file == NULL);
+                </div>
+                <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
+                <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; <span
+                        class="keywordflow">while</span> (!feof(file)) {
+                </div>
+                <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; fscanf(file, <span
+                        class="stringliteral">&quot;%s\n&quot;</span>, componentId);
+                </div>
+                <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; <span class="keyword">struct </span><a
+                        class="code" href="structcomponent.html">component</a> *<a class="code"
+                                                                                   href="structcomponent.html">component</a>
+                    = <a class="code"
+                         href="_component_8c.html#ae0e27c5b1c826bb0b911ac1c7ccb2e78">getComponentById</a>(<a
+                            class="code" href="structcomponent.html">componentList</a>, componentId);
+                </div>
+                <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; <span
+                        class="keywordflow">if</span> (<a class="code" href="structcomponent.html">component</a> !=
+                    NULL) {
+                </div>
+                <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; <span
+                        class="keywordflow">if</span> (<a class="code" href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#adc7b91c573f74d6154ceadd5dada7d21">items</a> != NULL) {
+                </div>
+                <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; confirm = 2;</div>
+                <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; <span
+                        class="keywordflow">do</span> {
+                </div>
+                <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; printf(<span
+                        class="stringliteral">&quot;Este componente contiene art%cculos que ser%cn eliminados.\n&quot;</span>
+                </div>
+                <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; <span
+                        class="stringliteral">&quot;%cDesea continuar?(1 = si | 2 = no)\n&gt; &quot;</span>, 161, 160,
+                    168);
+                </div>
+                <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; scanf(<span
+                        class="stringliteral">&quot;%d&quot;</span>, &amp;confirm);
+                </div>
+                <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; fflush(stdin);</div>
+                <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; } <span
+                        class="keywordflow">while</span> (confirm != 0 &amp;&amp; confirm != 1);
+                </div>
+                <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; <span
+                        class="keywordflow">if</span> (confirm == 0) <span class="keywordflow">continue</span>;
+                </div>
+                <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; }</div>
+                <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; printf(<span
+                        class="stringliteral">&quot;Eliminando el componente con identificador %s...\n&quot;</span>,
+                    componentId);
+                </div>
+                <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
+                <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; <span class="comment">//Deletes all the component&#39;s items</span>
+                </div>
+                <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; <span class="keyword">struct </span><a
+                        class="code" href="structitem.html">item</a> *<a class="code" href="structitem.html">item</a> =
+                    <a class="code" href="structcomponent.html">component</a>-&gt;<a class="code"
+                                                                                     href="structcomponent.html#adc7b91c573f74d6154ceadd5dada7d21">items</a>;
+                </div>
+                <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; <span
+                        class="keywordflow">if</span> (<a class="code" href="structitem.html">item</a> != NULL) {
+                </div>
+                <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; <a class="code"
+                                                                                                  href="structitem.html">item</a>
+                    = <a class="code" href="structitem.html">item</a>-&gt;<a class="code"
+                                                                             href="structitem.html#afeb02083442f50fbfebad5c4991aec1f">next</a>;
+                </div>
+                <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; <span
+                        class="keywordflow">while</span> (<a class="code" href="structitem.html">item</a> != NULL) {
+                </div>
+                <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; <a class="code"
+                                                                                                  href="_item_8c.html#a02397badc008485d3a48e20550a85615">deleteItem</a>(<a
+                        class="code" href="structcomponent.html">component</a>-&gt;<a class="code"
+                                                                                      href="structcomponent.html#adc7b91c573f74d6154ceadd5dada7d21">items</a>,
+                    <a class="code" href="structitem.html">item</a>);
+                </div>
+                <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; <a class="code"
+                                                                                                  href="structitem.html">item</a>
+                    = <a class="code" href="structitem.html">item</a>-&gt;<a class="code"
+                                                                             href="structitem.html#afeb02083442f50fbfebad5c4991aec1f">next</a>;
+                </div>
+                <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; }</div>
+                <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; }</div>
+                <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
+                <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; <a class="code"
+                                                                                                  href="_component_8c.html#a1905a7c06563958dfe30267752a8b182">deleteComponent</a>(<a
+                        class="code" href="structcomponent.html">componentList</a>, <a class="code"
+                                                                                       href="structcomponent.html">component</a>);
+                </div>
+                <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
+                <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; } <span
+                        class="keywordflow">else</span> {
+                </div>
+                <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; printf(<span
+                        class="stringliteral">&quot;No se ha encontrado el componente con identificador %s...\n&quot;</span>,
+                    componentId);
+                </div>
+                <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; }</div>
+                <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; }</div>
+                <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; free(componentId);</div>
+                <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;</div>
+                <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;}</div>
+                <div class="ttc" id="structcomponent_html">
+                    <div class="ttname"><a href="structcomponent.html">component</a></div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:37</div>
+                </div>
+                <div class="ttc" id="_component_8c_html_ae0e27c5b1c826bb0b911ac1c7ccb2e78">
+                    <div class="ttname"><a
+                            href="_component_8c.html#ae0e27c5b1c826bb0b911ac1c7ccb2e78">getComponentById</a></div>
+                    <div class="ttdeci">struct component * getComponentById(struct component *componentList, char *id)
+                    </div>
+                    <div class="ttdef"><b>Definition:</b> Component.c:41</div>
+                </div>
+                <div class="ttc" id="structitem_html">
+                    <div class="ttname"><a href="structitem.html">item</a></div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:19</div>
+                </div>
+                <div class="ttc" id="structcomponent_html_adc7b91c573f74d6154ceadd5dada7d21">
+                    <div class="ttname"><a href="structcomponent.html#adc7b91c573f74d6154ceadd5dada7d21">component::items</a>
+                    </div>
+                    <div class="ttdeci">itemList items</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:42</div>
+                </div>
+                <div class="ttc" id="_component_8c_html_a1905a7c06563958dfe30267752a8b182">
+                    <div class="ttname"><a
+                            href="_component_8c.html#a1905a7c06563958dfe30267752a8b182">deleteComponent</a></div>
+                    <div class="ttdeci">void deleteComponent(struct component *componentList, struct component
+                        *component)
+                    </div>
+                    <div class="ttdef"><b>Definition:</b> Component.c:104</div>
+                </div>
+                <div class="ttc" id="structitem_html_afeb02083442f50fbfebad5c4991aec1f">
+                    <div class="ttname"><a href="structitem.html#afeb02083442f50fbfebad5c4991aec1f">item::next</a></div>
+                    <div class="ttdeci">struct item * next</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:31</div>
+                </div>
+                <div class="ttc" id="_item_8c_html_a02397badc008485d3a48e20550a85615">
+                    <div class="ttname"><a href="_item_8c.html#a02397badc008485d3a48e20550a85615">deleteItem</a></div>
+                    <div class="ttdeci">void deleteItem(struct item *itemList, struct item *item)</div>
+                    <div class="ttdef"><b>Definition:</b> Item.c:77</div>
+                </div>
+            </div><!-- fragment -->
+        </div>
+    </div>
+    <a id="ae0e27c5b1c826bb0b911ac1c7ccb2e78"></a>
+    <h2 class="memtitle"><span class="permalink"><a href="#ae0e27c5b1c826bb0b911ac1c7ccb2e78">&#9670;&nbsp;</a></span>getComponentById()
+    </h2>
+
+    <div class="memitem">
+        <div class="memproto">
+            <table class="memname">
+                <tr>
+                    <td class="memname">struct <a class="el" href="structcomponent.html">component</a>* getComponentById
+                    </td>
+                    <td>(</td>
+                    <td class="paramtype">struct <a class="el" href="structcomponent.html">component</a> *&#160;</td>
+                    <td class="paramname"><em>componentList</em>,</td>
+                </tr>
+                <tr>
+                    <td class="paramkey"></td>
+                    <td></td>
+                    <td class="paramtype">char *&#160;</td>
+                    <td class="paramname"><em>id</em>&#160;</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>)</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="memdoc">
+            <p>Search for a component in the list </p>
+            <dl class="params">
+                <dt>Parameters</dt>
+                <dd>
+                    <table class="params">
+                        <tr>
+                            <td class="paramname">the</td>
+                            <td>list to search into</td>
+                        </tr>
+                        <tr>
+                            <td class="paramname">id</td>
+                            <td>identifier of a component</td>
+                        </tr>
+                    </table>
+                </dd>
+            </dl>
+            <dl class="section return">
+                <dt>Returns</dt>
+                <dd>a pointer to the component if found, null if not</dd>
+            </dl>
+            <div class="fragment">
+                <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; {</div>
+                <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; <span
+                        class="keywordflow">if</span> (<a class="code" href="structcomponent.html">componentList</a> ==
+                    NULL) <span class="keywordflow">return</span> NULL;
+                </div>
+                <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; <span class="keyword">struct </span><a
+                        class="code" href="structcomponent.html">component</a> *<a class="code"
+                                                                                   href="structcomponent.html">component</a>
+                    = <a class="code" href="structcomponent.html">componentList</a>-&gt;<a class="code"
+                                                                                           href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a>;
+                </div>
+                <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; <span
+                        class="keywordflow">while</span> (<a class="code" href="structcomponent.html">component</a> !=
+                    NULL) {
+                </div>
+                <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; <span
+                        class="keywordflow">if</span> (strcmp(<a class="code" href="structcomponent.html">component</a>-&gt;<a
+                        class="code" href="structcomponent.html#aecb3b0d045ada529257a2fbf8f829599">id</a>, <span
+                        class="keywordtype">id</span>) == 0) <span class="keywordflow">return</span> <a class="code"
+                                                                                                        href="structcomponent.html">component</a>;
+                </div>
+                <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; <a class="code"
+                                                                                                  href="structcomponent.html">component</a>
+                    = <a class="code" href="structcomponent.html">component</a>-&gt;<a class="code"
+                                                                                       href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">next</a>;
+                </div>
+                <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; }</div>
+                <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; <span
+                        class="keywordflow">return</span> NULL;
+                </div>
+                <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+                <div class="ttc" id="structcomponent_html">
+                    <div class="ttname"><a href="structcomponent.html">component</a></div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:37</div>
+                </div>
+                <div class="ttc" id="structcomponent_html_aecb3b0d045ada529257a2fbf8f829599">
+                    <div class="ttname"><a
+                            href="structcomponent.html#aecb3b0d045ada529257a2fbf8f829599">component::id</a></div>
+                    <div class="ttdeci">char * id</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:38</div>
+                </div>
+                <div class="ttc" id="structcomponent_html_a2248972e14af33b471c4c4b995a623c0">
+                    <div class="ttname"><a
+                            href="structcomponent.html#a2248972e14af33b471c4c4b995a623c0">component::next</a></div>
+                    <div class="ttdeci">struct component * next</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:44</div>
+                </div>
+            </div><!-- fragment -->
+        </div>
+    </div>
     <a id="a5e8f5ebaaedf4ffa8d2497040be871d2"></a>
     <h2 class="memtitle"><span class="permalink"><a href="#a5e8f5ebaaedf4ffa8d2497040be871d2">&#9670;&nbsp;</a></span>showComponent()
     </h2>
@@ -126,55 +1223,54 @@ $(function() {
                 </dd>
             </dl>
             <div class="fragment">
-                <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; {</div>
-                <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; printf(<span
+                <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; {</div>
+                <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; printf(<span
                         class="stringliteral">&quot;---------------------------------------\n&quot;</span></div>
-                <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; <span
+                <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; <span
                         class="stringliteral">&quot;Componente %s\n&quot;</span></div>
-                <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; <span
+                <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; <span
                         class="stringliteral">&quot;---------------------------------------\n&quot;</span></div>
-                <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; <span
+                <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; <span
                         class="stringliteral">&quot;Nombre: %s\nDescripci%cn: %s\nStock General: %d\n\n&quot;</span>, <a
                         class="code" href="structcomponent.html">component</a>.<a class="code"
                                                                                   href="structcomponent.html#aecb3b0d045ada529257a2fbf8f829599">id</a>,
                     <a class="code" href="structcomponent.html">component</a>.<a class="code"
                                                                                  href="structcomponent.html#a5ac083a645d964373f022d03df4849c8">name</a>,
                 </div>
-                <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; 162, <a class="code"
+                <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; 162, <a class="code"
                                                                                                        href="structcomponent.html">component</a>.<a
                         class="code" href="structcomponent.html#a8444d6e0dfe2bbab0b5e7b24308f1559">description</a>, <a
                         class="code" href="structcomponent.html">component</a>.<a class="code"
                                                                                   href="structcomponent.html#a9f6b1d8f565c649873cd57896391b2aa">stock</a>);
                 </div>
-                <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-                <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
+                <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
                 <div class="ttc" id="structcomponent_html">
                     <div class="ttname"><a href="structcomponent.html">component</a></div>
-                    <div class="ttdef"><b>Definition:</b> Component.h:18</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:37</div>
                 </div>
                 <div class="ttc" id="structcomponent_html_aecb3b0d045ada529257a2fbf8f829599">
                     <div class="ttname"><a
                             href="structcomponent.html#aecb3b0d045ada529257a2fbf8f829599">component::id</a></div>
                     <div class="ttdeci">char * id</div>
-                    <div class="ttdef"><b>Definition:</b> Component.h:19</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:38</div>
                 </div>
                 <div class="ttc" id="structcomponent_html_a5ac083a645d964373f022d03df4849c8">
                     <div class="ttname"><a
                             href="structcomponent.html#a5ac083a645d964373f022d03df4849c8">component::name</a></div>
                     <div class="ttdeci">char * name</div>
-                    <div class="ttdef"><b>Definition:</b> Component.h:20</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:39</div>
                 </div>
                 <div class="ttc" id="structcomponent_html_a9f6b1d8f565c649873cd57896391b2aa">
                     <div class="ttname"><a href="structcomponent.html#a9f6b1d8f565c649873cd57896391b2aa">component::stock</a>
                     </div>
                     <div class="ttdeci">int stock</div>
-                    <div class="ttdef"><b>Definition:</b> Component.h:22</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:41</div>
                 </div>
                 <div class="ttc" id="structcomponent_html_a8444d6e0dfe2bbab0b5e7b24308f1559">
                     <div class="ttname"><a href="structcomponent.html#a8444d6e0dfe2bbab0b5e7b24308f1559">component::description</a>
                     </div>
                     <div class="ttdeci">char * description</div>
-                    <div class="ttdef"><b>Definition:</b> Component.h:21</div>
+                    <div class="ttdef"><b>Definition:</b> structs.h:40</div>
                 </div>
             </div><!-- fragment -->
         </div>

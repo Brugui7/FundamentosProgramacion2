@@ -22,4 +22,8 @@ struct component *getComponentById(struct component *component, char *id);
 
 void deleteComponent(struct component *componentList, struct component *component);
 
+struct component *createComponentOption(struct component *componentList);
+
+void deleteComponentOption(struct component *componentList);
+
 #endif //FUNDAMENTOS2_COMPONENT_H

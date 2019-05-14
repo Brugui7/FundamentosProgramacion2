@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9"/>
     <meta name="generator" content="Doxygen 1.8.15"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Boletin 3: D:/CLionWorkspace/fundamentos2/boletin3/model/Item.h Source File</title>
+    <title>Boletin 3: D:/CLionWorkspace/fundamentos2/boletin3/function/Item.h Source File</title>
     <link href="tabs.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="dynsections.js"></script>
@@ -43,7 +43,7 @@ $(function() {
             <li class="navelem"><a class="el" href="dir_fd4d96c3073293ef25b463a8b2ba7d0d.html">CLionWorkspace</a></li>
             <li class="navelem"><a class="el" href="dir_06d955a84931e61845c21423bb755f26.html">fundamentos2</a></li>
             <li class="navelem"><a class="el" href="dir_8b349b0e8c53cf32cdbfcc000c6f3a7e.html">boletin3</a></li>
-            <li class="navelem"><a class="el" href="dir_5a014e9fd54145b6313dd4304cc7332b.html">model</a></li>
+            <li class="navelem"><a class="el" href="dir_33caf0d258a8a7fd1d37b0eba04b5df8.html">function</a></li>
         </ul>
     </div>
 </div><!-- top -->
@@ -66,194 +66,93 @@ $(function() {
         <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span>
         </div>
         <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-        <div class="line"><a name="l00014"></a><span class="lineno"><a class="line"
-                                                                       href="_item_8h.html#a500822c521c7c220a6db1cb25a2d60ac">   14</a></span>&#160;<span
-                class="preprocessor">#define NOT_DEFINED 0</span></div>
-        <div class="line"><a name="l00015"></a><span class="lineno"><a class="line"
-                                                                       href="_item_8h.html#ad19fce15d3295ab86d386a21e31cddd9">   15</a></span>&#160;<span
-                class="preprocessor">#define SOFTWARE 1</span></div>
-        <div class="line"><a name="l00016"></a><span class="lineno"><a class="line"
-                                                                       href="_item_8h.html#ae63cc10269ee1bb0c967a74ac5a0d0d5">   16</a></span>&#160;<span
-                class="preprocessor">#define HARDWARE 2</span></div>
-        <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-        <div class="line"><a name="l00018"></a><span class="lineno"><a class="line"
-                                                                       href="structitem.html">   18</a></span>&#160;<span
-                class="keyword">struct </span><a class="code" href="structitem.html">item</a> {
-        </div>
-        <div class="line"><a name="l00019"></a><span class="lineno"><a class="line"
-                                                                       href="structitem.html#a7b6e4754dcb0d25a6c3ac924a219af87">   19</a></span>&#160;
-            <span class="keywordtype">char</span> *<a class="code"
-                                                      href="structitem.html#a7b6e4754dcb0d25a6c3ac924a219af87">generalId</a>;
-        </div>
-        <div class="line"><a name="l00020"></a><span class="lineno"><a class="line"
-                                                                       href="structitem.html#a7441ef0865bcb3db9b8064dd7375c1ea">   20</a></span>&#160;
-            <span class="keywordtype">int</span> <a class="code"
-                                                    href="structitem.html#a7441ef0865bcb3db9b8064dd7375c1ea">id</a>;
-        </div>
-        <div class="line"><a name="l00021"></a><span class="lineno"><a class="line"
-                                                                       href="structitem.html#ae0aa7fa62956c16c59ba9dc2b9a93e19">   21</a></span>&#160;
-            <span class="keywordtype">char</span> *<a class="code"
-                                                      href="structitem.html#ae0aa7fa62956c16c59ba9dc2b9a93e19">model</a>;
-        </div>
-        <div class="line"><a name="l00022"></a><span class="lineno"><a class="line"
-                                                                       href="structitem.html#acd203108421fd9ef13b4d789e698b68a">   22</a></span>&#160;
-            <span class="keywordtype">char</span> *<a class="code"
-                                                      href="structitem.html#acd203108421fd9ef13b4d789e698b68a">brand</a>;
-        </div>
-        <div class="line"><a name="l00023"></a><span class="lineno"><a class="line"
-                                                                       href="structitem.html#ac7fed69f59ab01e6ab2a6b8c2db16e6f">   23</a></span>&#160;
-            <span class="keyword">struct </span>tm <a class="code"
-                                                      href="structitem.html#ac7fed69f59ab01e6ab2a6b8c2db16e6f">insertDate</a>;
-        </div>
-        <div class="line"><a name="l00024"></a><span class="lineno"><a class="line"
-                                                                       href="structitem.html#a9f6b1d8f565c649873cd57896391b2aa">   24</a></span>&#160;
-            <span class="keywordtype">int</span> <a class="code"
-                                                    href="structitem.html#a9f6b1d8f565c649873cd57896391b2aa">stock</a>;
-        </div>
-        <div class="line"><a name="l00025"></a><span class="lineno"><a class="line"
-                                                                       href="structitem.html#a7aead736a07eaf25623ad7bfa1f0ee2d">   25</a></span>&#160;
-            <span class="keyword">enum</span> <a class="code" href="structitem.html#a7aead736a07eaf25623ad7bfa1f0ee2d">type</a>
-            {
-        </div>
-        <div class="line"><a name="l00026"></a><span class="lineno"><a class="line"
-                                                                       href="structitem.html#a7aead736a07eaf25623ad7bfa1f0ee2dacf442184e2d6d7821e741e8ec9cceaf8">   26</a></span>&#160;
-            <a class="code" href="structitem.html#a7aead736a07eaf25623ad7bfa1f0ee2dac92b0b3db780bf78817782d9ce1ca79a">notDefined</a>
-            = <a class="code" href="_item_8h.html#a500822c521c7c220a6db1cb25a2d60ac">NOT_DEFINED</a>, <a class="code"
-                                                                                                         href="structitem.html#a7aead736a07eaf25623ad7bfa1f0ee2dacf442184e2d6d7821e741e8ec9cceaf8">software</a>
-            = <a class="code" href="_item_8h.html#ad19fce15d3295ab86d386a21e31cddd9">SOFTWARE</a>, <a class="code"
-                                                                                                      href="structitem.html#a7aead736a07eaf25623ad7bfa1f0ee2da41b91ec2ec246009a6c05166c265c06a">hardware</a>
-            = <a class="code" href="_item_8h.html#ae63cc10269ee1bb0c967a74ac5a0d0d5">HARDWARE</a></div>
-        <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; } <a class="code"
-                                                                                            href="structitem.html#a7aead736a07eaf25623ad7bfa1f0ee2d">type</a>;
-        </div>
-        <div class="line"><a name="l00028"></a><span class="lineno"><a class="line"
-                                                                       href="structitem.html#a700e509fe98128ae4b11d986239ea787">   28</a></span>&#160;
-            <span class="keywordtype">float</span> <a class="code"
-                                                      href="structitem.html#a700e509fe98128ae4b11d986239ea787">itemPrice</a>;
-        </div>
-        <div class="line"><a name="l00029"></a><span class="lineno"><a class="line"
-                                                                       href="structitem.html#a938832c78172988252a6a52041aa227e">   29</a></span>&#160;
-            <span class="keywordtype">float</span> <a class="code"
-                                                      href="structitem.html#a938832c78172988252a6a52041aa227e">shippingPrice</a>;
-        </div>
-        <div class="line"><a name="l00030"></a><span class="lineno"><a class="line"
-                                                                       href="structitem.html#afeb02083442f50fbfebad5c4991aec1f">   30</a></span>&#160;
-            <span class="keyword">struct </span><a class="code" href="structitem.html">item</a> *<a class="code"
-                                                                                                    href="structitem.html#afeb02083442f50fbfebad5c4991aec1f">next</a>;
-        </div>
-        <div class="line"><a name="l00031"></a><span class="lineno"><a class="line"
-                                                                       href="structitem.html#abfa0e0d59d95d3d84816bc83c5d4f7f9">   31</a></span>&#160;
-            <span class="keyword">struct </span><a class="code" href="structitem.html">item</a> *<a class="code"
-                                                                                                    href="structitem.html#abfa0e0d59d95d3d84816bc83c5d4f7f9">previous</a>;
-        </div>
-        <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
-        <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-        <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span
+        <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span
                 class="keywordtype">void</span> <a class="code" href="_item_8h.html#a5c1fe2ddc7a20caebd9cc30de7972b25">showItem</a>(<span
                 class="keyword">struct</span> <a class="code" href="structitem.html">item</a> <a class="code"
                                                                                                  href="structitem.html">item</a>);
         </div>
-        <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-        <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-        <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif //FUNDAMENTOS2_ITEM_H</span>
+        <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+        <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span
+                class="keyword">struct </span><a class="code" href="structcomponent.html">component</a> *<a class="code"
+                                                                                                            href="_item_8h.html#adf3010f7f2488b3d269a86144743dbca">createItemOption</a>(<span
+                class="keyword">struct</span> <a class="code" href="structcomponent.html">component</a> *<a class="code"
+                                                                                                            href="structcomponent.html">componentList</a>);
+        </div>
+        <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+        <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span
+                class="keyword">struct </span><a class="code" href="structitem.html">item</a> *<a class="code"
+                                                                                                  href="_item_8h.html#a853bd4f8fde570afd8e574b8804c67ad">addItem</a>(<span
+                class="keyword">struct</span> <a class="code" href="structitem.html">item</a> *<a class="code"
+                                                                                                  href="structitem.html">itemList</a>,
+            <span class="keyword">struct</span> <a class="code" href="structitem.html">item</a> *<a class="code"
+                                                                                                    href="structitem.html">item</a>,
+            <span class="keywordtype">char</span> *componentId, <span class="keywordtype">int</span> itemListNumber);
+        </div>
+        <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+        <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span
+                class="keyword">struct </span><a class="code" href="structitem.html">item</a> *<a class="code"
+                                                                                                  href="_item_8h.html#a0de1d09cd09a538b513849e14e33db7d">getItemOnComponent</a>(<span
+                class="keywordtype">char</span> *itemId, <span class="keyword">struct</span> <a class="code"
+                                                                                                href="structcomponent.html">component</a>
+            *<a class="code" href="structcomponent.html">component</a>);
+        </div>
+        <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+        <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span
+                class="keywordtype">void</span> <a class="code" href="_item_8h.html#a437c7d3e19df9996ebeb151e047eb1a5">deleteItemOption</a>(<span
+                class="keyword">struct</span> <a class="code" href="structcomponent.html">component</a> *<a class="code"
+                                                                                                            href="structcomponent.html">componentList</a>);
+        </div>
+        <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+        <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span
+                class="keywordtype">void</span> <a class="code" href="_item_8h.html#a02397badc008485d3a48e20550a85615">deleteItem</a>(<span
+                class="keyword">struct</span> <a class="code" href="structitem.html">item</a> *<a class="code"
+                                                                                                  href="structitem.html">itemList</a>,
+            <span class="keyword">struct</span> <a class="code" href="structitem.html">item</a> *<a class="code"
+                                                                                                    href="structitem.html">item</a>);
+        </div>
+        <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+        <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+        <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif //FUNDAMENTOS2_ITEM_H</span>
+        </div>
+        <div class="ttc" id="structcomponent_html">
+            <div class="ttname"><a href="structcomponent.html">component</a></div>
+            <div class="ttdef"><b>Definition:</b> structs.h:37</div>
         </div>
         <div class="ttc" id="_item_8h_html_a5c1fe2ddc7a20caebd9cc30de7972b25">
             <div class="ttname"><a href="_item_8h.html#a5c1fe2ddc7a20caebd9cc30de7972b25">showItem</a></div>
             <div class="ttdeci">void showItem(struct item item)</div>
-            <div class="ttdef"><b>Definition:</b> Item.c:15</div>
-        </div>
-        <div class="ttc" id="structitem_html_a7aead736a07eaf25623ad7bfa1f0ee2dacf442184e2d6d7821e741e8ec9cceaf8">
-            <div class="ttname"><a
-                    href="structitem.html#a7aead736a07eaf25623ad7bfa1f0ee2dacf442184e2d6d7821e741e8ec9cceaf8">item::software</a>
-            </div>
-            <div class="ttdef"><b>Definition:</b> Item.h:26</div>
+            <div class="ttdef"><b>Definition:</b> Item.c:20</div>
         </div>
         <div class="ttc" id="structitem_html">
             <div class="ttname"><a href="structitem.html">item</a></div>
-            <div class="ttdef"><b>Definition:</b> Item.h:18</div>
+            <div class="ttdef"><b>Definition:</b> structs.h:19</div>
         </div>
-        <div class="ttc" id="structitem_html_a938832c78172988252a6a52041aa227e">
-            <div class="ttname"><a href="structitem.html#a938832c78172988252a6a52041aa227e">item::shippingPrice</a>
+        <div class="ttc" id="_item_8h_html_a437c7d3e19df9996ebeb151e047eb1a5">
+            <div class="ttname"><a href="_item_8h.html#a437c7d3e19df9996ebeb151e047eb1a5">deleteItemOption</a></div>
+            <div class="ttdeci">void deleteItemOption(struct component *componentList)</div>
+            <div class="ttdef"><b>Definition:</b> Item.c:189</div>
+        </div>
+        <div class="ttc" id="_item_8h_html_adf3010f7f2488b3d269a86144743dbca">
+            <div class="ttname"><a href="_item_8h.html#adf3010f7f2488b3d269a86144743dbca">createItemOption</a></div>
+            <div class="ttdeci">struct component * createItemOption(struct component *componentList)</div>
+            <div class="ttdef"><b>Definition:</b> Item.c:113</div>
+        </div>
+        <div class="ttc" id="_item_8h_html_a02397badc008485d3a48e20550a85615">
+            <div class="ttname"><a href="_item_8h.html#a02397badc008485d3a48e20550a85615">deleteItem</a></div>
+            <div class="ttdeci">void deleteItem(struct item *itemList, struct item *item)</div>
+            <div class="ttdef"><b>Definition:</b> Item.c:77</div>
+        </div>
+        <div class="ttc" id="_item_8h_html_a0de1d09cd09a538b513849e14e33db7d">
+            <div class="ttname"><a href="_item_8h.html#a0de1d09cd09a538b513849e14e33db7d">getItemOnComponent</a></div>
+            <div class="ttdeci">struct item * getItemOnComponent(char *itemId, struct component *component)</div>
+            <div class="ttdef"><b>Definition:</b> Item.c:235</div>
+        </div>
+        <div class="ttc" id="_item_8h_html_a853bd4f8fde570afd8e574b8804c67ad">
+            <div class="ttname"><a href="_item_8h.html#a853bd4f8fde570afd8e574b8804c67ad">addItem</a></div>
+            <div class="ttdeci">struct item * addItem(struct item *itemList, struct item *item, char *componentId, int
+                itemListNumber)
             </div>
-            <div class="ttdeci">float shippingPrice</div>
-            <div class="ttdef"><b>Definition:</b> Item.h:29</div>
-        </div>
-        <div class="ttc" id="structitem_html_a7aead736a07eaf25623ad7bfa1f0ee2dac92b0b3db780bf78817782d9ce1ca79a">
-            <div class="ttname"><a
-                    href="structitem.html#a7aead736a07eaf25623ad7bfa1f0ee2dac92b0b3db780bf78817782d9ce1ca79a">item::notDefined</a>
-            </div>
-            <div class="ttdef"><b>Definition:</b> Item.h:26</div>
-        </div>
-        <div class="ttc" id="structitem_html_a7441ef0865bcb3db9b8064dd7375c1ea">
-            <div class="ttname"><a href="structitem.html#a7441ef0865bcb3db9b8064dd7375c1ea">item::id</a></div>
-            <div class="ttdeci">int id</div>
-            <div class="ttdef"><b>Definition:</b> Item.h:20</div>
-        </div>
-        <div class="ttc" id="structitem_html_ac7fed69f59ab01e6ab2a6b8c2db16e6f">
-            <div class="ttname"><a href="structitem.html#ac7fed69f59ab01e6ab2a6b8c2db16e6f">item::insertDate</a></div>
-            <div class="ttdeci">struct tm insertDate</div>
-            <div class="ttdef"><b>Definition:</b> Item.h:23</div>
-        </div>
-        <div class="ttc" id="_item_8h_html_ad19fce15d3295ab86d386a21e31cddd9">
-            <div class="ttname"><a href="_item_8h.html#ad19fce15d3295ab86d386a21e31cddd9">SOFTWARE</a></div>
-            <div class="ttdeci">#define SOFTWARE</div>
-            <div class="ttdef"><b>Definition:</b> Item.h:15</div>
-        </div>
-        <div class="ttc" id="structitem_html_a7b6e4754dcb0d25a6c3ac924a219af87">
-            <div class="ttname"><a href="structitem.html#a7b6e4754dcb0d25a6c3ac924a219af87">item::generalId</a></div>
-            <div class="ttdeci">char * generalId</div>
-            <div class="ttdef"><b>Definition:</b> Item.h:19</div>
-        </div>
-        <div class="ttc" id="_item_8h_html_ae63cc10269ee1bb0c967a74ac5a0d0d5">
-            <div class="ttname"><a href="_item_8h.html#ae63cc10269ee1bb0c967a74ac5a0d0d5">HARDWARE</a></div>
-            <div class="ttdeci">#define HARDWARE</div>
-            <div class="ttdef"><b>Definition:</b> Item.h:16</div>
-        </div>
-        <div class="ttc" id="structitem_html_a700e509fe98128ae4b11d986239ea787">
-            <div class="ttname"><a href="structitem.html#a700e509fe98128ae4b11d986239ea787">item::itemPrice</a></div>
-            <div class="ttdeci">float itemPrice</div>
-            <div class="ttdef"><b>Definition:</b> Item.h:28</div>
-        </div>
-        <div class="ttc" id="structitem_html_a9f6b1d8f565c649873cd57896391b2aa">
-            <div class="ttname"><a href="structitem.html#a9f6b1d8f565c649873cd57896391b2aa">item::stock</a></div>
-            <div class="ttdeci">int stock</div>
-            <div class="ttdef"><b>Definition:</b> Item.h:24</div>
-        </div>
-        <div class="ttc" id="_item_8h_html_a500822c521c7c220a6db1cb25a2d60ac">
-            <div class="ttname"><a href="_item_8h.html#a500822c521c7c220a6db1cb25a2d60ac">NOT_DEFINED</a></div>
-            <div class="ttdeci">#define NOT_DEFINED</div>
-            <div class="ttdef"><b>Definition:</b> Item.h:14</div>
-        </div>
-        <div class="ttc" id="structitem_html_a7aead736a07eaf25623ad7bfa1f0ee2da41b91ec2ec246009a6c05166c265c06a">
-            <div class="ttname"><a
-                    href="structitem.html#a7aead736a07eaf25623ad7bfa1f0ee2da41b91ec2ec246009a6c05166c265c06a">item::hardware</a>
-            </div>
-            <div class="ttdef"><b>Definition:</b> Item.h:26</div>
-        </div>
-        <div class="ttc" id="structitem_html_abfa0e0d59d95d3d84816bc83c5d4f7f9">
-            <div class="ttname"><a href="structitem.html#abfa0e0d59d95d3d84816bc83c5d4f7f9">item::previous</a></div>
-            <div class="ttdeci">struct item * previous</div>
-            <div class="ttdef"><b>Definition:</b> Item.h:31</div>
-        </div>
-        <div class="ttc" id="structitem_html_a7aead736a07eaf25623ad7bfa1f0ee2d">
-            <div class="ttname"><a href="structitem.html#a7aead736a07eaf25623ad7bfa1f0ee2d">item::type</a></div>
-            <div class="ttdeci">type</div>
-            <div class="ttdef"><b>Definition:</b> Item.h:25</div>
-        </div>
-        <div class="ttc" id="structitem_html_acd203108421fd9ef13b4d789e698b68a">
-            <div class="ttname"><a href="structitem.html#acd203108421fd9ef13b4d789e698b68a">item::brand</a></div>
-            <div class="ttdeci">char * brand</div>
-            <div class="ttdef"><b>Definition:</b> Item.h:22</div>
-        </div>
-        <div class="ttc" id="structitem_html_ae0aa7fa62956c16c59ba9dc2b9a93e19">
-            <div class="ttname"><a href="structitem.html#ae0aa7fa62956c16c59ba9dc2b9a93e19">item::model</a></div>
-            <div class="ttdeci">char * model</div>
-            <div class="ttdef"><b>Definition:</b> Item.h:21</div>
-        </div>
-        <div class="ttc" id="structitem_html_afeb02083442f50fbfebad5c4991aec1f">
-            <div class="ttname"><a href="structitem.html#afeb02083442f50fbfebad5c4991aec1f">item::next</a></div>
-            <div class="ttdeci">struct item * next</div>
-            <div class="ttdef"><b>Definition:</b> Item.h:30</div>
+            <div class="ttdef"><b>Definition:</b> Item.c:46</div>
         </div>
     </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

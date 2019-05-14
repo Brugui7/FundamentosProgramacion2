@@ -13,7 +13,13 @@
 
 void showItem(struct item item);
 
+struct component *createItemOption(struct component *componentList);
+
 struct item *addItem(struct item *itemList, struct item *item, char *componentId, int itemListNumber);
+
+struct item *getItemOnComponent(char *itemId, struct component *component);
+
+void deleteItemOption(struct component *componentList);
 
 void deleteItem(struct item *itemList, struct item *item);
 

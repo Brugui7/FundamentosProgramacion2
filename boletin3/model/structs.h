@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief Structs definition
+ * @brief Structs and constants definition
  * @author: Alejandro Brugarolas
  * @since: 2019-05
 */
@@ -13,6 +13,7 @@
 #define NOT_DEFINED 0
 #define SOFTWARE 1
 #define HARDWARE 2
+
 
 struct item {
     char *generalId;
