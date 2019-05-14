@@ -1,8 +1,9 @@
 /**
  * @file
- * @brief Application to manage the stock of a shop with dynamic memory allocation
+ * @brief Application to manage the stock of a shop with dynamic memory allocation (With no global variables)
  * @author Alejandro Brugarolas
  * @since 2018-03
+ * @version 2.0
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,8 +11,9 @@
 #include <time.h>
 #include <string.h>
 #include <conio.h>
-#include "model/Item.h"
-#include "model/Component.h"
+#include "model/structs.h"
+#include "function/Item.h"
+#include "function/Component.h"
 
 #define NOT_DEFINED 0
 #define SOFTWARE 1
@@ -24,29 +26,24 @@ const char O_ACUTE = 162;
 const char U_ACUTE = 163;
 const char OPEN_QUESTION_MARK = 168;
 
-bool addComponent(struct component *component);
 
-void createComponentOption();
+struct component *createComponentOption(struct component *componentList);
 
-void deleteComponentOption();
+void deleteComponentOption(struct component *componentList);
 
-void showStockOption();
+void showStockOption(struct component *componentList);
 
-bool addItem(struct item *item, struct component *component);
+struct component *createItemOption(struct component *componentList);
 
-void createItemOption();
-
-void deleteItemOption();
-
-struct component *getComponentById(char *id);
+void deleteItemOption(struct component *componentList);
 
 /**
- * Deletes an Item
+ * Search for a item in a component
+ * @param itemId
  * @param component
- * @param item
- * @return bool if deleted
+ * @return
  */
-void deleteItem(struct component *component, struct item *item);
+struct item *getItemOnComponent(char *itemId, struct component *component);
 
 /**
  * Search for a item in a component
@@ -56,41 +53,40 @@ void deleteItem(struct component *component, struct item *item);
  */
 struct item *getItemOnComponent(char *itemId, struct component *component);
 
-struct component *components = NULL;
 
 /**
  * Shows all the options and calls the appropriate function depending of the choosen option
  */
-void showMenu() {
+void showMenu(struct component *componentList) {
     int option = 0;
     while (option != 6) {
-        printf("\n############### MENU ###############\n"
+        printf("\n############### MENU BOLET%cN 3 ###############\n"
                "Indique que acci%cn desea realizar\n"
                "\t1. Crear componentes\n"
                "\t2. Eliminar componentes\n"
                "\t3. Crear art%cculos\n"
                "\t4. Eliminar art%cculos\n"
                "\t5. Listar datos del stock de la tienda\n"
-               "\t6. Salir\n", O_ACUTE, I_ACUTE, I_ACUTE);
+               "\t6. Salir\n", I_ACUTE, O_ACUTE, I_ACUTE, I_ACUTE);
         printf("> ");
 
         scanf("%d", &option);
         fflush(stdin);
         switch (option) {
             case 1:
-                createComponentOption();
+                componentList = createComponentOption(componentList);
                 break;
             case 2:
-                deleteComponentOption();
+                deleteComponentOption(componentList);
                 break;
             case 3:
-                createItemOption();
+                componentList = createItemOption(componentList);
                 break;
             case 4:
-                deleteItemOption();
+                deleteItemOption(componentList);
                 break;
             case 5:
-                showStockOption();
+                showStockOption(componentList);
                 break;
             case 6:
                 printf("Saliendo...");
@@ -104,11 +100,14 @@ void showMenu() {
 
 /**
  * Asks for the file where te components are stored in and tries to read all of them
+ * @param componentList
+ * @return componentList updated
  */
-void createComponentOption() {
+struct component *createComponentOption(struct component *componentList) {
     char fileName[100] = "";
     char *buffer = (char *) malloc(sizeof(char) * 255);
     size_t length, bufferSize = 255;
+    bool error;
 
     FILE *file = NULL;
     do {
@@ -143,18 +142,36 @@ void createComponentOption() {
         fscanf(file, "%d\n", &component->stock);
         printf("Componente detectado...\n");
         showComponent(*component);
-        printf(addComponent(component) ? "Componente guardado correctamente\n"
-                                       : "Ya existe un componente con el mismo identificador\n");
+
+        error = false;
+        //Checks that all fields are valid
+        if (strlen(component->id) == 0 || strlen(component->name) == 0 || strlen(component->description) == 0) {
+            error = true;
+            printf("Error: Uno o más campos son inválidos\n");
+        }
+        //Checks that there is not a component with the same id
+        if (getComponentById(componentList, component->id) != NULL) {
+            error = true;
+            printf("Error: Ya existe un componente con el mismo identificador\n");
+        }
+
+        if (!error) {
+            printf("Componente guardado correctamente\n");
+            componentList = addComponent(componentList, component);
+        }
+
 
     }
     fclose(file);
     free(buffer);
+    return componentList;
 }
 
 /**
  * Asks for the file where the components id are stored in and tries to delete all of them
+ * @param componentList
  */
-void deleteComponentOption() {
+void deleteComponentOption(struct component *componentList) {
     int confirm;
     char fileName[100] = "";
     char *componentId = malloc(sizeof(char) * 255);
@@ -171,7 +188,7 @@ void deleteComponentOption() {
 
     while (!feof(file)) {
         fscanf(file, "%s\n", componentId);
-        struct component *component = getComponentById(componentId);
+        struct component *component = getComponentById(componentList, componentId);
         if (component != NULL) {
             if (component->items != NULL) {
                 confirm = 2;
@@ -190,32 +207,13 @@ void deleteComponentOption() {
             if (item != NULL) {
                 item = item->next;
                 while (item != NULL) {
-                    deleteItem(component, item);
+                    deleteItem(component->items, item);
                     item = item->next;
                 }
             }
 
+            deleteComponent(componentList, component);
 
-            if (component->next == NULL && component->previous == NULL) {
-                //There is only one component
-                components = NULL;
-            } else if (component->next == NULL) {
-                //This is the last component
-                components->previous = component->previous;
-                component->previous->next = NULL;
-            } else if (component->previous == NULL) {
-                //This is the first component
-                components->next = component->next;
-                component->next->previous = NULL;
-            } else {
-                component->next->previous = component->previous;
-                component->previous->next = component->next;
-            }
-            free(component->id);
-            free(component->name);
-            free(component->description);
-            free(component->items);
-            free(component);
         } else {
             printf("No se ha encontrado el componente con identificador %s...\n", componentId);
         }
@@ -235,8 +233,10 @@ void deleteComponentOption() {
  * type
  * price shippingPrice (both with a point as decimal separator)
  * stock
+ * @param componentList
+ * @return componentList updated
  */
-void createItemOption() {
+struct component *createItemOption(struct component *componentList) {
     char fileName[100] = "";
     FILE *file = NULL;
     char *componentId, *buffer = (char *) malloc(sizeof(char) * 255);
@@ -286,22 +286,22 @@ void createItemOption() {
         fscanf(file, "%f %f\n", &item->itemPrice, &item->shippingPrice);
         fscanf(file, "%d\n", &item->stock);
         printf("Art%cculo detectado...\n", I_ACUTE);
-        struct component *component = getComponentById(componentId);
+
+        struct component *component = getComponentById(componentList, componentId);
         if (component == NULL) {
             printf("No se ha encontrado el componente para asociar este art%cculo", I_ACUTE);
             continue;
         }
-        if (addItem(item, component)) {
-            printf("Art%cculo guardado correctamente\n", I_ACUTE);
-            showItem(*item);
-        } else {
-            printf("Error al guardar el rt%cculo\n", I_ACUTE);
-        }
+
+        component->items = addItem(component->items, item, componentId, ++component->itemsNumber);
+        printf("Art%cculo guardado correctamente\n", I_ACUTE);
+        showItem(*item);
         free(componentId);
 
     }
     fclose(file);
     free(buffer);
+    return componentList;
 
 }
 
@@ -309,8 +309,9 @@ void createItemOption() {
 /**
  * Asks for the file where the components and items id are stored in and tries to delete all of them
  * Expected format: "componentId itemId"
+ * @param componentList
  */
-void deleteItemOption() {
+void deleteItemOption(struct component *componentList) {
     char fileName[100] = "";
     char *componentId = malloc(sizeof(char) * 255);
     char *itemId = malloc(sizeof(char) * 255);
@@ -328,7 +329,7 @@ void deleteItemOption() {
     while (!feof(file)) {
 
         fscanf(file, "%s ", componentId);
-        struct component *component = getComponentById(componentId);
+        struct component *component = getComponentById(componentList, componentId);
         printf("Componente escaneado: %s\n", componentId);
         fscanf(file, "%s\n", itemId);
         if (component == NULL) {
@@ -344,7 +345,7 @@ void deleteItemOption() {
         }
         printf("\nEliminando el art%cculo con identificador %s...\n", I_ACUTE, itemId);
 
-        deleteItem(component, item);
+        deleteItem(component->items, item);
     }
     free(componentId);
     free(itemId);
@@ -352,15 +353,16 @@ void deleteItemOption() {
 
 /**
  * Shows the stock or an error if there aren't components
+ * @param componentList
  */
-void showStockOption() {
+void showStockOption(struct component *componentList) {
 
-    if (components == NULL) {
+    if (componentList == NULL) {
         printf("Error: La tienda no tiene componentes...");
         return;
     }
     printf("\n/****** STOCK TIENDA COMPONENTES INFORM%cTICOS ******/\n", A_ACUTE);
-    struct component *component = components->next;
+    struct component *component = componentList->next;
     while (component != NULL) {
         showComponent(*component);
         struct item *item = component->items;
@@ -376,48 +378,6 @@ void showStockOption() {
     printf("\n/****** FIN ******/\n");
 }
 
-/**
- * Deletes an Item
- * @param component
- * @param item
- * @return bool if deleted
- */
-void deleteItem(struct component *component, struct item *item) {
-
-    if (item->next == NULL && item->previous == NULL) {
-        component->items = NULL;
-    } else if (item->next == NULL) {
-        component->items->previous = item->previous;
-        component->items->previous->next = NULL;
-    } else if (item->previous == NULL) {
-        component->items->next = item->next;
-        item->next->previous = NULL;
-
-    } else {
-        item->next->previous = item->previous;
-        item->previous->next = item->next;
-    }
-    component->itemsNumber--;
-    free(item->generalId);
-    free(item->model);
-    free(item->brand);
-    free(item);
-}
-
-/**
- * Search for a component in the list
- * @param id identifier of a component
- * @return a pointer to the component if found, null if not
- */
-struct component *getComponentById(char *id) {
-    if (components == NULL) return NULL;
-    struct component *component = components->next;
-    while (component != NULL) {
-        if (strcmp(component->id, id) == 0) return component;
-        component = component->next;
-    }
-    return NULL;
-}
 
 /**
  * Search for an item in a component
@@ -436,91 +396,10 @@ struct item *getItemOnComponent(char *itemId, struct component *component) {
     return NULL;
 }
 
-/**
- * Adds a component to the list and keeps the list ordered by the components names
- * @param component struct to add
- * @return boolean if added correctly
- */
-bool addComponent(struct component *component) {
-    //Checks that all fields are valid¿
-    if (strlen(component->id) == 0 || strlen(component->name) == 0 || strlen(component->description) == 0) return false;
-    //Checks that there is not a component with the same id
-    if (getComponentById(component->id) != NULL) return false;
-    component->items = NULL;
-    component->itemsNumber = 0;
-
-    if (components == NULL) {
-        components = (struct component *) malloc(sizeof(struct component));
-        component->next = NULL;
-        component->previous = NULL;
-        components->previous = components->next = component;
-    } else {
-        bool added = false;
-        struct component *tempComponent = components->next;
-        do {
-            if (strcmp(tempComponent->name, component->name) > 0) {
-
-
-                if (tempComponent->previous == NULL) {
-                    //In this case, tempComponent is the first component
-                    components->next = component;
-                } else {
-                    tempComponent->previous->next = component;
-                }
-                component->previous = tempComponent->previous;
-                tempComponent->previous = component;
-                component->next = tempComponent;
-                added = true;
-                break;
-            }
-            tempComponent = tempComponent->next;
-        } while (tempComponent->next != NULL);
-        if (!added) {
-            component->previous = components->previous; //The previous component of the new one, is the actual last one
-            component->next = NULL;
-            components->previous->next = component; //the next component of the actual last one, will be the new one
-            components->previous = component; //Sets the new last component
-        }
-
-    }
-    return true;
-}
-
-/**
- * Saves an item at the end of the list
- * @param item to add
- * @param pointer to component to add the item to
- * @return boolean if added correctly
- */
-bool addItem(struct item *item, struct component *component) {
-    item->next = NULL;
-
-    if (component->items == NULL) {
-        component->items = (struct item *) malloc(sizeof(struct item));
-        item->previous = NULL;
-        component->items->previous = component->items->next = item;
-    } else {
-        item->previous = component->items->previous; //The previous item of the new one, is the actual last one
-        component->items->previous->next = item; //the next component of the actual last one, will be the new one
-        component->items->previous = item; //Sets the new last component
-    }
-    char *aux = (char *) malloc(sizeof(char) * 9);
-    char *buffer = (char *) malloc(sizeof(char) * 255);
-    size_t length;
-    //Creates and sets the item ID
-    strftime(aux, 9, "%d_%m_%y", &item->insertDate); //This will be 9 always
-    sprintf(buffer, "%s_%d_%s", component->id, ++component->itemsNumber, aux);
-    length = strlen(buffer);
-    item->generalId = (char *) malloc(++length * sizeof(char));
-    strncpy(item->generalId, buffer, length);
-    free(buffer);
-    free(aux);
-    return true;
-
-}
 
 
 int main() {
-    showMenu();
-    free(components);
+    componentList componentList = createCompoentList();
+    showMenu(componentList);
+    //free(components);
 }

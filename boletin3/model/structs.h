@@ -1,15 +1,14 @@
 /**
  * @file
- * @brief Data definition for item
+ * @brief Structs definition
  * @author: Alejandro Brugarolas
- * @since: 2019-03
+ * @since: 2019-05
 */
 
-#ifndef FUNDAMENTOS2_ITEM_H
-#define FUNDAMENTOS2_ITEM_H
+#ifndef FUNDAMENTOS2_STRUCTS_H
+#define FUNDAMENTOS2_STRUCTS_H
 
-#include <stdbool.h>
-#include <time.h>
+#include <wchar.h>
 
 #define NOT_DEFINED 0
 #define SOFTWARE 1
@@ -31,7 +30,20 @@ struct item {
     struct item *previous;
 };
 
-void showItem(struct item item);
+typedef struct item *itemList;
+
+struct component {
+    char *id;
+    char *name;
+    char *description;
+    int stock;
+    itemList items;
+    int itemsNumber;
+    struct component *next;
+    struct component *previous;
+};
+
+typedef struct component *componentList;
 
 
-#endif //FUNDAMENTOS2_ITEM_H
+#endif //FUNDAMENTOS2_STRUCTS_H
