@@ -47,6 +47,7 @@ contact *addContactOption(contact *contacts) {
         printf("Contacto creado correctamente\n");
     }
 
+    free(buffer);
     return contacts;
 
 }
@@ -76,14 +77,66 @@ contact *addContact(contact *contacts, contact *newContact) {
 }
 
 /**
+ * Ask the user for a number/name to find a contact
+ * @param contacts
+ */
+void findContactOption(contact *contacts) {
+    char *buffer = (char *) malloc(sizeof(char) * 255);
+    int option = 0;
+
+    while (option != 1 && option != 2) {
+        printf("Seleccione el modo de b%csqueda\n1. Por nombre\n2. Por n%cmero\n> ", U_ACUTE, U_ACUTE);
+        scanf("%d", &option);
+        fflush(stdin);
+    }
+    contact *contactFound = NULL;
+
+    if (option == 1) {
+        printf("Introduzca el nombre del contacto a buscar\n> ");
+        gets(buffer);
+        fflush(stdin);
+        contactFound = getContactByName(contacts, buffer);
+    } else {
+        printf("Introduzca el nombre del contacto a buscar\n> ");
+        gets(buffer);
+        fflush(stdin);
+        contactFound = getContactByNumber(contacts, buffer);
+    }
+
+    if (contactFound == NULL) {
+        printf("No se encontr%c ning%cn contacto con los par%cmetros de b%csqueda introducidos", O_ACUTE, U_ACUTE,
+               A_ACUTE, U_ACUTE);
+        return;
+    }
+
+    if (option == 1) {
+        printf("El n%cmero del contacto es el %s", U_ACUTE, contactFound->number);
+    } else {
+        printf("El nombre del contacto es %s", contactFound->name);
+    }
+
+}
+
+/**
  * Returns a contact given a name
  * @param contacts the book
  * @param name of the contact
  * @return the contact or null if not found
  */
 contact *getContactByName(contact *contacts, char *name) {
-//TODO
-    return NULL;
+    if (contacts == NULL) return NULL;
+
+    int comparation = strcmp(contacts->name, name);
+
+    if (comparation == 0) {
+        return contacts;
+    } else if (comparation < 0) {
+        return getContactByName(contacts->right, name);
+    } else {
+        return getContactByName(contacts->left, name);
+    }
+
+
 }
 
 /**

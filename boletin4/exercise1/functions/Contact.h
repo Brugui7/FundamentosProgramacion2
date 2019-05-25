@@ -22,6 +22,8 @@ contact *addContactOption(contact *contacts);
 
 contact *addContact(contact *contacts, contact *contact);
 
+void findContactOption(contact *contacts);
+
 contact *getContactByName(contact *contacts, char *name);
 
 contact *getContactByNumber(contact *contacts, char *number);

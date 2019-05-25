@@ -19,9 +19,8 @@ void showMenu(contact *contacts) {
         printf("\n############### MENU BOLET%cN 4 EJERCICIO 1 ###############\n"
                "Indique que acci%cn desea realizar\n"
                "\t1. Crear contacto nuevo\n"
-               "\t2. Buscar contacto por nombre\n"
-               "\t3. Buscar contacto por %cmero\n"
-               "\t4. Salir\n", I_ACUTE, O_ACUTE, U_ACUTE);
+               "\t2. Buscar contacto\n"
+               "\t3. Salir\n", I_ACUTE, O_ACUTE);
         printf("> ");
 
         scanf("%d", &option);
@@ -31,10 +30,10 @@ void showMenu(contact *contacts) {
                 contacts = addContactOption(contacts);
                 break;
             case 2:
-                //contacts = addContactOption(contacts);
+                findContactOption(contacts);
                 break;
             case 3:
-                //contacts = addContactOption(contacts);
+                printf("Saliendo...");
                 break;
             default:
                 printf("Por favor seleccione una opci%cn v%clida\n", O_ACUTE, A_ACUTE);
