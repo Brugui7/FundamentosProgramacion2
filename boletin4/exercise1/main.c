@@ -15,7 +15,7 @@
  */
 void showMenu(contact *contacts) {
     int option = 0;
-    while (option != 4) {
+    while (option != 3) {
         printf("\n############### MENU BOLET%cN 4 EJERCICIO 1 ###############\n"
                "Indique que acci%cn desea realizar\n"
                "\t1. Crear contacto nuevo\n"
@@ -46,7 +46,5 @@ void showMenu(contact *contacts) {
 int main() {
     contact *contacts = NULL;
     showMenu(contacts);
-    //destroyEverything(componentList);
-
-
+    destroyBook(contacts);
 }

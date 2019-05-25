@@ -39,6 +39,7 @@ contact *addContactOption(contact *contacts) {
     bufferLength = strlen(buffer);
     newContact->number = (char *) malloc(sizeof(char *) * bufferLength);
     strncpy(newContact->number, buffer, bufferLength + 1);
+    fflush(stdin);
 
     if (strlen(newContact->number) == 0 || strlen(newContact->name) == 0) {
         printf("Error: Uno o m%cs campos son inv%clidos\n", A_ACUTE, A_ACUTE);
@@ -97,7 +98,7 @@ void findContactOption(contact *contacts) {
         fflush(stdin);
         contactFound = getContactByName(contacts, buffer);
     } else {
-        printf("Introduzca el nombre del contacto a buscar\n> ");
+        printf("Introduzca el n%cmero del contacto a buscar\n> ", U_ACUTE);
         gets(buffer);
         fflush(stdin);
         contactFound = getContactByNumber(contacts, buffer);
@@ -106,14 +107,13 @@ void findContactOption(contact *contacts) {
     if (contactFound == NULL) {
         printf("No se encontr%c ning%cn contacto con los par%cmetros de b%csqueda introducidos", O_ACUTE, U_ACUTE,
                A_ACUTE, U_ACUTE);
-        return;
-    }
-
-    if (option == 1) {
-        printf("El n%cmero del contacto es el %s", U_ACUTE, contactFound->number);
+    } else if (option == 1) {
+        printf("El n%cmero de %s es el %s", U_ACUTE, contactFound->name, contactFound->number);
     } else {
         printf("El nombre del contacto es %s", contactFound->name);
     }
+
+    free(buffer);
 
 }
 
@@ -131,9 +131,9 @@ contact *getContactByName(contact *contacts, char *name) {
     if (comparation == 0) {
         return contacts;
     } else if (comparation < 0) {
-        return getContactByName(contacts->right, name);
+        return getContactByName(contacts->right, name); //name > contacts->name
     } else {
-        return getContactByName(contacts->left, name);
+        return getContactByName(contacts->left, name); //name < contacts->name
     }
 
 
@@ -146,6 +146,30 @@ contact *getContactByName(contact *contacts, char *name) {
  * @return the contact or null if not found
  */
 contact *getContactByNumber(contact *contacts, char *number) {
-//TODO
+    if (contacts == NULL) return NULL;
+
+    if (strcmp(contacts->number, number) == 0) return contacts;
+
+
+    contact *contact1 = getContactByNumber(contacts->right, number);
+    contact *contact2 = getContactByNumber(contacts->left, number);
+
+
+    if (contact1 != NULL) return contact1;
+    if (contact2 != NULL) return contact2;
     return NULL;
+}
+
+/**
+ * Deletes all the contacts
+ * @param contacts
+ */
+void destroyBook(contact *contacts) {
+
+    if (contacts == NULL) return;
+    destroyBook(contacts->left);
+    free(contacts->name);
+    free(contacts->number);
+    free(contacts);
+
 }

@@ -28,4 +28,6 @@ contact *getContactByName(contact *contacts, char *name);
 
 contact *getContactByNumber(contact *contacts, char *number);
 
+void destroyBook(contact *contacts);
+
 #endif //FUNDAMENTOS2_CONTACT_H
