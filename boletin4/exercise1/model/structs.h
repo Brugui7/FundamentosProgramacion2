@@ -1,6 +1,9 @@
-//
-// Created by Brugui on 22/05/2019.
-//
+/**
+ * @file
+ * @brief structs definition
+ * @author: Alejandro Brugarolas
+ * @since: 2019-05
+*/
 
 #ifndef FUNDAMENTOS2_STRUCTS_H
 #define FUNDAMENTOS2_STRUCTS_H
