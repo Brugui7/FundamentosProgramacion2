@@ -27,7 +27,7 @@ void showMenu(city *cities) {
         fflush(stdin);
         switch (option) {
             case 1:
-                //checkValidityOption(cities);
+                validateOption(cities);
                 break;
             case 2:
                 //findShortestPath(cities);

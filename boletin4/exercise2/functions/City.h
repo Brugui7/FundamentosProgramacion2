@@ -24,4 +24,8 @@ city *loadFile();
 
 city *getCityByName(city *cities, char *name);
 
+void validateOption(city *cities);
+
+int countCities(city *cities);
+
 #endif //FUNDAMENTOS2_CITY_H

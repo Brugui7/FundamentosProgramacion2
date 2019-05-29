@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include "City.h"
 
 const char A_ACUTE = 160;
@@ -81,9 +82,9 @@ city *loadFile() {
         addRoad(from, to, distance);
     }
 
-
     fclose(file);
     free(buffer);
+    return cities;
 }
 
 /**
@@ -116,3 +117,70 @@ void addRoad(city *from, city *to, int distance) {
     from->road = newRoad;
 
 }
+
+/**
+ * Returns the number of cities in the list
+ * @return int
+ */
+int countCities(city *cities) {
+    int count = 0;
+    city *tempCity = cities;
+    while (tempCity != NULL) {
+        count++;
+        tempCity = tempCity->next;
+    }
+    return count;
+}
+
+/**
+ * Checks that there is not isolated cities and that every city can be reached from other city
+ * @param cities list of cities
+ */
+void validateOption(city *cities) {
+    int citiesNumber = countCities(cities);
+    bool paths[citiesNumber][citiesNumber];
+    int i, j, k;
+
+    city *tempCityI = cities;
+    for (i = 0; i < citiesNumber; i++) {
+        city *tempCityJ = cities;
+        for (j = 0; j < citiesNumber; j++) {
+            //Saves in the array if there is a direct connection between the two cities
+            paths[i][j] = tempCityI->road != NULL && tempCityI->road->to == tempCityJ;
+            tempCityJ = tempCityJ->next;
+        }
+        tempCityI = tempCityI->next;
+    }
+
+    for (k = 0; k < citiesNumber; ++k) {
+        for (i = 0; i++ < citiesNumber; i++) {
+            for (j = 0; j < citiesNumber; j++) {
+                paths[i][j] = paths[i][j] || paths[i][k] && paths[k][j];
+            }
+        }
+    }
+
+    bool isConnected = false;
+    bool error = false;
+    for (i = 0; i++ < citiesNumber; i++) {
+        for (j = 0; j < citiesNumber; j++) {
+            if (paths[i][j]) {
+                isConnected = true;
+                break;
+            }
+        }
+        if (!isConnected) {
+            error = true;
+            break;
+        }
+        isConnected = false;
+    }
+    if (error) {
+        printf("Error en los datos hay al menos una ciudad aislada\n");
+    } else {
+        printf("El fichero ha sido validado correctamente\n");
+    }
+
+
+}
+
