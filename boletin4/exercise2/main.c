@@ -30,7 +30,7 @@ void showMenu(city *cities) {
                 validateOption(cities);
                 break;
             case 2:
-                //findShortestPath(cities);
+                getMinDistanceOption(cities);
                 break;
             case 3:
                 printf("Saliendo...");

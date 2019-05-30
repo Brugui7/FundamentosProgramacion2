@@ -28,4 +28,8 @@ void validateOption(city *cities);
 
 int countCities(city *cities);
 
+void getMinDistanceOption(city *cities);
+
+int getMinDistance(city *cities, city *from, city *to);
+
 #endif //FUNDAMENTOS2_CITY_H

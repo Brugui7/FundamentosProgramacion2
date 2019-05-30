@@ -153,7 +153,7 @@ void validateOption(city *cities) {
     }
 
     for (k = 0; k < citiesNumber; ++k) {
-        for (i = 0; i++ < citiesNumber; i++) {
+        for (i = 0; i < citiesNumber; i++) {
             for (j = 0; j < citiesNumber; j++) {
                 paths[i][j] = paths[i][j] || paths[i][k] && paths[k][j];
             }
@@ -184,3 +184,101 @@ void validateOption(city *cities) {
 
 }
 
+
+/**
+ * Ask all the params to obtain the minimum distance between two cities and shows the result
+ * @param cities list of cityes
+ */
+void getMinDistanceOption(city *cities) {
+    char *buffer = (char *) malloc(sizeof(char) * 255);
+
+    printf("Introduce el nombre de la ciudad origen\n> ");
+    gets(buffer);
+    fflush(stdin);
+    city *from = getCityByName(cities, buffer);
+
+    printf("Introduce el nombre de la ciudad destino\n> ");
+    gets(buffer);
+    fflush(stdin);
+    city *to = getCityByName(cities, buffer);
+
+    int distance = getMinDistance(cities, from, to);
+    if (distance != INT_MAX) {
+
+        printf("La distancia m%cnima entre las dos ciudades es de %d\n", I_ACUTE, distance);
+    } else {
+        printf("Ocurri%c un error al buscar el camino m%cs corto", O_ACUTE, A_ACUTE);
+    }
+
+
+    free(buffer);
+
+}
+
+/**
+ * Returns the min distance in km between two cities
+ * @param cities
+ * @param from
+ * @param to
+ * @return int distance
+ */
+int getMinDistance(city *cities, city *from, city *to) {
+    int citiesNumber = countCities(cities);
+    int paths[citiesNumber][citiesNumber];
+    int midlePaths[citiesNumber][citiesNumber];
+    int i, j, k;
+
+    city *tempCityI = cities;
+    city *tempCityJ;
+    for (i = 0; i < citiesNumber; i++) {
+        tempCityJ = cities;
+        for (j = 0; j < citiesNumber; j++) {
+            midlePaths[i][j] = -1;
+            if (tempCityI->road == NULL) {
+                paths[i][j] = INT_MAX;
+            } else {
+                road *tempCityRoad = tempCityI->road;
+                while (tempCityRoad != NULL) {
+                    //Saves in the array the distance if there is a direct connection between the two cities
+                    if (tempCityRoad->to == tempCityJ) {
+                        paths[i][j] = tempCityRoad->distance;
+                        break;
+                    }
+                    paths[i][j] = INT_MAX;
+                    tempCityRoad = tempCityRoad->next;
+                }
+            }
+
+            tempCityJ = tempCityJ->next;
+        }
+        tempCityI = tempCityI->next;
+    }
+
+    for (k = 0; k < citiesNumber; ++k) {
+        for (i = 0; i < citiesNumber; i++) {
+            for (j = 0; j < citiesNumber; j++) {
+                if (paths[i][k] != INT_MAX && paths[k][j] != INT_MAX && paths[i][k] + paths[k][j] < paths[i][j]) {
+                    paths[i][j] = paths[i][k] + paths[k][j];
+                    midlePaths[i][j] = k;
+                }
+            }
+        }
+    }
+
+    tempCityI = cities;
+    for (i = 0; i < citiesNumber; i++) {
+        tempCityJ = cities;
+        if (tempCityI == from) {
+            for (j = 0; j < citiesNumber; j++) {
+                if (tempCityJ == to) return paths[i][j];
+                tempCityJ = tempCityJ->next;
+            }
+        }
+        tempCityI = tempCityI->next;
+    }
+
+    return INT_MAX;
+
+}
+
+//TODO destroy everything
