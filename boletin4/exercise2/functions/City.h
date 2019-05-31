@@ -25,4 +25,6 @@ void getMinDistanceOption(city *cities);
 
 int getMinDistance(city *cities, city *from, city *to);
 
+void destroyEverything(city *cities);
+
 #endif //FUNDAMENTOS2_CITY_H

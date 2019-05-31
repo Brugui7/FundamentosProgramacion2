@@ -1,13 +1,11 @@
 /**
  * @file
- * @brief Application to manage phone contacts
+ * @brief Application to manage cities and distances between them
  * @author Alejandro Brugarolas
  * @since 2019-05
  */
 
 #include <stdio.h>
-#include <wchar.h>
-#include <locale.h>
 #include "model/structs.h"
 #include "functions/City.h"
 
@@ -47,9 +45,7 @@ void showMenu(city *cities) {
 
 
 int main() {
-    setlocale(LC_ALL, "es_ES.UTF-8");
-    //setlocale(LC_CTYPE, "Spanish");
     city *cities = loadFile();
     showMenu(cities);
-    //destroyEverything(contacts);
+    destroyEverything(cities);
 }

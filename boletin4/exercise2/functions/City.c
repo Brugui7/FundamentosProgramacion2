@@ -294,4 +294,25 @@ int getMinDistance(city *cities, city *from, city *to) {
     return INT_MAX;
 }
 
-//TODO destroy everything
+/**
+ * Frees all cities
+ * @param cities list
+ */
+void destroyEverything(city *cities) {
+    road *roadToFree;
+    city *cityToFree;
+    city *tempCity = cities;
+    while (tempCity != NULL) {
+        road *cityRoads = tempCity->road;
+        while (cityRoads != NULL) {
+            roadToFree = cityRoads;
+            cityRoads = cityRoads->next;
+            free(roadToFree);
+        }
+        cityToFree = tempCity;
+        tempCity = tempCity->next;
+        free(cityToFree->name);
+        free(cityToFree);
+    }
+    free(cities);
+}
