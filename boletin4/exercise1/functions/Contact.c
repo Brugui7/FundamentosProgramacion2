@@ -9,14 +9,6 @@
 #include <stdbool.h>
 #include <string.h>
 #include "Contact.h"
-
-const char A_ACUTE = 160;
-const char E_ACUTE = 130;
-const char I_ACUTE = 161;
-const char O_ACUTE = 162;
-const char U_ACUTE = 163;
-const char OPEN_QUESTION_MARK = 168;
-
 /**
  * Asks the user for the contacts details
  * @param contacts
@@ -34,7 +26,7 @@ contact *addContactOption(contact *contacts) {
     strncpy(newContact->name, buffer, bufferLength + 1);
     fflush(stdin);
 
-    printf("Introduzca el n%cmero del nuevo contacto\n> ", U_ACUTE);
+    printf("Introduzca el número del nuevo contacto\n> ");
     gets(buffer);
     bufferLength = strlen(buffer);
     newContact->number = (char *) malloc(sizeof(char *) * bufferLength);
@@ -42,7 +34,7 @@ contact *addContactOption(contact *contacts) {
     fflush(stdin);
 
     if (strlen(newContact->number) == 0 || strlen(newContact->name) == 0) {
-        printf("Error: Uno o m%cs campos son inv%clidos\n", A_ACUTE, A_ACUTE);
+        printf("Error: Uno o más campos son inválidos\n");
     } else {
         contacts = addContact(contacts, newContact);
         printf("Contacto creado correctamente\n");
@@ -86,7 +78,7 @@ void findContactOption(contact *contacts) {
     int option = 0;
 
     while (option != 1 && option != 2) {
-        printf("Seleccione el modo de b%csqueda\n1. Por nombre\n2. Por n%cmero\n> ", U_ACUTE, U_ACUTE);
+        printf("Seleccione el modo de búsqueda\n1. Por nombre\n2. Por número\n> ");
         scanf("%d", &option);
         fflush(stdin);
     }
@@ -98,17 +90,16 @@ void findContactOption(contact *contacts) {
         fflush(stdin);
         contactFound = getContactByName(contacts, buffer);
     } else {
-        printf("Introduzca el n%cmero del contacto a buscar\n> ", U_ACUTE);
+        printf("Introduzca el número del contacto a buscar\n> ");
         gets(buffer);
         fflush(stdin);
         contactFound = getContactByNumber(contacts, buffer);
     }
 
     if (contactFound == NULL) {
-        printf("No se encontr%c ning%cn contacto con los par%cmetros de b%csqueda introducidos", O_ACUTE, U_ACUTE,
-               A_ACUTE, U_ACUTE);
+        printf("No se encontró ningún contacto con los parámetros de búsqueda introducidos");
     } else if (option == 1) {
-        printf("El n%cmero de %s es el %s", U_ACUTE, contactFound->name, contactFound->number);
+        printf("El número de %s es el %s", contactFound->name, contactFound->number);
     } else {
         printf("El nombre del contacto es %s", contactFound->name);
     }

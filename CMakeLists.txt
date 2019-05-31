@@ -3,4 +3,4 @@ project(fundamentos2 C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(fundamentos2 boletin4/exercise2/main.c boletin4/exercise2/model/structs.h boletin4/exercise2/functions/City.c boletin4/exercise2/functions/City.h)
+add_executable(fundamentos2 boletin4/exercise1/main.c boletin4/exercise1/model/structs.h boletin4/exercise1/functions/Contact.c boletin4/exercise1/functions/Contact.h)

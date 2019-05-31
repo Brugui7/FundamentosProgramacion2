@@ -203,6 +203,19 @@ void getMinDistanceOption(city *cities) {
     fflush(stdin);
     city *to = getCityByName(cities, buffer);
 
+    if (from == NULL || to == NULL) {
+        printf("Error: Una de las ciudades no existe");
+        free(buffer);
+        return;
+    }
+
+    if (from == to) {
+        printf("La distancia de una ciudad a ella misma... es 0");
+        free(buffer);
+        return;
+    }
+
+
     int distance = getMinDistance(cities, from, to);
     if (distance != INT_MAX) {
 

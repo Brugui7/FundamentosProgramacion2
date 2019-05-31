@@ -10,13 +10,6 @@
 #ifndef FUNDAMENTOS2_CONTACT_H
 #define FUNDAMENTOS2_CONTACT_H
 
-const char A_ACUTE;
-const char E_ACUTE;
-const char I_ACUTE;
-const char O_ACUTE;
-const char U_ACUTE;
-const char OPEN_QUESTION_MARK;
-
 
 contact *addContactOption(contact *contacts);
 

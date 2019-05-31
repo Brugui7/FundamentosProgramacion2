@@ -16,11 +16,11 @@
 void showMenu(contact *contacts) {
     int option = 0;
     while (option != 3) {
-        printf("\n############### MENU BOLET%cN 4 EJERCICIO 1 ###############\n"
-               "Indique que acci%cn desea realizar\n"
+        printf("\n############### MENU BOLETÍN 4 EJERCICIO 1 ###############\n"
+               "Indique que acción desea realizar\n"
                "\t1. Crear contacto nuevo\n"
                "\t2. Buscar contacto\n"
-               "\t3. Salir\n", I_ACUTE, O_ACUTE);
+               "\t3. Salir\n");
         printf("> ");
 
         scanf("%d", &option);
@@ -36,7 +36,7 @@ void showMenu(contact *contacts) {
                 printf("Saliendo...");
                 break;
             default:
-                printf("Por favor seleccione una opci%cn v%clida\n", O_ACUTE, A_ACUTE);
+                printf("Por favor seleccione una opción válida\n");
                 break;
         }
     }
