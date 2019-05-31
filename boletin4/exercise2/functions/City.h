@@ -7,13 +7,6 @@
 #ifndef FUNDAMENTOS2_CITY_H
 #define FUNDAMENTOS2_CITY_H
 
-const char A_ACUTE;
-const char E_ACUTE;
-const char I_ACUTE;
-const char O_ACUTE;
-const char U_ACUTE;
-const char OPEN_QUESTION_MARK;
-
 #include "../model/structs.h"
 
 city *addCity(city *cities, city *newCity);

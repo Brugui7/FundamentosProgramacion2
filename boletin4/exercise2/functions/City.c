@@ -11,13 +11,6 @@
 #include <stdbool.h>
 #include "City.h"
 
-const char A_ACUTE = 160;
-const char E_ACUTE = 130;
-const char I_ACUTE = 161;
-const char O_ACUTE = 162;
-const char U_ACUTE = 163;
-const char OPEN_QUESTION_MARK = 168;
-
 /**
  * Creates a new city
  * @param cities
@@ -78,7 +71,7 @@ city *loadFile() {
             continue;
         }
 
-        printf("%s y %s est%cn separados por %d kn\n", from->name, to->name, A_ACUTE, distance);
+        printf("%s y %s están separados por %d kn\n", from->name, to->name, distance);
         addRoad(from, to, distance);
     }
 
@@ -142,11 +135,24 @@ void validateOption(city *cities) {
     int i, j, k;
 
     city *tempCityI = cities;
+    city *tempCityJ;
     for (i = 0; i < citiesNumber; i++) {
-        city *tempCityJ = cities;
+        tempCityJ = cities;
         for (j = 0; j < citiesNumber; j++) {
-            //Saves in the array if there is a direct connection between the two cities
-            paths[i][j] = tempCityI->road != NULL && tempCityI->road->to == tempCityJ;
+            if (tempCityI->road == NULL) {
+                paths[i][j] = false;
+            } else {
+                road *tempCityRoad = tempCityI->road;
+                while (tempCityRoad != NULL) {
+                    //Saves in the array the distance if there is a direct connection between the two cities
+                    if (tempCityRoad->to == tempCityJ) {
+                        paths[i][j] = true;
+                        break;
+                    }
+                    paths[i][j] = false;
+                    tempCityRoad = tempCityRoad->next;
+                }
+            }
             tempCityJ = tempCityJ->next;
         }
         tempCityI = tempCityI->next;
@@ -160,21 +166,16 @@ void validateOption(city *cities) {
         }
     }
 
-    bool isConnected = false;
     bool error = false;
-    for (i = 0; i++ < citiesNumber; i++) {
+    for (i = 0; i < citiesNumber; i++) {
         for (j = 0; j < citiesNumber; j++) {
-            if (paths[i][j]) {
-                isConnected = true;
+            if (!paths[i][j]) {
+                error = true;
                 break;
             }
         }
-        if (!isConnected) {
-            error = true;
-            break;
-        }
-        isConnected = false;
     }
+
     if (error) {
         printf("Error en los datos hay al menos una ciudad aislada\n");
     } else {
@@ -205,9 +206,9 @@ void getMinDistanceOption(city *cities) {
     int distance = getMinDistance(cities, from, to);
     if (distance != INT_MAX) {
 
-        printf("La distancia m%cnima entre las dos ciudades es de %d\n", I_ACUTE, distance);
+        printf("La distancia mínima entre las dos ciudades es de %d\n", distance);
     } else {
-        printf("Ocurri%c un error al buscar el camino m%cs corto", O_ACUTE, A_ACUTE);
+        printf("Ocurrió un error al buscar el camino más corto");
     }
 
 
@@ -278,7 +279,6 @@ int getMinDistance(city *cities, city *from, city *to) {
     }
 
     return INT_MAX;
-
 }
 
 //TODO destroy everything

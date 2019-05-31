@@ -6,6 +6,8 @@
  */
 
 #include <stdio.h>
+#include <wchar.h>
+#include <locale.h>
 #include "model/structs.h"
 #include "functions/City.h"
 
@@ -14,13 +16,14 @@
  * Shows all the options and calls the appropriate function depending of the chosen option
  */
 void showMenu(city *cities) {
+
     int option = 0;
     while (option != 3) {
-        printf("\n############### MENU BOLET%cN 4 EJERCICIO 2 ###############\n"
-               "Indique que acci%cn desea realizar\n"
+        printf("\n############### MENU BOLETÍN 4 EJERCICIO 2 ###############\n"
+               "Indique que acción desea realizar\n"
                "\t1. Comprobar validez del fichero\n"
-               "\t2. Obtener ruta m%cs corta\n"
-               "\t3. Salir\n", I_ACUTE, O_ACUTE, A_ACUTE);
+               "\t2. Obtener ruta más corta\n"
+               "\t3. Salir\n");
         printf("> ");
 
         scanf("%d", &option);
@@ -36,7 +39,7 @@ void showMenu(city *cities) {
                 printf("Saliendo...");
                 break;
             default:
-                printf("Por favor seleccione una opci%cn v%clida\n", O_ACUTE, A_ACUTE);
+                printf("Por favor seleccione una opción válida\n");
                 break;
         }
     }
@@ -44,7 +47,8 @@ void showMenu(city *cities) {
 
 
 int main() {
-
+    setlocale(LC_ALL, "es_ES.UTF-8");
+    //setlocale(LC_CTYPE, "Spanish");
     city *cities = loadFile();
     showMenu(cities);
     //destroyEverything(contacts);
