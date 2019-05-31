@@ -1,0 +1,49 @@
+[OPTIONS]
+Compatibility=1.1
+Full-text search=Yes
+Contents file=index.hhc
+Default Window=main
+Default topic=index.html
+Index file=index.hhk
+Language=0x409 English (United States)
+Title=Boletin 4 Ejercicio 1
+
+[WINDOWS]
+main="Boletin 4 Ejercicio 1","index.hhc","index.hhk","index.html","index.html",,,,,0x23520,,0x10387e,,,,,,,,0
+
+[FILES]
+_contact_8h_source.html
+structs_8h_source.html
+_contact_8c.html
+_contact_8h.html
+main_8c.html
+structs_8h.html
+structcontact.html
+dir_7c300c170d8b321159fb8c02ceed7b24.html
+dir_fd4d96c3073293ef25b463a8b2ba7d0d.html
+dir_e29440baa7271a5659025e1743231865.html
+dir_1629927199e8f5f3b0570a563899c4b7.html
+dir_06d955a84931e61845c21423bb755f26.html
+dir_5b67596140f2adbd8678ca7bbc319876.html
+index.html
+annotated.html
+classes.html
+functions.html
+functions_vars.html
+files.html
+globals.html
+globals_func.html
+globals_type.html
+tab_a.png
+tab_b.png
+tab_h.png
+tab_s.png
+nav_h.png
+nav_f.png
+bc_s.png
+doxygen.png
+closed.png
+open.png
+bdwn.png
+sync_on.png
+sync_off.png
