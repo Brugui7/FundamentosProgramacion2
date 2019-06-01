@@ -58,11 +58,11 @@ contact *addContact(contact *contacts, contact *newContact) {
         return contacts;
     }
 
-    int comparation = strcmp(contacts->name, newContact->name);
+    int comparison = strcmp(contacts->name, newContact->name);
 
-    if (comparation > 0) {
+    if (comparison > 0) {
         contacts->left = addContact(contacts->left, newContact);
-    } else if (comparation < 0) {
+    } else if (comparison < 0) {
         contacts->right = addContact(contacts->right, newContact);
     }
 
@@ -117,16 +117,15 @@ void findContactOption(contact *contacts) {
 contact *getContactByName(contact *contacts, char *name) {
     if (contacts == NULL) return NULL;
 
-    int comparation = strcmp(contacts->name, name);
+    int comparison = strcmp(contacts->name, name);
 
-    if (comparation == 0) {
+    if (comparison == 0) {
         return contacts;
-    } else if (comparation < 0) {
+    } else if (comparison < 0) {
         return getContactByName(contacts->right, name); //name > contacts->name
     } else {
         return getContactByName(contacts->left, name); //name < contacts->name
     }
-
 
 }
 

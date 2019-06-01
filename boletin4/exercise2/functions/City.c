@@ -215,7 +215,6 @@ void getMinDistanceOption(city *cities) {
         return;
     }
 
-
     int distance = getMinDistance(cities, from, to);
     if (distance != INT_MAX) {
 
@@ -224,9 +223,7 @@ void getMinDistanceOption(city *cities) {
         printf("Ocurrió un error al buscar el camino más corto");
     }
 
-
     free(buffer);
-
 }
 
 /**
