@@ -1,0 +1,1 @@
+Repository with some of my assignments of fundamental programming
